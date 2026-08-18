@@ -1,0 +1,88 @@
+name: Generate Meesho Images
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+  workflow_dispatch:
+    inputs:
+      product_name:
+        description: Product name
+        required: true
+      colours:
+        description: Colours (comma separated)
+        required: false
+      price:
+        description: Price
+        required: false
+      features:
+        description: Features / details
+        required: false
+      reference_image:
+        description: Reference image URL
+        required: true
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  generate:
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.issue.labels.*.name, 'generate-images') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Parse issue form
+        id: parse
+        if: ${{ github.event_name == 'issues' }}
+        uses: stefanbuck/github-issue-parser@v3
+        with:
+          template-path: .github/ISSUE_TEMPLATE/new-product.yml
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate images
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRODUCT_NAME: ${{ steps.parse.outputs.issueparser_product_name || github.event.inputs.product_name }}
+          COLOURS: ${{ steps.parse.outputs.issueparser_colours || github.event.inputs.colours }}
+          PRICE: ${{ steps.parse.outputs.issueparser_price || github.event.inputs.price }}
+          FEATURES: ${{ steps.parse.outputs.issueparser_features || github.event.inputs.features }}
+          REFERENCE_IMAGE_URL: ${{ steps.parse.outputs.issueparser_reference_image || github.event.inputs.reference_image }}
+          OUTPUT_DIR: output/${{ github.event.issue.number || github.run_id }}
+        run: python generate.py
+
+      - name: Upload images artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: meesho-images-${{ github.event.issue.number || github.run_id }}
+          path: output/**
+
+      - name: Commit generated images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output
+          git commit -m "Add generated images (run ${{ github.run_id }})" || echo "Nothing to commit"
+          git push || echo "Push skipped"
+
+      - name: Comment on issue
+        if: ${{ github.event_name == 'issues' }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const n = context.issue.number;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: n,
+              body: "✅ Images ban gayi! Dekho output/" + n + "/ folder mein, ya Actions se ZIP download karo."
+            });

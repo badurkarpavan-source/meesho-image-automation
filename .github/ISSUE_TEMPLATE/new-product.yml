@@ -1,0 +1,34 @@
+name: "🖼️ New Product Images"
+description: "Product ki details daalo, automation multiple images bana dega."
+title: "[Product]: "
+labels: ["generate-images"]
+body:
+  - type: input
+    id: product_name
+    attributes:
+      label: Product Name
+      placeholder: "e.g. Electronic Cable Organizer Pouch"
+    validations:
+      required: true
+  - type: input
+    id: colours
+    attributes:
+      label: "Colours (comma se alag karo)"
+      placeholder: "e.g. Pink, Blue, Grey, Black"
+  - type: input
+    id: price
+    attributes:
+      label: Price
+      placeholder: "e.g. ₹349 Only"
+  - type: textarea
+    id: features
+    attributes:
+      label: "Features / Basic Details"
+      placeholder: "e.g. Double-layer, waterproof, mesh pockets, wrist strap"
+  - type: textarea
+    id: reference_image
+    attributes:
+      label: Reference Photo
+      description: "Yahan product ki photo drag & drop karo YA image ka public URL paste karo."
+    validations:
+      required: true
