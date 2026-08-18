@@ -18,7 +18,7 @@ label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px}
 input,textarea{width:100%;padding:11px;border:1px solid #ddd;border-radius:10px;font-size:15px;background:#fff}
 textarea{min-height:72px}
 button{background:var(--p);color:#fff;border:0;border-radius:10px;padding:14px 18px;font-size:16px;font-weight:700;width:100%;cursor:pointer}
-button.sec{background:#ece9f7;color:#4a2a8f;margin-top:10px}
+button.sec{background:#ece9f7;color:#4a2a8f;margin-top:10px;font-size:14px;padding:11px}
 button:disabled{opacity:.55}
 .thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .thumbs img{width:66px;height:66px;object-fit:cover;border-radius:9px;border:1px solid #ddd}
@@ -33,6 +33,7 @@ button:disabled{opacity:.55}
 small.hint{color:#666;font-size:12px;display:block;margin-top:5px}
 .bar{height:7px;background:#eee;border-radius:5px;overflow:hidden;margin-top:10px}
 .bar>i{display:block;height:100%;width:0;background:var(--p);transition:width .3s}
+pre#log{background:#111;color:#8ef58e;font-size:11.5px;padding:10px;border-radius:10px;max-height:230px;overflow:auto;white-space:pre-wrap;margin-top:10px;display:none}
 </style>
 </head>
 <body>
@@ -45,7 +46,8 @@ small.hint{color:#666;font-size:12px;display:block;margin-top:5px}
   <div class="card">
     <h2>1️⃣ Gemini API Key (ek hi baar)</h2>
     <input id="key" type="password" placeholder="AIza... ya AQ..." />
-    <small class="hint">Key sirf tumhare phone/laptop me save hoti hai (browser me), kahin upload nahi hoti. Key yahan se lo: <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a></small>
+    <small class="hint">Key sirf tumhare browser me save hoti hai. Key yahan se lo: <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a></small>
+    <button class="sec" id="test">🔍 Key Test Karo (kaunse image model chalu hain)</button>
   </div>
 
   <div class="card">
@@ -68,6 +70,7 @@ small.hint{color:#666;font-size:12px;display:block;margin-top:5px}
     <button class="sec" id="all" style="display:none">⬇️ Saari Images Download</button>
     <div class="bar"><i id="bar"></i></div>
     <div class="st" id="st" style="display:none"></div>
+    <pre id="log"></pre>
   </div>
 
   <div class="out" id="out"></div>
@@ -79,6 +82,9 @@ function $(id){return document.getElementById(id)}
 var refs=[], made=[];
 $('key').value=localStorage.getItem(KEYS)||'';
 $('key').addEventListener('input',function(){localStorage.setItem(KEYS,$('key').value.trim())});
+
+function say(msg,cls){var s=$('st');s.style.display='block';s.className='st'+(cls?' '+cls:'');s.textContent=msg}
+function log(msg){var l=$('log');l.style.display='block';l.textContent+=msg+'\n';l.scrollTop=l.scrollHeight}
 
 function toB64(f){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(String(r.result).split(',')[1])};r.onerror=rej;r.readAsDataURL(f)})}
 
@@ -92,11 +98,26 @@ $('file').addEventListener('change',function(e){
   })}));
 });
 
-function say(msg,cls){var s=$('st');s.style.display='block';s.className='st'+(cls?' '+cls:'');s.textContent=msg}
-
-var MODELS=['gemini-2.5-flash-image','gemini-2.5-flash-image-preview','gemini-2.0-flash-preview-image-generation'];
+var MODELS=['gemini-2.5-flash-image','gemini-2.5-flash-image-preview','gemini-2.0-flash-preview-image-generation','gemini-2.5-flash-image-preview-09-2025','imagen-3.0-generate-002'];
 var MODES=[null,['TEXT','IMAGE'],['IMAGE']];
 var good=null;
+
+$('test').addEventListener('click',function(){
+  var key=$('key').value.trim();
+  if(!key){return say('Pehle key daalo 🔑','err')}
+  say('Key check kar raha hoon...');
+  $('log').textContent='';
+  fetch('https://generativelanguage.googleapis.com/v1beta/models?key='+encodeURIComponent(key)+'&pageSize=200')
+   .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,j:j}})})
+   .then(function(o){
+     if(!o.ok){say('❌ Key kaam nahi kar rahi. Error niche dekho.','err');log('HTTP '+o.status+'\n'+JSON.stringify(o.j,null,1));return}
+     var ms=(o.j.models||[]).map(function(m){return m.name.replace('models/','')});
+     var img=ms.filter(function(n){return n.indexOf('image')>-1||n.indexOf('imagen')>-1});
+     say('✅ Key sahi hai. Total '+ms.length+' model mile, image wale '+img.length+'. List niche.', 'ok');
+     log('IMAGE MODELS:\n'+(img.join('\n')||'(koi image model nahi — is key/account pe image generation available nahi hai)')+'\n\nALL MODELS:\n'+ms.join('\n'));
+   })
+   .catch(function(e){say('❌ Network/CORS error: '+e.message,'err')});
+});
 
 function variants(){
   var v=[];
@@ -122,16 +143,16 @@ function genOne(prompt){
       {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
       .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,j:j}})})
       .then(function(o){
-        if(!o.ok){lastErr=(o.j&&o.j.error&&o.j.error.message)||('HTTP '+o.status);return next()}
+        if(!o.ok){lastErr='HTTP '+o.status+': '+((o.j&&o.j.error&&o.j.error.message)||'?');log('❌ '+v.m+' [mode '+v.j+'] → '+lastErr);return next()}
         var c=o.j.candidates&&o.j.candidates[0];
         var ps=(c&&c.content&&c.content.parts)||[];
-        var img=null;
-        for(var k=0;k<ps.length;k++){var d=ps[k].inlineData||ps[k].inline_data;if(d&&d.data){img=d;break}}
-        if(!img){lastErr='Model ne image nahi bheji (safety block ya galat model)';return next()}
-        good=v;
+        var img=null,txt='';
+        for(var k=0;k<ps.length;k++){var d=ps[k].inlineData||ps[k].inline_data;if(d&&d.data){img=d;break}if(ps[k].text)txt+=ps[k].text}
+        if(!img){lastErr='image nahi mili. finishReason='+((c&&c.finishReason)||'?')+(txt?(' | model text: '+txt.slice(0,200)):'')+((o.j.promptFeedback)?(' | promptFeedback: '+JSON.stringify(o.j.promptFeedback)):'');log('⚠️ '+v.m+' [mode '+v.j+'] → '+lastErr);return next()}
+        good=v;log('✅ '+v.m+' [mode '+v.j+'] → image mil gayi');
         return 'data:'+(img.mimeType||img.mime_type||'image/png')+';base64,'+img.data;
       })
-      .catch(function(e){lastErr=e.message||String(e);return next()});
+      .catch(function(e){lastErr=e.message||String(e);log('❌ '+v.m+' → '+lastErr);return next()});
   }
   return next();
 }
@@ -169,20 +190,20 @@ $('go').addEventListener('click',function(){
   var d={name:name,price:$('price').value.trim(),features:$('features').value.trim(),
     colours:$('colours').value.split(',').map(function(s){return s.trim()}).filter(Boolean)};
   var list=buildPrompts(d);
-  $('out').innerHTML='';made=[];$('all').style.display='none';
+  $('out').innerHTML='';made=[];$('all').style.display='none';$('log').textContent='';
   $('go').disabled=true;
   var i=0,fail=0;
   function step(){
     if(i>=list.length){
       $('go').disabled=false;$('bar').style.width='100%';
-      say(fail? ('Ho gaya! '+(list.length-fail)+'/'+list.length+' images bani. '+fail+' fail hui, dobara try kar sakte ho.') : ('✅ Ho gaya! Saari '+list.length+' images ready hain. Niche se download karo.'),fail?'':'ok');
+      say(fail? ('Ho gaya! '+(list.length-fail)+'/'+list.length+' images bani, '+fail+' fail. Niche kaali box me error dekho aur mujhe screenshot bhejo.') : ('✅ Ho gaya! Saari '+list.length+' images ready hain. Niche se download karo.'),fail?'err':'ok');
       return;
     }
     var it=list[i];
-    say('Ban rahi hai... '+(i+1)+'/'+list.length+'  ('+it.t+')\nRuko, 10-20 second lagta hai per image.');
+    say('Ban rahi hai... '+(i+1)+'/'+list.length+'  ('+it.t+')\n10-20 second per image lagta hai.');
     $('bar').style.width=Math.round(i/list.length*100)+'%';
     genOne(it.p).then(function(url){addItem(it,url)})
-      .catch(function(e){fail++;say('⚠️ '+it.t+' fail: '+e.message,'err')})
+      .catch(function(e){fail++;log('>>> FAIL: '+it.t+' — '+e.message)})
       .then(function(){i++;setTimeout(step,600)});
   }
   step();
