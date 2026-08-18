@@ -1,0 +1,13 @@
+{
+  "product": {
+    "product_name": "Test Product – Cable Organizer Pouch",
+    "colours": [
+      "Pink",
+      "Blue"
+    ],
+    "price": "₹349 Only",
+    "features": "Double-layer storage, waterproof fabric, multiple mesh pockets, wrist strap",
+    "reference_image_url": "https://raw.githubusercontent.com/github/explore/main/topics/python/python.png"
+  },
+  "files": []
+}
