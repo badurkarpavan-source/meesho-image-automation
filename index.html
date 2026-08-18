@@ -15,7 +15,7 @@ main{max-width:820px;margin:0 auto;padding:16px}
 .card{background:#fff;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.07)}
 h2{font-size:15px;margin:0 0 6px}
 label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px}
-input,textarea{width:100%;padding:11px;border:1px solid #ddd;border-radius:10px;font-size:15px;background:#fff}
+input,textarea,select{width:100%;padding:11px;border:1px solid #ddd;border-radius:10px;font-size:15px;background:#fff}
 textarea{min-height:72px}
 button{background:var(--p);color:#fff;border:0;border-radius:10px;padding:14px 18px;font-size:16px;font-weight:700;width:100%;cursor:pointer}
 button.sec{background:#ece9f7;color:#4a2a8f;margin-top:10px;font-size:14px;padding:11px}
@@ -33,7 +33,7 @@ button:disabled{opacity:.55}
 small.hint{color:#666;font-size:12px;display:block;margin-top:5px}
 .bar{height:7px;background:#eee;border-radius:5px;overflow:hidden;margin-top:10px}
 .bar>i{display:block;height:100%;width:0;background:var(--p);transition:width .3s}
-pre#log{background:#111;color:#8ef58e;font-size:11.5px;padding:10px;border-radius:10px;max-height:230px;overflow:auto;white-space:pre-wrap;margin-top:10px;display:none}
+pre#log{background:#111;color:#8ef58e;font-size:11.5px;padding:10px;border-radius:10px;max-height:240px;overflow:auto;white-space:pre-wrap;margin-top:10px;display:none}
 </style>
 </head>
 <body>
@@ -47,7 +47,9 @@ pre#log{background:#111;color:#8ef58e;font-size:11.5px;padding:10px;border-radiu
     <h2>1️⃣ Gemini API Key (ek hi baar)</h2>
     <input id="key" type="password" placeholder="AIza... ya AQ..." />
     <small class="hint">Key sirf tumhare browser me save hoti hai. Key yahan se lo: <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a></small>
-    <button class="sec" id="test">🔍 Key Test Karo (kaunse image model chalu hain)</button>
+    <button class="sec" id="test">🔍 Key Test + Image Model Dhoondo</button>
+    <label id="mlab" style="display:none">Image Model (auto select hua hai)</label>
+    <select id="model" style="display:none"></select>
   </div>
 
   <div class="card">
@@ -79,139 +81,151 @@ pre#log{background:#111;color:#8ef58e;font-size:11.5px;padding:10px;border-radiu
 <script>
 var KEYS='shg_gemini_key';
 function $(id){return document.getElementById(id)}
-var refs=[], made=[];
+var refs=[], made=[], discovered=null, good=null;
+var FALLBACK=['gemini-2.5-flash-image','gemini-2.5-flash-image-preview','gemini-2.0-flash-preview-image-generation'];
+var MODES=[null,['TEXT','IMAGE'],['IMAGE']];
+
 $('key').value=localStorage.getItem(KEYS)||'';
-$('key').addEventListener('input',function(){localStorage.setItem(KEYS,$('key').value.trim())});
+$('key').addEventListener('input',function(){localStorage.setItem(KEYS,$('key').value.trim());discovered=null;good=null});
 
-function say(msg,cls){var s=$('st');s.style.display='block';s.className='st'+(cls?' '+cls:'');s.textContent=msg}
-function log(msg){var l=$('log');l.style.display='block';l.textContent+=msg+'\n';l.scrollTop=l.scrollHeight}
-
+function say(m,c){var s=$('st');s.style.display='block';s.className='st'+(c?' '+c:'');s.textContent=m}
+function log(m){var l=$('log');l.style.display='block';l.textContent+=m+'\n';l.scrollTop=l.scrollHeight}
 function toB64(f){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(String(r.result).split(',')[1])};r.onerror=rej;r.readAsDataURL(f)})}
 
 $('file').addEventListener('change',function(e){
   refs=[];$('thumbs').innerHTML='';
-  var fs=Array.prototype.slice.call(e.target.files,0,3);
-  Promise.all(fs.map(function(f){return toB64(f).then(function(b){
-    var m=f.type||'image/jpeg';
-    refs.push({mime:m,b64:b});
-    var im=document.createElement('img');im.src='data:'+m+';base64,'+b;$('thumbs').appendChild(im);
-  })}));
+  Array.prototype.slice.call(e.target.files,0,3).forEach(function(f){
+    toB64(f).then(function(b){
+      var m=f.type||'image/jpeg';refs.push({mime:m,b64:b});
+      var im=document.createElement('img');im.src='data:'+m+';base64,'+b;$('thumbs').appendChild(im);
+    });
+  });
 });
 
-var MODELS=['gemini-2.5-flash-image','gemini-2.5-flash-image-preview','gemini-2.0-flash-preview-image-generation','gemini-2.5-flash-image-preview-09-2025','imagen-3.0-generate-002'];
-var MODES=[null,['TEXT','IMAGE'],['IMAGE']];
-var good=null;
+function listModels(){
+  var key=$('key').value.trim();
+  return fetch('https://generativelanguage.googleapis.com/v1beta/models?key='+encodeURIComponent(key)+'&pageSize=1000')
+    .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,j:j}})})
+    .then(function(o){
+      if(!o.ok)throw new Error('HTTP '+o.status+': '+((o.j&&o.j.error&&o.j.error.message)||'?'));
+      var all=(o.j.models||[]).filter(function(m){return (m.supportedGenerationMethods||[]).indexOf('generateContent')>-1})
+                              .map(function(m){return m.name.replace('models/','')});
+      var img=all.filter(function(n){return /image/i.test(n)});
+      img.sort(function(a,b){return (/2\.5/.test(b)?1:0)-(/2\.5/.test(a)?1:0)});
+      return {all:all,img:img};
+    });
+}
 
 $('test').addEventListener('click',function(){
-  var key=$('key').value.trim();
-  if(!key){return say('Pehle key daalo 🔑','err')}
-  say('Key check kar raha hoon...');
-  $('log').textContent='';
-  fetch('https://generativelanguage.googleapis.com/v1beta/models?key='+encodeURIComponent(key)+'&pageSize=200')
-   .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,j:j}})})
-   .then(function(o){
-     if(!o.ok){say('❌ Key kaam nahi kar rahi. Error niche dekho.','err');log('HTTP '+o.status+'\n'+JSON.stringify(o.j,null,1));return}
-     var ms=(o.j.models||[]).map(function(m){return m.name.replace('models/','')});
-     var img=ms.filter(function(n){return n.indexOf('image')>-1||n.indexOf('imagen')>-1});
-     say('✅ Key sahi hai. Total '+ms.length+' model mile, image wale '+img.length+'. List niche.', 'ok');
-     log('IMAGE MODELS:\n'+(img.join('\n')||'(koi image model nahi — is key/account pe image generation available nahi hai)')+'\n\nALL MODELS:\n'+ms.join('\n'));
-   })
-   .catch(function(e){say('❌ Network/CORS error: '+e.message,'err')});
+  if(!$('key').value.trim())return say('Pehle key daalo 🔑','err');
+  say('Check kar raha hoon...');$('log').textContent='';
+  listModels().then(function(r){
+    discovered=r.img.length?r.img:null;
+    var sel=$('model');sel.innerHTML='';
+    (r.img.length?r.img:FALLBACK).forEach(function(n){var o=document.createElement('option');o.value=n;o.textContent=n;sel.appendChild(o)});
+    sel.style.display='block';$('mlab').style.display='block';
+    if(r.img.length){say('✅ Key sahi hai! '+r.img.length+' image model mile. Sabse acha auto-select ho gaya: '+r.img[0],'ok');log('IMAGE MODELS:\n'+r.img.join('\n'))}
+    else{say('⚠️ Key chal rahi hai lekin is account pe koi IMAGE model nahi mila. Poori list kaali box me hai — screenshot bhejo.','err');log('IMAGE MODELS: (koi nahi)\n\nSAB MODELS:\n'+r.all.join('\n'))}
+  }).catch(function(e){say('❌ Key fail: '+e.message,'err');log(e.message)});
 });
 
 function variants(){
+  var base=[];
+  if($('model').value)base.push($('model').value);
+  (discovered||[]).forEach(function(m){if(base.indexOf(m)<0)base.push(m)});
+  FALLBACK.forEach(function(m){if(base.indexOf(m)<0)base.push(m)});
   var v=[];
-  if(good){v.push(good)}
-  for(var i=0;i<MODELS.length;i++){for(var j=0;j<MODES.length;j++){
-    if(good&&good.m===MODELS[i]&&good.j===j)continue;
-    v.push({m:MODELS[i],j:j});
-  }}
+  if(good)v.push(good);
+  base.forEach(function(m){for(var j=0;j<MODES.length;j++){if(good&&good.m===m&&good.j===j)continue;v.push({m:m,j:j})}});
   return v;
 }
 
-function genOne(prompt){
+function attempt(v,prompt){
   var key=$('key').value.trim();
-  var vs=variants(), i=0, lastErr='Unknown error';
-  function next(){
+  var parts=refs.map(function(r){return {inline_data:{mime_type:r.mime,data:r.b64}}});
+  parts.push({text:prompt});
+  var body={contents:[{role:'user',parts:parts}]};
+  if(MODES[v.j])body.generationConfig={responseModalities:MODES[v.j]};
+  return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+v.m+':generateContent?key='+encodeURIComponent(key),
+    {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,j:j}})})
+    .then(function(o){
+      if(!o.ok)return {err:'HTTP '+o.status+': '+((o.j&&o.j.error&&o.j.error.message)||'?')};
+      var c=o.j.candidates&&o.j.candidates[0], ps=(c&&c.content&&c.content.parts)||[], txt='';
+      for(var k=0;k<ps.length;k++){var d=ps[k].inlineData||ps[k].inline_data;
+        if(d&&d.data)return {url:'data:'+(d.mimeType||d.mime_type||'image/png')+';base64,'+d.data};
+        if(ps[k].text)txt+=ps[k].text}
+      return {err:'image nahi aayi (finishReason='+((c&&c.finishReason)||'?')+(txt?(', model bola: '+txt.slice(0,150)):'')+')'};
+    })
+    .catch(function(e){return {err:'network: '+(e.message||e)}});
+}
+
+function genOne(prompt){
+  var vs=variants(), i=0, lastErr='koi model kaam nahi kiya';
+  function step(){
     if(i>=vs.length)return Promise.reject(new Error(lastErr));
     var v=vs[i++];
-    var parts=refs.map(function(r){return {inline_data:{mime_type:r.mime,data:r.b64}}});
-    parts.push({text:prompt});
-    var body={contents:[{role:'user',parts:parts}]};
-    if(MODES[v.j])body.generationConfig={responseModalities:MODES[v.j]};
-    return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+v.m+':generateContent?key='+encodeURIComponent(key),
-      {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-      .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,j:j}})})
-      .then(function(o){
-        if(!o.ok){lastErr='HTTP '+o.status+': '+((o.j&&o.j.error&&o.j.error.message)||'?');log('❌ '+v.m+' [mode '+v.j+'] → '+lastErr);return next()}
-        var c=o.j.candidates&&o.j.candidates[0];
-        var ps=(c&&c.content&&c.content.parts)||[];
-        var img=null,txt='';
-        for(var k=0;k<ps.length;k++){var d=ps[k].inlineData||ps[k].inline_data;if(d&&d.data){img=d;break}if(ps[k].text)txt+=ps[k].text}
-        if(!img){lastErr='image nahi mili. finishReason='+((c&&c.finishReason)||'?')+(txt?(' | model text: '+txt.slice(0,200)):'')+((o.j.promptFeedback)?(' | promptFeedback: '+JSON.stringify(o.j.promptFeedback)):'');log('⚠️ '+v.m+' [mode '+v.j+'] → '+lastErr);return next()}
-        good=v;log('✅ '+v.m+' [mode '+v.j+'] → image mil gayi');
-        return 'data:'+(img.mimeType||img.mime_type||'image/png')+';base64,'+img.data;
-      })
-      .catch(function(e){lastErr=e.message||String(e);log('❌ '+v.m+' → '+lastErr);return next()});
+    return attempt(v,prompt).then(function(r){
+      if(r.url){if(!good)log('✅ chal gaya: '+v.m+' (mode '+v.j+')');good=v;return r.url}
+      lastErr=r.err;log('❌ '+v.m+' (mode '+v.j+') → '+r.err);
+      if(good&&good.m===v.m&&good.j===v.j)good=null;
+      return step();
+    });
   }
-  return next();
+  return step();
 }
 
 function buildPrompts(d){
   var base='Ultra-realistic professional e-commerce product photograph of '+d.name+'. '+(d.features?('Key details: '+d.features+'. '):'')+'Keep the exact same product design, shape, material, texture and proportions as in the reference image. Square 1:1 crop, sharp focus, high detail, no watermark, no logo, no spelling mistakes.';
-  var list=[];
-  list.push({id:'01_main_white',t:'Main image (white bg)',p:base+' Product centered on a pure white background with soft studio lighting and a subtle natural shadow. Entire product visible with clean margins. Marketplace catalogue style main image.'});
-  list.push({id:'02_detail_open',t:'Detail / inside view',p:base+' Close-up 45-degree angle shot showing the inside, compartments, stitching and material texture in detail. Light grey seamless gradient background.'});
-  list.push({id:'03_infographic',t:'Feature infographic',p:'Clean modern e-commerce infographic image for '+d.name+', white background. The product from the reference image sits in the centre, with 4 short feature callout labels connected by thin grey lines. Labels: '+(d.features||'Premium Quality, Durable Material, Lightweight, Everyday Use')+'. Minimal dark-grey sans-serif typography, small line icons, correct English spelling, square 1:1.'});
-  list.push({id:'04_lifestyle',t:'Lifestyle photo',p:base+' Lifestyle shot: the product in use in a real modern Indian home or desk setting, natural daylight, product is the clear hero, softly blurred background.'});
-  if(d.price)list.push({id:'05_offer',t:'Offer banner',p:'Bold, clean promotional banner image for '+d.name+'. Product from the reference image on the left on a soft gradient background. On the right, large modern typography reading exactly: "'+d.price+'", below it "Free Delivery"'+(d.colours.length>1?(', below that "'+d.colours.length+' Colours Available"'):'')+'. Bright attractive colours, no spelling mistakes, square 1:1.'});
-  for(var i=0;i<d.colours.length;i++){
-    var c=d.colours[i];
-    list.push({id:'colour_'+(i+1)+'_'+c.toLowerCase().replace(/[^a-z0-9]+/g,'-'),t:c+' variant',p:base+' The exact same product but in '+c+' colour. Pure white background, soft studio lighting, subtle shadow, catalogue style. Only the colour changes, design stays identical.'});
-  }
-  return list;
+  var l=[];
+  l.push({id:'01_main_white',t:'Main image (white bg)',p:base+' Product centered on a pure white background with soft studio lighting and a subtle natural shadow. Entire product visible with clean margins. Marketplace catalogue style main image.'});
+  l.push({id:'02_detail',t:'Detail / inside view',p:base+' Close-up 45-degree angle shot showing the inside, compartments, stitching and material texture in detail. Light grey seamless gradient background.'});
+  l.push({id:'03_infographic',t:'Feature infographic',p:'Clean modern e-commerce infographic image for '+d.name+', white background. The product from the reference image sits in the centre with 4 short feature callout labels connected by thin grey lines. Labels: '+(d.features||'Premium Quality, Durable Material, Lightweight, Everyday Use')+'. Minimal dark-grey sans-serif typography, small line icons, correct English spelling, square 1:1.'});
+  l.push({id:'04_lifestyle',t:'Lifestyle photo',p:base+' Lifestyle shot: the product in use in a real modern Indian home or desk setting, natural daylight, product is the clear hero, softly blurred background.'});
+  if(d.price)l.push({id:'05_offer',t:'Offer banner',p:'Bold clean promotional banner image for '+d.name+'. Product from the reference image on the left on a soft gradient background. On the right, large modern typography reading exactly: "'+d.price+'", below it "Free Delivery"'+(d.colours.length>1?(', below that "'+d.colours.length+' Colours Available"'):'')+'. Bright attractive colours, no spelling mistakes, square 1:1.'});
+  d.colours.forEach(function(c,i){l.push({id:'colour_'+(i+1)+'_'+c.toLowerCase().replace(/[^a-z0-9]+/g,'-'),t:c+' variant',p:base+' The exact same product but in '+c+' colour. Pure white background, soft studio lighting, subtle shadow, catalogue style. Only the colour changes, design stays identical.'})});
+  return l;
 }
 
-function addItem(item,dataUrl){
+function addItem(item,url){
   var d=document.createElement('div');d.className='item';
   var safe=(($('name').value.trim()||'product').toLowerCase().replace(/[^a-z0-9]+/g,'-'));
-  d.innerHTML='<img src="'+dataUrl+'"><div class="m">'+item.t+'</div><a download="'+safe+'_'+item.id+'.png" href="'+dataUrl+'">⬇️ Download</a>';
-  $('out').appendChild(d);
-  made.push(d.querySelector('a'));
-  $('all').style.display='block';
+  d.innerHTML='<img src="'+url+'"><div class="m">'+item.t+'</div><a download="'+safe+'_'+item.id+'.png" href="'+url+'">⬇️ Download</a>';
+  $('out').appendChild(d);made.push(d.querySelector('a'));$('all').style.display='block';
 }
 
 $('go').addEventListener('click',function(){
-  var key=$('key').value.trim();
-  var name=$('name').value.trim();
-  if(!key){return say('Pehle Gemini API key daalo 🔑','err')}
-  if(!name){return say('Product ka naam likho ✍️','err')}
-  if(!refs.length){return say('Reference photo select karo 📷','err')}
+  var key=$('key').value.trim(), name=$('name').value.trim();
+  if(!key)return say('Pehle Gemini API key daalo 🔑','err');
+  if(!name)return say('Product ka naam likho ✍️','err');
+  if(!refs.length)return say('Reference photo select karo 📷','err');
   var d={name:name,price:$('price').value.trim(),features:$('features').value.trim(),
-    colours:$('colours').value.split(',').map(function(s){return s.trim()}).filter(Boolean)};
-  var list=buildPrompts(d);
-  $('out').innerHTML='';made=[];$('all').style.display='none';$('log').textContent='';
-  $('go').disabled=true;
-  var i=0,fail=0;
-  function step(){
-    if(i>=list.length){
-      $('go').disabled=false;$('bar').style.width='100%';
-      say(fail? ('Ho gaya! '+(list.length-fail)+'/'+list.length+' images bani, '+fail+' fail. Niche kaali box me error dekho aur mujhe screenshot bhejo.') : ('✅ Ho gaya! Saari '+list.length+' images ready hain. Niche se download karo.'),fail?'err':'ok');
-      return;
+         colours:$('colours').value.split(',').map(function(s){return s.trim()}).filter(Boolean)};
+  $('out').innerHTML='';made=[];$('all').style.display='none';$('log').textContent='';$('go').disabled=true;
+  say('Model dhoond raha hoon...');
+  var pre = discovered ? Promise.resolve() : listModels().then(function(r){
+      if(r.img.length){discovered=r.img;log('Available image models: '+r.img.join(', '))}
+      else{log('Is key pe koi image model nahi mila. Sab models: '+r.all.join(', '))}
+    }).catch(function(e){log('ListModels fail: '+e.message)});
+  pre.then(function(){
+    var list=buildPrompts(d), i=0, fail=0;
+    function step(){
+      if(i>=list.length){
+        $('go').disabled=false;$('bar').style.width='100%';
+        say(fail?('Ho gaya: '+(list.length-fail)+'/'+list.length+' bani, '+fail+' fail. Kaali box ka screenshot bhejo.'):('✅ Ho gaya! Saari '+list.length+' images ready. Niche se download karo.'),fail?'err':'ok');
+        return;
+      }
+      var it=list[i];
+      say('Ban rahi hai... '+(i+1)+'/'+list.length+' ('+it.t+')\n10-25 second per image.');
+      $('bar').style.width=Math.round(i/list.length*100)+'%';
+      genOne(it.p).then(function(u){addItem(it,u)}).catch(function(e){fail++;log('>>> FAIL '+it.t+': '+e.message)})
+        .then(function(){i++;setTimeout(step,700)});
     }
-    var it=list[i];
-    say('Ban rahi hai... '+(i+1)+'/'+list.length+'  ('+it.t+')\n10-20 second per image lagta hai.');
-    $('bar').style.width=Math.round(i/list.length*100)+'%';
-    genOne(it.p).then(function(url){addItem(it,url)})
-      .catch(function(e){fail++;log('>>> FAIL: '+it.t+' — '+e.message)})
-      .then(function(){i++;setTimeout(step,600)});
-  }
-  step();
+    step();
+  });
 });
 
-$('all').addEventListener('click',function(){
-  made.forEach(function(a,k){setTimeout(function(){a.click()},k*700)});
-});
+$('all').addEventListener('click',function(){made.forEach(function(a,k){setTimeout(function(){a.click()},k*700)})});
 </script>
 </body>
 </html>
