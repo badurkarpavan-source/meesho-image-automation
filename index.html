@@ -3,464 +3,388 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shree Hari Studio — AI Product Photos for Meesho Sellers</title>
-<meta name="description" content="Ek product photo daalo, Meesho-ready studio photos, infographic, offer banner aur colour variants AI se banao. Free." />
+<title>Shree Hari Listing Engine — Meesho Listing Auto Banao</title>
+<meta name="description" content="Ek photo + 10-15 word daalo. Meesho listing ka title, description, keywords, HSN, GST, price aur saari images khud ban jayengi." />
 <style>
-:root{
- --bg:#0b0b12;--bg2:#12121d;--card:#171724;--line:#262637;
- --tx:#f3f2f8;--mut:#9a99ae;--p:#8b5cf6;--p2:#ec4899;--ok:#22c55e;--warn:#f59e0b;--err:#ef4444;
-}
+:root{--bg:#0b0b12;--bg2:#12121d;--card:#171724;--line:#262637;--tx:#f3f2f8;--mut:#9a99ae;--p:#8b5cf6;--p2:#ec4899;--ok:#22c55e;--err:#ef4444}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;line-height:1.55}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
-
-/* NAV */
-nav{position:sticky;top:0;z-index:50;background:rgba(11,11,18,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px;letter-spacing:.2px}
-.logo i{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--p),var(--p2));display:grid;place-items:center;font-style:normal;font-size:16px}
-.nlinks{display:flex;gap:22px;font-size:14px;color:var(--mut)}
-.nlinks a:hover{color:var(--tx)}
-@media(max-width:760px){.nlinks{display:none}}
-.nbtn{background:linear-gradient(135deg,var(--p),var(--p2));padding:9px 16px;border-radius:10px;font-size:13.5px;font-weight:700}
-
-/* HERO */
-header.hero{padding:70px 0 46px;text-align:center;position:relative;overflow:hidden}
-header.hero:before{content:"";position:absolute;inset:-160px 0 auto;height:420px;background:radial-gradient(60% 60% at 50% 0,rgba(139,92,246,.30),transparent 70%)}
-.pill{position:relative;display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--bg2);color:var(--mut);font-size:12.5px;padding:7px 14px;border-radius:999px;margin-bottom:22px}
-h1{position:relative;font-size:44px;line-height:1.12;font-weight:850;letter-spacing:-.6px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 18px}
+nav{position:sticky;top:0;z-index:50;background:rgba(11,11,18,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px}
+.logo i{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--p),var(--p2));display:grid;place-items:center;font-style:normal}
+.nlinks{display:flex;gap:20px;font-size:14px;color:var(--mut)}
+.nlinks a:hover{color:#fff}
+@media(max-width:820px){.nlinks{display:none}}
+.nbtn{background:linear-gradient(135deg,var(--p),var(--p2));padding:9px 15px;border-radius:10px;font-size:13.5px;font-weight:700}
+header.hero{padding:64px 0 40px;text-align:center;position:relative;overflow:hidden}
+header.hero:before{content:"";position:absolute;inset:-170px 0 auto;height:430px;background:radial-gradient(60% 60% at 50% 0,rgba(139,92,246,.30),transparent 70%)}
+.pill{position:relative;display:inline-block;border:1px solid var(--line);background:var(--bg2);color:var(--mut);font-size:12.5px;padding:7px 14px;border-radius:999px;margin-bottom:20px}
+h1{position:relative;font-size:42px;line-height:1.12;font-weight:850;letter-spacing:-.6px}
 h1 span{background:linear-gradient(120deg,#a78bfa,#f472b6);-webkit-background-clip:text;background-clip:text;color:transparent}
-@media(max-width:700px){h1{font-size:31px}header.hero{padding:48px 0 34px}}
-.sub{position:relative;color:var(--mut);font-size:16.5px;max-width:620px;margin:16px auto 26px}
+@media(max-width:700px){h1{font-size:30px}header.hero{padding:44px 0 30px}}
+.sub{position:relative;color:var(--mut);font-size:16.5px;max-width:640px;margin:16px auto 26px}
 .cta{position:relative;display:inline-block;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;font-weight:800;font-size:16px;padding:15px 30px;border-radius:13px;box-shadow:0 12px 34px -12px rgba(139,92,246,.8)}
-.cta.small{font-size:14px;padding:12px 20px}
-.under{position:relative;color:var(--mut);font-size:12.5px;margin-top:14px}
-.stats{position:relative;display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:30px;color:var(--mut);font-size:13px}
-.stats b{color:var(--tx)}
-
-/* MARQUEE */
-.built{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);padding:18px 0}
-.built p{text-align:center;color:var(--mut);font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:12px}
-.chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.chip{border:1px solid var(--line);background:var(--card);padding:7px 15px;border-radius:999px;font-size:13px;font-weight:600;color:#cfcede}
-
-/* SECTION */
-section{padding:56px 0}
-.h2{font-size:29px;font-weight:820;letter-spacing:-.4px;text-align:center}
-.h2s{color:var(--mut);text-align:center;max-width:560px;margin:12px auto 34px;font-size:15px}
-@media(max-width:700px){.h2{font-size:23px}section{padding:42px 0}}
-
-/* STEPS */
-.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
-.step b{display:block;font-size:16px;margin:12px 0 6px}
-.step p{color:var(--mut);font-size:14px}
-.num{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--p),var(--p2));display:grid;place-items:center;font-weight:800;font-size:14px}
-
-/* STUDIO */
-.studio{background:linear-gradient(180deg,var(--bg2),var(--bg));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:16px}
+.stats{position:relative;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:26px;color:var(--mut);font-size:13px}
+.stats b{color:#fff}
+.built{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);padding:16px 0}
+.built p{text-align:center;color:var(--mut);font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:11px}
+.chips{display:flex;gap:9px;flex-wrap:wrap;justify-content:center}
+.chip{border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:600;color:#cfcede}
+section{padding:52px 0}
+.h2{font-size:28px;font-weight:820;text-align:center;letter-spacing:-.4px}
+.h2s{color:var(--mut);text-align:center;max-width:600px;margin:11px auto 30px;font-size:15px}
+@media(max-width:700px){.h2{font-size:22px}section{padding:38px 0}}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.step b{display:block;font-size:15.5px;margin:11px 0 5px}
+.step p{color:var(--mut);font-size:13.5px}
+.num{width:33px;height:33px;border-radius:10px;background:linear-gradient(135deg,var(--p),var(--p2));display:grid;place-items:center;font-weight:800;font-size:14px}
+.engine{background:linear-gradient(180deg,var(--bg2),var(--bg));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:21px;margin-bottom:15px}
 .panel h3{font-size:16px;display:flex;align-items:center;gap:9px;margin-bottom:4px}
 .panel h3 em{font-style:normal;width:24px;height:24px;border-radius:7px;background:#241f3d;color:#c4b5fd;display:grid;place-items:center;font-size:12px;font-weight:800}
-.panel .note{color:var(--mut);font-size:12.5px;margin-bottom:14px}
-label{display:block;font-size:12.5px;font-weight:700;color:#cdccdd;margin:14px 0 6px}
+.panel .note{color:var(--mut);font-size:12.5px;margin-bottom:13px}
+label{display:block;font-size:12.5px;font-weight:700;color:#cdccdd;margin:13px 0 6px}
 input,textarea,select{width:100%;background:#0f0f18;border:1px solid var(--line);color:var(--tx);border-radius:11px;padding:12px 13px;font-size:15px;font-family:inherit;outline:none}
 input:focus,textarea:focus,select:focus{border-color:var(--p)}
-textarea{min-height:76px;resize:vertical}
+textarea{min-height:70px;resize:vertical}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:620px){.two{grid-template-columns:1fr}}
 small.hint{display:block;color:var(--mut);font-size:12px;margin-top:6px}
 small.hint a{color:#c4b5fd;text-decoration:underline}
 button{font-family:inherit;cursor:pointer;border:0}
 .btn{width:100%;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;font-weight:800;font-size:16.5px;padding:16px;border-radius:13px;box-shadow:0 12px 30px -14px rgba(139,92,246,.9)}
-.btn:disabled{opacity:.5;box-shadow:none}
-.btn2{width:100%;background:#20203050;border:1px solid var(--line);color:#ddd;font-weight:700;font-size:14px;padding:12px;border-radius:11px;margin-top:10px}
-.presets{display:flex;flex-wrap:wrap;gap:9px;margin-top:4px}
-.pre{border:1px solid var(--line);background:#0f0f18;color:#b9b8cb;font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;display:flex;align-items:center;gap:7px}
-.pre.on{border-color:transparent;background:linear-gradient(135deg,rgba(139,92,246,.28),rgba(236,72,153,.28));color:#fff;box-shadow:inset 0 0 0 1px rgba(167,139,250,.7)}
-.thumbs{display:flex;gap:9px;flex-wrap:wrap;margin-top:11px}
-.thumbs img{width:64px;height:64px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
-.drop{border:1.6px dashed #34344b;border-radius:14px;padding:22px;text-align:center;color:var(--mut);font-size:13.5px;background:#0f0f18}
+.btn:disabled{opacity:.45;box-shadow:none}
+.btn2{width:100%;background:#20203050;border:1px solid var(--line);color:#ddd;font-weight:700;font-size:14px;padding:12px;border-radius:11px;margin-top:9px}
+.stopbtn{background:linear-gradient(135deg,#ef4444,#f59e0b);color:#fff;font-weight:800}
+.drop{border:1.6px dashed #34344b;border-radius:14px;padding:20px;text-align:center;color:var(--mut);font-size:13.5px;background:#0f0f18}
 .drop b{color:#c4b5fd}
-.bar{height:6px;background:#20202f;border-radius:5px;overflow:hidden;margin-top:14px}
+.thumbs{display:flex;gap:9px;flex-wrap:wrap;margin-top:11px}
+.thumbs img{width:62px;height:62px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.bar{height:6px;background:#20202f;border-radius:5px;overflow:hidden;margin-top:13px}
 .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--p),var(--p2));transition:width .35s}
 .st{display:none;font-size:13.5px;padding:11px 13px;border-radius:11px;margin-top:12px;white-space:pre-wrap;background:#1c1a2e;border:1px solid var(--line);color:#dcdbe8}
 .st.ok{border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.10);color:#b7f7cb}
 .st.err{border-color:rgba(239,68,68,.45);background:rgba(239,68,68,.10);color:#ffc9c9}
-pre#log{display:none;background:#07070c;color:#7ef2a4;border:1px solid var(--line);font-size:11.5px;padding:11px;border-radius:11px;max-height:190px;overflow:auto;white-space:pre-wrap;margin-top:11px}
-.out{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;margin-top:6px}
+pre#log{display:none;background:#07070c;color:#7ef2a4;border:1px solid var(--line);font-size:11.5px;padding:11px;border-radius:11px;max-height:170px;overflow:auto;white-space:pre-wrap;margin-top:11px}
+.fld{border:1px solid var(--line);background:#0f0f18;border-radius:13px;padding:13px 14px;margin-bottom:11px}
+.fld .fh{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:7px}
+.fld .fh b{font-size:12.5px;letter-spacing:.4px;text-transform:uppercase;color:#a78bfa}
+.fld .fh button{background:#241f3d;color:#c4b5fd;font-size:11.5px;font-weight:800;padding:6px 11px;border-radius:8px}
+.fld .v{font-size:14.5px;white-space:pre-wrap;color:#e9e8f2}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tags span{background:#241f3d;color:#d8ccff;font-size:12.5px;padding:5px 11px;border-radius:999px}
+.out{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:13px;margin-top:6px}
 .item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .item img{width:100%;display:block;aspect-ratio:1;object-fit:cover;background:#0f0f18}
-.item .m{padding:10px 11px;font-size:12.5px;color:#c9c8d8;font-weight:600}
-.item a{display:block;text-align:center;background:#1d1b2e;color:#c4b5fd;padding:10px;font-size:13px;font-weight:800;border-top:1px solid var(--line)}
+.item .m{padding:9px 11px;font-size:12.5px;color:#c9c8d8;font-weight:600}
+.item a{display:block;text-align:center;background:#1d1b2e;color:#c4b5fd;padding:9px;font-size:13px;font-weight:800;border-top:1px solid var(--line)}
 .hist{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
 .hist button{border:1px solid var(--line);background:#0f0f18;color:#b9b8cb;font-size:12.5px;padding:8px 13px;border-radius:999px}
-
-/* CALC */
-.calcout{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
-.kv{flex:1;min-width:150px;background:#0f0f18;border:1px solid var(--line);border-radius:13px;padding:14px}
-.kv span{display:block;color:var(--mut);font-size:12px;margin-bottom:4px}
-.kv b{font-size:21px}
+.calcout{display:flex;gap:13px;flex-wrap:wrap;margin-top:15px}
+.kv{flex:1;min-width:145px;background:#0f0f18;border:1px solid var(--line);border-radius:13px;padding:13px}
+.kv span{display:block;color:var(--mut);font-size:12px;margin-bottom:3px}
+.kv b{font-size:20px}
 .good b{color:#5ef08f}.bad b{color:#ff8f8f}
-
-/* FAQ */
-details{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 17px;margin-bottom:10px}
+details{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px;margin-bottom:9px}
 details summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none}
 details summary::-webkit-details-marker{display:none}
-details p{color:var(--mut);font-size:14px;margin-top:9px}
-
-footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--mut);font-size:12.5px;text-align:center}
+details p{color:var(--mut);font-size:14px;margin-top:8px}
+.switch{display:flex;align-items:center;gap:10px;margin-top:13px;font-size:13.5px;color:#cdccdd;font-weight:700}
+.switch input{width:auto}
+footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);font-size:12.5px;text-align:center}
 </style>
 </head>
 <body>
 
 <nav><div class="wrap">
-  <div class="logo"><i>🎯</i> Shree Hari Studio</div>
-  <div class="nlinks">
-    <a href="#how">Kaise chalta hai</a>
-    <a href="#studio">Studio</a>
-    <a href="#calc">Profit Calculator</a>
-    <a href="#faq">FAQ</a>
-  </div>
-  <a class="nbtn" href="#studio">Images Banao</a>
+  <div class="logo"><i>⚙️</i> Shree Hari Listing Engine</div>
+  <div class="nlinks"><a href="#how">Kaise chalta hai</a><a href="#engine">Engine</a><a href="#calc">Profit Calculator</a><a href="#faq">FAQ</a></div>
+  <a class="nbtn" href="#engine">Listing Banao</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
-  <div class="pill">⚡ 100% Free · Unlimited · Sirf tumhari Gemini key</div>
-  <h1>Tumhare product ko bhi milega <span>studio wali chamak.</span></h1>
-  <p class="sub">Ek simple mobile photo daalo — Meesho-ready white background photo, inside detail shot, feature infographic, lifestyle photo, offer banner aur har colour ka variant AI se ban jayega. 20 second me.</p>
-  <a class="cta" href="#studio">✨ Free Images Banao</a>
-  <p class="under">Na photographer · Na studio · Na monthly subscription</p>
-  <div class="stats"><div>⭐ <b>8 tarah</b> ki images</div><div>🚀 <b>~20 sec</b> per image</div><div>💰 <b>₹0</b> monthly kharcha</div></div>
+  <div class="pill">⚡ 1 photo + 10–15 word → poori Meesho listing</div>
+  <h1>Bas photo daalo. <span>Baaki sab engine khud soch lega.</span></h1>
+  <p class="sub">Title, description (English + Hindi), 5 features, search keywords, category, HSN code, GST, selling price + profit, aur saari listing images — sab ek click me. Product bilkul same rahega, sirf background badlega. Aur jab tak tu “bas ho gaya” na bole, engine naye photo banata rahega.</p>
+  <a class="cta" href="#engine">🚀 Listing Banao</a>
+  <div class="stats"><div>📝 <b>18+</b> listing fields</div><div>🖼️ <b>Non-stop</b> image mode</div><div>🔒 <b>Product lock</b> — colour/design safe</div><div>💰 <b>₹0</b> monthly kharcha</div></div>
 </div></header>
 
-<div class="built"><div class="wrap">
-  <p>Inke liye bana hai</p>
-  <div class="chips"><span class="chip">Meesho</span><span class="chip">Flipkart</span><span class="chip">Amazon</span><span class="chip">Myntra</span><span class="chip">JioMart</span><span class="chip">WhatsApp Catalog</span><span class="chip">Instagram</span></div>
+<div class="built"><div class="wrap"><p>Inke liye bana hai</p>
+<div class="chips"><span class="chip">Meesho</span><span class="chip">Flipkart</span><span class="chip">Amazon</span><span class="chip">Myntra</span><span class="chip">JioMart</span><span class="chip">WhatsApp Catalog</span><span class="chip">Instagram</span></div>
 </div></div>
 
 <section id="how"><div class="wrap">
-  <h2 class="h2">3 step me poora photoshoot</h2>
-  <p class="h2s">Wholesaler ki bheji hui simple photo se professional listing images — wahi jo Meesho pe bikti hain.</p>
+  <h2 class="h2">Engine ka kaam — 3 step</h2>
+  <p class="h2s">Tu sirf photo aur 10–15 word deta hai. Engine khud product pehchanta hai, listing likhta hai aur photo banata hai.</p>
   <div class="grid3">
-    <div class="step"><div class="num">1</div><b>Photo daalo</b><p>Wholesaler ki photo ya khud ki mobile photo — 1 se 3 photo select karo.</p></div>
-    <div class="step"><div class="num">2</div><b>Details + style chuno</b><p>Naam, colours, price, features likho aur kaunsi images chahiye wo chuno.</p></div>
-    <div class="step"><div class="num">3</div><b>Download karo</b><p>Saari images ek click me download — sidha Meesho catalog me upload kar do.</p></div>
+    <div class="step"><div class="num">1</div><b>Photo + 2 line</b><p>Wholesaler ki photo daalo aur chhoti si details likho — jaise “silicone scalp massager brush, pink, wet dry use”.</p></div>
+    <div class="step"><div class="num">2</div><b>Engine sochta hai</b><p>Category, material, size, HSN, GST, price, title, description, keywords — sab khud nikaalta hai. Photo dekh kar.</p></div>
+    <div class="step"><div class="num">3</div><b>Non-stop images</b><p>Product ka colour/design/size chhede bina naye background wale photo banta rehta hai — jab tak tu “bas” na bole.</p></div>
   </div>
 </div></section>
 
-<section class="studio" id="studio"><div class="wrap">
-  <h2 class="h2">🎨 Studio</h2>
-  <p class="h2s">Neeche details bharo aur "Images Banao" dabao. Sab kuch tumhare browser me hota hai.</p>
+<section class="engine" id="engine"><div class="wrap">
+  <h2 class="h2">⚙️ Listing Engine</h2>
+  <p class="h2s">Sirf 2 cheez chahiye — photo aur 10–15 word. Baaki khali chhod do.</p>
 
   <div class="panel">
     <h3><em>1</em> Gemini API Key</h3>
-    <p class="note">Ek hi baar daalni hai, phir yaad rahegi. Key sirf tumhare device me save hoti hai.</p>
+    <p class="note">Ek hi baar. Sirf tumhare browser me save hoti hai.</p>
     <input id="key" type="password" placeholder="AIza... ya AQ..." />
-    <small class="hint">Free key yahan se lo → <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a></small>
-    <button class="btn2" id="test">🔍 Key test karo (image model dhoondo)</button>
-    <label id="mlab" style="display:none">Image model (auto-select)</label>
-    <select id="model" style="display:none"></select>
+    <small class="hint">Free key: <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a></small>
+    <button class="btn2" id="test">🔍 Key test karo</button>
   </div>
 
   <div class="panel">
-    <h3><em>2</em> Product ki details</h3>
-    <p class="note">Jitna sahi likhoge, utni acchi images banengi.</p>
-    <label>Product ka naam *</label>
-    <input id="name" placeholder="Electronic Cable Organizer Pouch" />
-    <div class="two">
-      <div><label>Colours (comma se alag)</label><input id="colours" placeholder="Pink, Blue, Grey, Black" /></div>
-      <div><label>Price (banner pe dikhega)</label><input id="price" placeholder="₹349 Only" /></div>
-    </div>
-    <div class="two">
-      <div><label>Product type</label><select id="cat">
-        <option value="general">General</option><option value="bag">Bag / Pouch / Organizer</option>
-        <option value="beauty">Beauty / Personal care</option><option value="kitchen">Kitchen / Home</option>
-        <option value="electronics">Electronics / Gadget</option><option value="fashion">Fashion / Jewellery</option>
-        <option value="kids">Kids / Toys</option></select></div>
-      <div><label>Background style</label><select id="bgs">
-        <option value="pure white">Pure White (Meesho main image)</option>
-        <option value="soft light grey gradient">Soft Grey Gradient</option>
-        <option value="warm beige studio">Warm Beige Studio</option>
-        <option value="light wooden table top">Wooden Table</option>
-        <option value="white marble surface">White Marble</option></select></div>
-    </div>
-    <label>Features / basic details</label>
-    <textarea id="features" placeholder="Double-layer storage, waterproof fabric, mesh pockets, wrist strap"></textarea>
-    <label>Reference photo * (1 se 3)</label>
-    <div class="drop" id="drop"><b>Photo select karo</b> ya yahan drag karo<br /><small>JPG / PNG · wholesaler ki photo bhi chalegi</small>
-      <input id="file" type="file" accept="image/*" multiple style="margin-top:12px" />
-    </div>
+    <h3><em>2</em> Product ki photo *</h3>
+    <p class="note">1 se 3 photo. Wholesaler ki bheji hui photo bilkul chalegi.</p>
+    <div class="drop" id="drop"><b>Photo select karo</b> ya yahan drag karo<input id="file" type="file" accept="image/*" multiple style="margin-top:12px" /></div>
     <div class="thumbs" id="thumbs"></div>
-    <div id="histbox" style="display:none"><label>Pichhle products (dobara bharne ke liye dabao)</label><div class="hist" id="hist"></div></div>
+
+    <label>10–15 word me basic details *</label>
+    <textarea id="brief" placeholder="jaise: silicone scalp massager shampoo brush, pink, wet dry use, anti dandruff"></textarea>
+
+    <div class="two">
+      <div><label>Purchase price (₹) — optional</label><input id="buy" type="number" placeholder="170" /></div>
+      <div><label>Colours — optional (khali chhodo, engine khud dekh lega)</label><input id="colours" placeholder="Pink, Blue, Grey, Black" /></div>
+    </div>
+
+    <div class="switch"><input type="checkbox" id="auto" checked /> <label for="auto" style="margin:0">♻️ Non-stop mode — jab tak “Bas ho gaya” na dabau, naye photo banate raho</label></div>
+    <div id="histbox" style="display:none"><label>Pichhle products</label><div class="hist" id="hist"></div></div>
   </div>
 
   <div class="panel">
-    <h3><em>3</em> Kaunsi images chahiye?</h3>
-    <p class="note">Jo nahi chahiye usko band kar do — time aur quota bachega.</p>
-    <div class="presets" id="presets"></div>
-  </div>
-
-  <div class="panel">
-    <button class="btn" id="go">✨ Images Banao</button>
+    <button class="btn" id="go">🚀 Poori Listing Banao</button>
+    <button class="btn2 stopbtn" id="stop" style="display:none">✅ Bas ho gaya — ruk ja</button>
     <button class="btn2" id="all" style="display:none">⬇️ Saari images download karo</button>
+    <button class="btn2" id="copyall" style="display:none">📋 Poori listing copy karo</button>
     <div class="bar"><i id="bar"></i></div>
     <div class="st" id="st"></div>
     <pre id="log"></pre>
   </div>
 
+  <div id="listing"></div>
   <div class="out" id="out"></div>
 </div></section>
 
 <section id="calc"><div class="wrap">
   <h2 class="h2">💰 Profit Calculator (GST ke saath)</h2>
-  <p class="h2s">Meesho price GST-inclusive hota hai. Non-GST purchase pe ITC nahi milta — ye calculator wahi sach dikhata hai.</p>
+  <p class="h2s">Meesho price GST-inclusive hota hai. Non-GST purchase pe ITC nahi milta — ye wahi sach dikhata hai.</p>
   <div class="panel">
-    <div class="two">
-      <div><label>Meesho selling price (₹, customer jo deta hai)</label><input id="c_sell" type="number" value="379" /></div>
-      <div><label>Purchase price (₹, wholesaler se – non GST)</label><input id="c_buy" type="number" value="170" /></div>
-    </div>
-    <div class="two">
-      <div><label>Packing + labour (₹)</label><input id="c_pack" type="number" value="12" /></div>
-      <div><label>GST rate (%)</label><input id="c_gst" type="number" value="18" /></div>
-    </div>
-    <div class="two">
-      <div><label>Return/damage loss (%)</label><input id="c_ret" type="number" value="8" /></div>
-      <div><label>Ads / extra kharcha (₹)</label><input id="c_ads" type="number" value="0" /></div>
-    </div>
+    <div class="two"><div><label>Selling price (₹)</label><input id="c_sell" type="number" value="379" /></div>
+    <div><label>Purchase price (₹, non-GST)</label><input id="c_buy" type="number" value="170" /></div></div>
+    <div class="two"><div><label>Packing + labour (₹)</label><input id="c_pack" type="number" value="12" /></div>
+    <div><label>GST rate (%)</label><input id="c_gst" type="number" value="18" /></div></div>
+    <div class="two"><div><label>Return / damage loss (%)</label><input id="c_ret" type="number" value="8" /></div>
+    <div><label>Ads / extra (₹)</label><input id="c_ads" type="number" value="0" /></div></div>
     <div class="calcout" id="calcout"></div>
-    <small class="hint">Target: ₹70–100 net hand profit. Agar kam aaye to selling price badhao ya sasta source dhoondo.</small>
+    <small class="hint">Target: ₹70–100 net hand profit.</small>
   </div>
 </div></section>
 
 <section id="faq"><div class="wrap">
-  <h2 class="h2">Sawaal jawaab</h2>
-  <p class="h2s">&nbsp;</p>
-  <details><summary>Kya ye bilkul free hai?</summary><p>Haan. Page free hai aur tumhari Google AI Studio ki free key se images banti hain. Koi subscription nahi.</p></details>
-  <details><summary>Images kahan save hoti hain?</summary><p>Har image ke niche ⬇️ Download button hai — file tumhare phone/laptop ke Downloads folder me jaati hai. Kisi server pe kuch save nahi hota.</p></details>
-  <details><summary>Meri key safe hai?</summary><p>Key sirf tumhare browser me (localStorage) rehti hai aur seedha Google ko jaati hai. Kisi ko share na karo; shak ho to AI Studio se delete karke nayi bana lo.</p></details>
-  <details><summary>Meesho ke liye kaunsi image main lagani chahiye?</summary><p>"Main image (white bg)" wali — Meesho pure white background maangta hai. Baaki images gallery me lagao.</p></details>
-  <details><summary>Ek image galat aa gayi to?</summary><p>Dobara "Images Banao" daba do, ya features me thoda साफ likho. Har baar naya result aata hai.</p></details>
-  <details><summary>Wholesaler ki photo use kar sakta hoon?</summary><p>Haan, reference ke liye — AI usse naya photo banata hai. Par doosre ke logo/watermark wali photo sidha listing me na lagao.</p></details>
+  <h2 class="h2">Sawaal jawaab</h2><p class="h2s">&nbsp;</p>
+  <details><summary>Product ka colour/design badal jayega?</summary><p>Nahi. Har image prompt me “PRODUCT LOCK” rule jaata hai — shape, colour, design, pattern, logo, material, size sab same. Sirf background, light aur camera angle badalta hai.</p></details>
+  <details><summary>Non-stop mode kya hai?</summary><p>Engine ek batch ke baad khud naye scene soch kar aur images banata rehta hai. Jab kaafi ho jaye to “✅ Bas ho gaya” dabao — turant ruk jayega.</p></details>
+  <details><summary>Images kahan jaati hain?</summary><p>Har image ke niche ⬇️ Download — file tumhare Downloads folder me. Server pe kuch save nahi hota.</p></details>
+  <details><summary>HSN aur GST sahi hoga?</summary><p>Engine sabse近 sahi HSN suggest karta hai, par final confirm apne CA se karwa lo — galat HSN pe notice aa sakta hai.</p></details>
+  <details><summary>Listing text copy kaise karu?</summary><p>Har field pe “Copy” button hai, aur “📋 Poori listing copy karo” se sab ek saath clipboard me aa jata hai.</p></details>
 </div></section>
 
-<footer><div class="wrap">Shree Hari Export · Meesho Seller Toolkit — apna hi tool, apna hi data 💜</div></footer>
+<footer><div class="wrap">Shree Hari Export · Meesho Seller Engine — apna hi tool, apna hi data 💜</div></footer>
 
 <script>
-var KEY='shg_gemini_key', HK='shg_history';
+var KEY='shg_gemini_key', HK='shg_hist2';
 function $(i){return document.getElementById(i)}
-var refs=[], made=[], discovered=null, good=null;
-var FALLBACK=['gemini-2.5-flash-image','gemini-2.5-flash-image-preview','gemini-2.0-flash-preview-image-generation'];
+var refs=[], made=[], imgModels=null, txtModels=null, good=null, stopFlag=false, running=false, data=null;
+var IMG_FALLBACK=['gemini-2.5-flash-image','gemini-2.5-flash-image-preview','gemini-2.0-flash-preview-image-generation'];
+var TXT_FALLBACK=['gemini-2.5-flash','gemini-flash-latest','gemini-2.0-flash'];
 var MODES=[null,['TEXT','IMAGE'],['IMAGE']];
 
-/* ---------- presets ---------- */
-var PRESETS=[
- {id:'main',t:'🤍 Main image (white bg)',on:true},
- {id:'detail',t:'🔍 Detail / inside view',on:true},
- {id:'info',t:'📊 Feature infographic',on:true},
- {id:'life',t:'🏠 Lifestyle photo',on:true},
- {id:'offer',t:'🏷️ Offer banner',on:true},
- {id:'colours',t:'🎨 Har colour ka variant',on:true},
- {id:'hand',t:'✋ Hand-hold / size idea',on:false},
- {id:'flat',t:'🧶 Flat lay (top view)',on:false},
- {id:'pack',t:'📦 Packing / gift look',on:false}
-];
-var sel={};
-PRESETS.forEach(function(p){sel[p.id]=p.on});
-function drawPresets(){
-  $('presets').innerHTML='';
-  PRESETS.forEach(function(p){
-    var b=document.createElement('button');
-    b.className='pre'+(sel[p.id]?' on':'');b.textContent=(sel[p.id]?'✓ ':'')+p.t;
-    b.onclick=function(){sel[p.id]=!sel[p.id];drawPresets()};
-    $('presets').appendChild(b);
-  });
-}
-drawPresets();
-
-/* ---------- key ---------- */
-$('key').value=localStorage.getItem(KEY)||'';
-$('key').addEventListener('input',function(){localStorage.setItem(KEY,$('key').value.trim());discovered=null;good=null});
+/* ===== PRODUCT LOCK — har image prompt ke saath jaata hai ===== */
+var LOCK=' CRITICAL PRODUCT LOCK: reproduce the EXACT same product shown in the reference image — identical shape, colour, shade, design, pattern, print, logo, text, material, texture, number of parts and proportions. Do NOT redesign, restyle, recolour, resize, simplify or add/remove any part of the product. ONLY the background, scene, props, lighting and camera angle may change. Ultra-realistic photograph, square 1:1, sharp focus, no watermark, no gibberish text.';
 
 function say(m,c){var s=$('st');s.style.display='block';s.className='st'+(c?' '+c:'');s.textContent=m}
 function log(m){var l=$('log');l.style.display='block';l.textContent+=m+'\n';l.scrollTop=l.scrollHeight}
-function toB64(f){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(String(r.result).split(',')[1])};r.onerror=rej;r.readAsDataURL(f)})}
+function toB64(f){return new Promise(function(r,j){var x=new FileReader();x.onload=function(){r(String(x.result).split(',')[1])};x.onerror=j;x.readAsDataURL(f)})}
 
-function loadFiles(fl){
-  refs=[];$('thumbs').innerHTML='';
-  Array.prototype.slice.call(fl,0,3).forEach(function(f){
-    toB64(f).then(function(b){
-      var m=f.type||'image/jpeg';refs.push({mime:m,b64:b});
-      var im=document.createElement('img');im.src='data:'+m+';base64,'+b;$('thumbs').appendChild(im);
-    });
-  });
-}
+$('key').value=localStorage.getItem(KEY)||'';
+$('key').addEventListener('input',function(){localStorage.setItem(KEY,$('key').value.trim());imgModels=null;txtModels=null;good=null});
+
+function loadFiles(fl){refs=[];$('thumbs').innerHTML='';
+  Array.prototype.slice.call(fl,0,3).forEach(function(f){toB64(f).then(function(b){var m=f.type||'image/jpeg';refs.push({mime:m,b64:b});
+    var im=document.createElement('img');im.src='data:'+m+';base64,'+b;$('thumbs').appendChild(im)})})}
 $('file').addEventListener('change',function(e){loadFiles(e.target.files)});
 ['dragover','dragenter'].forEach(function(ev){$('drop').addEventListener(ev,function(e){e.preventDefault();$('drop').style.borderColor='#8b5cf6'})});
 ['dragleave','drop'].forEach(function(ev){$('drop').addEventListener(ev,function(e){e.preventDefault();$('drop').style.borderColor='#34344b'})});
 $('drop').addEventListener('drop',function(e){if(e.dataTransfer&&e.dataTransfer.files.length)loadFiles(e.dataTransfer.files)});
 
-/* ---------- history ---------- */
-function getHist(){try{return JSON.parse(localStorage.getItem(HK)||'[]')}catch(e){return []}}
-function saveHist(d){
-  var h=getHist().filter(function(x){return x.name!==d.name});
-  h.unshift(d);h=h.slice(0,8);localStorage.setItem(HK,JSON.stringify(h));drawHist();
-}
-function drawHist(){
-  var h=getHist();if(!h.length)return;
-  $('histbox').style.display='block';$('hist').innerHTML='';
-  h.forEach(function(d){
-    var b=document.createElement('button');b.textContent=d.name;
-    b.onclick=function(){$('name').value=d.name;$('colours').value=d.colours||'';$('price').value=d.price||'';$('features').value=d.features||'';if(d.cat)$('cat').value=d.cat;if(d.bgs)$('bgs').value=d.bgs;say('"'+d.name+'" ki details bhar di. Ab photo select karo.')};
-    $('hist').appendChild(b);
-  });
-}
-drawHist();
+/* ===== history ===== */
+function getH(){try{return JSON.parse(localStorage.getItem(HK)||'[]')}catch(e){return[]}}
+function putH(d){var h=getH().filter(function(x){return x.brief!==d.brief});h.unshift(d);localStorage.setItem(HK,JSON.stringify(h.slice(0,8)));drawH()}
+function drawH(){var h=getH();if(!h.length)return;$('histbox').style.display='block';$('hist').innerHTML='';
+  h.forEach(function(d){var b=document.createElement('button');b.textContent=(d.title||d.brief).slice(0,34);
+    b.onclick=function(){$('brief').value=d.brief;if(d.buy)$('buy').value=d.buy;say('Details bhar di. Ab photo select karo 📷')};$('hist').appendChild(b)})}
+drawH();
 
-/* ---------- models ---------- */
-function listModels(){
-  var k=$('key').value.trim();
+/* ===== models ===== */
+function listModels(){var k=$('key').value.trim();
   return fetch('https://generativelanguage.googleapis.com/v1beta/models?key='+encodeURIComponent(k)+'&pageSize=1000')
-   .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,j:j}})})
-   .then(function(o){
-     if(!o.ok)throw new Error('HTTP '+o.status+': '+((o.j&&o.j.error&&o.j.error.message)||'?'));
-     var all=(o.j.models||[]).filter(function(m){return (m.supportedGenerationMethods||[]).indexOf('generateContent')>-1}).map(function(m){return m.name.replace('models/','')});
-     var img=all.filter(function(n){return /image/i.test(n)});
-     img.sort(function(a,b){return (/2\.5/.test(b)?1:0)-(/2\.5/.test(a)?1:0)});
-     return {all:all,img:img};
-   });
-}
-$('test').addEventListener('click',function(){
-  if(!$('key').value.trim())return say('Pehle key daalo 🔑','err');
+  .then(function(r){return r.json().then(function(j){return{ok:r.ok,status:r.status,j:j}})})
+  .then(function(o){if(!o.ok)throw new Error('HTTP '+o.status+': '+((o.j.error&&o.j.error.message)||'?'));
+    var all=(o.j.models||[]).filter(function(m){return (m.supportedGenerationMethods||[]).indexOf('generateContent')>-1}).map(function(m){return m.name.replace('models/','')});
+    var img=all.filter(function(n){return /image/i.test(n)});
+    var txt=all.filter(function(n){return !/image|embedding|aqa|tts|veo|imagen/i.test(n)});
+    var pr=function(a){return a.slice().sort(function(x,y){var s=function(n){return (/2\.5/.test(n)?4:0)+(/flash/.test(n)?2:0)+(/preview/.test(n)?-1:0)};return s(y)-s(x)})};
+    return {all:all,img:pr(img),txt:pr(txt)}})}
+$('test').addEventListener('click',function(){if(!$('key').value.trim())return say('Pehle key daalo 🔑','err');
   say('Check kar raha hoon...');$('log').textContent='';
-  listModels().then(function(r){
-    discovered=r.img.length?r.img:null;
-    var s=$('model');s.innerHTML='';
-    (r.img.length?r.img:FALLBACK).forEach(function(n){var o=document.createElement('option');o.value=n;o.textContent=n;s.appendChild(o)});
-    s.style.display='block';$('mlab').style.display='block';
-    if(r.img.length){say('✅ Key sahi hai! '+r.img.length+' image model mile. Auto-select: '+r.img[0],'ok');log('IMAGE MODELS:\n'+r.img.join('\n'))}
-    else{say('⚠️ Key chal rahi hai par is account pe image model nahi mila. Kaali box ka screenshot bhejo.','err');log('SAB MODELS:\n'+r.all.join('\n'))}
-  }).catch(function(e){say('❌ Key fail: '+e.message,'err');log(e.message)});
-});
-function variants(){
-  var base=[];
-  if($('model').value)base.push($('model').value);
-  (discovered||[]).forEach(function(m){if(base.indexOf(m)<0)base.push(m)});
-  FALLBACK.forEach(function(m){if(base.indexOf(m)<0)base.push(m)});
-  var v=[];if(good)v.push(good);
-  base.forEach(function(m){for(var j=0;j<MODES.length;j++){if(good&&good.m===m&&good.j===j)continue;v.push({m:m,j:j})}});
-  return v;
-}
-function attempt(v,prompt){
-  var k=$('key').value.trim();
-  var parts=refs.map(function(r){return {inline_data:{mime_type:r.mime,data:r.b64}}});
-  parts.push({text:prompt});
-  var body={contents:[{role:'user',parts:parts}]};
-  if(MODES[v.j])body.generationConfig={responseModalities:MODES[v.j]};
-  return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+v.m+':generateContent?key='+encodeURIComponent(k),
-    {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-   .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,j:j}})})
-   .then(function(o){
-     if(!o.ok)return {err:'HTTP '+o.status+': '+((o.j&&o.j.error&&o.j.error.message)||'?')};
-     var c=o.j.candidates&&o.j.candidates[0], ps=(c&&c.content&&c.content.parts)||[], txt='';
-     for(var i=0;i<ps.length;i++){var d=ps[i].inlineData||ps[i].inline_data;
-       if(d&&d.data)return {url:'data:'+(d.mimeType||d.mime_type||'image/png')+';base64,'+d.data};
-       if(ps[i].text)txt+=ps[i].text}
-     return {err:'image nahi aayi (finishReason='+((c&&c.finishReason)||'?')+(txt?(', model bola: '+txt.slice(0,140)):'')+')'};
-   }).catch(function(e){return {err:'network: '+(e.message||e)}});
-}
-function genOne(p){
-  var vs=variants(), i=0, last='koi model kaam nahi kiya';
-  function step(){
-    if(i>=vs.length)return Promise.reject(new Error(last));
-    var v=vs[i++];
-    return attempt(v,p).then(function(r){
-      if(r.url){if(!good)log('✅ model chal gaya: '+v.m+' (mode '+v.j+')');good=v;return r.url}
-      last=r.err;log('❌ '+v.m+' (mode '+v.j+') → '+r.err);
-      if(good&&good.m===v.m&&good.j===v.j)good=null;
-      return step();
-    });
-  }
+  listModels().then(function(r){imgModels=r.img.length?r.img:null;txtModels=r.txt.length?r.txt:null;
+    if(r.img.length){say('✅ Key sahi! Text model: '+(r.txt[0]||'-')+'\nImage model: '+r.img[0],'ok');log('IMAGE: '+r.img.join(', ')+'\nTEXT: '+r.txt.slice(0,8).join(', '))}
+    else{say('⚠️ Key chalu hai par image model nahi mila. Listing text ban jayega, images nahi. Kaali box ka screenshot bhejo.','err');log('SAB: '+r.all.join(', '))}})
+  .catch(function(e){say('❌ Key fail: '+e.message,'err');log(e.message)})});
+
+function call(model,parts,cfg){var k=$('key').value.trim();var body={contents:[{role:'user',parts:parts}]};if(cfg)body.generationConfig=cfg;
+  return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key='+encodeURIComponent(k),
+   {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+  .then(function(r){return r.json().then(function(j){return{ok:r.ok,status:r.status,j:j}})})
+  .then(function(o){if(!o.ok)return{err:'HTTP '+o.status+': '+((o.j.error&&o.j.error.message)||'?')};return{j:o.j}})
+  .catch(function(e){return{err:'network: '+(e.message||e)}})}
+
+/* ===== STEP 1: engine khud sochta hai ===== */
+var SCHEMA='{"product_name":"","title":"","title_short":"","alt_titles":["",""],"category_path":"","product_type":"","material":"","colours":[""],"size":"","net_weight":"","features":["","","","",""],"description_en":"","description_hi":"","keywords":[""],"hsn_code":"","gst_rate":18,"price_min":0,"price_max":0,"mrp":0,"whats_in_box":"","care":"","faq":[{"q":"","a":""}],"image_plan":[{"label":"","prompt":""}],"extra_scenes":[""]}';
+function analyse(){
+  var brief=$('brief').value.trim(), buy=$('buy').value.trim(), col=$('colours').value.trim();
+  var p='You are a senior Meesho catalogue manager for an Indian reseller (Shree Hari Export). Look carefully at the reference product photo and the seller note. Seller note: "'+brief+'".'+(col?(' Colours available: '+col+'.'):'')+(buy?(' Purchase cost per piece: Rs '+buy+' (bought without GST bill, so NO input tax credit).'):'')+
+  ' Work out everything yourself from the photo — do not ask questions. Reply with ONLY minified valid JSON (no markdown, no backticks) exactly in this shape: '+SCHEMA+
+  ' Rules: title = keyword-rich English, max 100 chars, Meesho style (product + key benefit + material + colour). title_short = under 60 chars. category_path = Meesho category path guess. colours = colours you can actually see or that the seller listed. size and net_weight = realistic estimate with units. features = exactly 5 short benefit bullets. description_en = 70-90 words, friendly, ending with 5 tick-mark bullets separated by newlines. description_hi = same thing in simple Hindi/Hinglish that a desi customer understands. keywords = 12 lowercase search terms Indian buyers actually type. hsn_code = correct 8-digit Indian HSN with matching gst_rate.'+(buy?' price_min/price_max = GST-inclusive Meesho selling price range that leaves Rs 70-100 net profit after GST, packing Rs 12 and 8 percent return loss. mrp = about 2.2x price_max.':' price_min/price_max = sensible Meesho price range, mrp about 2.2x.')+
+  ' whats_in_box and care = one line each. faq = 3 useful buyer questions with answers. image_plan = exactly 6 items; each prompt is a full English image-generation instruction that changes ONLY background, scene, props, lighting or camera angle (one must be plain pure-white marketplace main image, one close-up detail, one infographic with 4 feature callouts, one lifestyle in an Indian home, one flat-lay, one promotional banner with the price text); never describe changing the product itself. extra_scenes = 10 more short scene ideas (only background/scene words).';
+  var parts=refs.map(function(r){return{inline_data:{mime_type:r.mime,data:r.b64}}});parts.push({text:p});
+  var list=(txtModels||[]).concat(TXT_FALLBACK);
+  var i=0;
+  function step(){if(i>=list.length)return Promise.reject(new Error('koi text model kaam nahi kiya'));
+    var m=list[i++];
+    return call(m,parts,{temperature:0.7,responseMimeType:'application/json'}).then(function(r){
+      if(r.err){log('❌ '+m+' → '+r.err);return step()}
+      var c=r.j.candidates&&r.j.candidates[0], t='';((c&&c.content&&c.content.parts)||[]).forEach(function(x){if(x.text)t+=x.text});
+      t=t.replace(/```json/gi,'').replace(/```/g,'').trim();
+      var s=t.indexOf('{'), e=t.lastIndexOf('}'); if(s>-1&&e>s)t=t.slice(s,e+1);
+      try{var d=JSON.parse(t);log('✅ listing bani via '+m);return d}catch(err){log('❌ '+m+' → JSON parse fail');return step()}})}
   return step();
 }
 
-/* ---------- prompts ---------- */
-var CATX={general:'',bag:'Show the bag/pouch standing naturally with its shape held, zips and stitching crisp. ',
- beauty:'Clean cosmetic-style presentation, glossy highlights, hygienic feel. ',
- kitchen:'Clean kitchen product presentation, spotless surfaces, no clutter. ',
- electronics:'Modern tech-product presentation, crisp edges, cables neatly arranged. ',
- fashion:'Elegant fashion-catalogue presentation, neat drape, premium feel. ',
- kids:'Bright cheerful kid-friendly presentation, safe and playful mood. '};
-function build(d){
-  var bg=d.bgs, base='Ultra-realistic professional e-commerce product photograph of '+d.name+'. '+(d.features?('Key details: '+d.features+'. '):'')+CATX[d.cat]+'Keep the exact same product design, shape, colour, material and proportions as in the reference image. Square 1:1, sharp focus, high detail, no watermark, no text overlay, no extra objects.';
-  var l=[];
-  if(sel.main)l.push({id:'01_main',t:'Main image (white bg)',p:base+' Product centred on a '+bg+' background with soft studio lighting and a subtle natural shadow. Full product visible with clean margins. Marketplace catalogue main image.'});
-  if(sel.detail)l.push({id:'02_detail',t:'Detail / inside view',p:base+' Close-up 45-degree shot showing the inside, compartments, stitching and material texture clearly. '+bg+' background, soft light.'});
-  if(sel.info)l.push({id:'03_infographic',t:'Feature infographic',p:'Clean modern e-commerce infographic for '+d.name+' on a white background. The product from the reference image sits in the centre with 4 short feature callout labels joined by thin grey lines. Labels: '+(d.features||'Premium Quality, Durable Material, Lightweight, Daily Use')+'. Minimal dark-grey sans-serif typography, small line icons, perfect English spelling, square 1:1.'});
-  if(sel.life)l.push({id:'04_lifestyle',t:'Lifestyle photo',p:base+' Lifestyle shot: the product being used in a real modern Indian home setting, natural daylight, product is the clear hero, softly blurred background.'});
-  if(sel.offer&&d.price)l.push({id:'05_offer',t:'Offer banner',p:'Bold clean promotional banner for '+d.name+'. Product from the reference image on the left over a soft gradient background. On the right, large modern typography reading exactly: "'+d.price+'", below it "Free Delivery"'+(d.colours.length>1?(', below that "'+d.colours.length+' Colours Available"'):'')+'. Bright attractive colours, perfect spelling, square 1:1.'});
-  if(sel.hand)l.push({id:'06_hand',t:'Hand-hold / size',p:base+' A person\u2019s hand holding the product to show its real size, clean '+bg+' background, natural skin tone, only hand and product visible.'});
-  if(sel.flat)l.push({id:'07_flatlay',t:'Flat lay (top view)',p:base+' Top-down flat-lay shot on a '+bg+' surface with 2-3 minimal matching props, neat symmetrical arrangement.'});
-  if(sel.pack)l.push({id:'08_packing',t:'Packing / gift look',p:base+' The product shown with neat retail packaging beside it, gift-ready presentation, '+bg+' background.'});
-  if(sel.colours)d.colours.forEach(function(c,i){l.push({id:'09_colour_'+(i+1)+'_'+c.toLowerCase().replace(/[^a-z0-9]+/g,'-'),t:c+' variant',p:base+' The exact same product but in '+c+' colour. '+bg+' background, soft studio lighting, subtle shadow. Only the colour changes, design stays identical.'})});
-  return l;
+/* ===== STEP 2: images ===== */
+function imgVariants(){var base=[];(imgModels||[]).forEach(function(m){base.push(m)});IMG_FALLBACK.forEach(function(m){if(base.indexOf(m)<0)base.push(m)});
+  var v=[];if(good)v.push(good);base.forEach(function(m){for(var j=0;j<MODES.length;j++){if(good&&good.m===m&&good.j===j)continue;v.push({m:m,j:j})}});return v}
+function oneImage(prompt){
+  var parts=refs.map(function(r){return{inline_data:{mime_type:r.mime,data:r.b64}}});parts.push({text:prompt+LOCK});
+  var vs=imgVariants(), i=0, last='koi image model kaam nahi kiya';
+  function step(){if(i>=vs.length)return Promise.reject(new Error(last));var v=vs[i++];
+    return call(v.m,parts,MODES[v.j]?{responseModalities:MODES[v.j]}:null).then(function(r){
+      if(r.err){last=r.err;log('❌ '+v.m+' (mode '+v.j+') → '+r.err);if(good&&good.m===v.m&&good.j===v.j)good=null;return step()}
+      var c=r.j.candidates&&r.j.candidates[0], ps=(c&&c.content&&c.content.parts)||[], txt='';
+      for(var x=0;x<ps.length;x++){var d=ps[x].inlineData||ps[x].inline_data;
+        if(d&&d.data){if(!good)log('✅ image model: '+v.m+' (mode '+v.j+')');good=v;return 'data:'+(d.mimeType||d.mime_type||'image/png')+';base64,'+d.data}
+        if(ps[x].text)txt+=ps[x].text}
+      last='image nahi aayi ('+((c&&c.finishReason)||'?')+(txt?(' – '+txt.slice(0,120)):'')+')';log('❌ '+v.m+' → '+last);return step()})}
+  return step();
 }
-function addItem(it,url){
-  var d=document.createElement('div');d.className='item';
-  var safe=(($('name').value.trim()||'product').toLowerCase().replace(/[^a-z0-9]+/g,'-'));
-  d.innerHTML='<img src="'+url+'" loading="lazy"><div class="m">'+it.t+'</div><a download="'+safe+'_'+it.id+'.png" href="'+url+'">⬇️ Download</a>';
-  $('out').appendChild(d);made.push(d.querySelector('a'));$('all').style.display='block';
+function addItem(label,id,url){var d=document.createElement('div');d.className='item';
+  var safe=((data&&data.product_name?data.product_name:'product').toLowerCase().replace(/[^a-z0-9]+/g,'-')).slice(0,40);
+  d.innerHTML='<img src="'+url+'" loading="lazy"><div class="m">'+label+'</div><a download="'+safe+'_'+id+'.png" href="'+url+'">⬇️ Download</a>';
+  $('out').appendChild(d);made.push(d.querySelector('a'));$('all').style.display='block'}
+
+/* ===== listing render ===== */
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function fld(t,v,raw){if(v==null||v==='')return '';
+  var id='f'+Math.random().toString(36).slice(2,8);
+  return '<div class="fld"><div class="fh"><b>'+t+'</b><button data-c="'+id+'">📋 Copy</button></div><div class="v" id="'+id+'">'+(raw||esc(v))+'</div></div>'}
+function renderListing(d){
+  var box=$('listing'), h='<div class="panel"><h3><em>✓</em> Meesho Listing Pack</h3><p class="note">Har field ke aage Copy button hai — sidha Meesho form me paste karo.</p>';
+  h+=fld('Product Name',d.product_name);
+  h+=fld('Title (main)',d.title);
+  h+=fld('Chhota title',d.title_short);
+  if(d.alt_titles&&d.alt_titles.length)h+=fld('Alternate titles',d.alt_titles.join('\n'));
+  h+=fld('Category',d.category_path);
+  h+=fld('Product type',d.product_type);
+  h+=fld('Material',d.material);
+  if(d.colours&&d.colours.length)h+=fld('Colours',d.colours.join(', '));
+  h+=fld('Size',d.size);h+=fld('Net weight',d.net_weight);
+  if(d.features&&d.features.length)h+=fld('5 Features',d.features.map(function(x){return '✔ '+x}).join('\n'));
+  h+=fld('Description (English)',d.description_en);
+  h+=fld('Description (Hindi)',d.description_hi);
+  if(d.keywords&&d.keywords.length)h+=fld('Search keywords',d.keywords.join(', '),'<div class="tags">'+d.keywords.map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div>');
+  h+=fld('HSN code',d.hsn_code);h+=fld('GST rate',(d.gst_rate!=null?d.gst_rate+'%':''));
+  h+=fld('Selling price (Meesho, GST-inclusive)',(d.price_min&&d.price_max)?('₹'+d.price_min+' – ₹'+d.price_max):'');
+  h+=fld('MRP',d.mrp?('₹'+d.mrp):'');
+  h+=fld('What\u2019s in the box',d.whats_in_box);h+=fld('Care instructions',d.care);
+  if(d.faq&&d.faq.length)h+=fld('FAQ',d.faq.map(function(f){return 'Q: '+f.q+'\nA: '+f.a}).join('\n\n'));
+  h+='</div>';box.innerHTML=h;
+  box.querySelectorAll('button[data-c]').forEach(function(b){b.onclick=function(){
+    navigator.clipboard.writeText($(b.getAttribute('data-c')).innerText).then(function(){b.textContent='✅ Copied';setTimeout(function(){b.textContent='📋 Copy'},1400)})}});
+  $('copyall').style.display='block';
+  if(d.price_max){$('c_sell').value=d.price_max;if($('buy').value)$('c_buy').value=$('buy').value;if(d.gst_rate)$('c_gst').value=d.gst_rate;calc()}
 }
-$('go').addEventListener('click',function(){
-  var k=$('key').value.trim(), n=$('name').value.trim();
-  if(!k)return say('Pehle Gemini API key daalo 🔑','err');
-  if(!n)return say('Product ka naam likho ✍️','err');
-  if(!refs.length)return say('Reference photo select karo 📷','err');
-  var d={name:n,price:$('price').value.trim(),features:$('features').value.trim(),cat:$('cat').value,bgs:$('bgs').value,
-         colours:$('colours').value.split(',').map(function(s){return s.trim()}).filter(Boolean)};
-  saveHist({name:d.name,colours:$('colours').value,price:d.price,features:d.features,cat:d.cat,bgs:d.bgs});
-  var list=build(d);
-  if(!list.length)return say('Kam se kam ek image type chuno 👆','err');
-  $('out').innerHTML='';made=[];$('all').style.display='none';$('log').textContent='';$('go').disabled=true;
-  say('Model dhoond raha hoon...');
-  var pre=discovered?Promise.resolve():listModels().then(function(r){
-    if(r.img.length){discovered=r.img;log('Image models: '+r.img.join(', '))}else{log('Koi image model nahi mila. Sab models: '+r.all.join(', '))}
-  }).catch(function(e){log('ListModels fail: '+e.message)});
-  pre.then(function(){
-    var i=0,fail=0;
-    function step(){
-      if(i>=list.length){
-        $('go').disabled=false;$('bar').style.width='100%';
-        say(fail?('Ho gaya: '+(list.length-fail)+'/'+list.length+' bani, '+fail+' fail. Kaali box ka screenshot bhejo.'):('✅ Ho gaya! Saari '+list.length+' images ready hain — niche se download karo.'),fail?'err':'ok');
-        return;
+$('copyall').addEventListener('click',function(){var t=$('listing').innerText;navigator.clipboard.writeText(t).then(function(){say('📋 Poori listing copy ho gayi — kahin bhi paste kar do.','ok')})});
+
+/* ===== main run ===== */
+$('stop').addEventListener('click',function(){stopFlag=true;$('stop').textContent='⏹️ Ruk raha hai...';say('Theek hai — current image ke baad ruk jaunga ✅')});
+$('go').addEventListener('click',function(){if(running)return;
+  if(!$('key').value.trim())return say('Pehle Gemini API key daalo 🔑','err');
+  if(!refs.length)return say('Product ki photo select karo 📷','err');
+  if(!$('brief').value.trim())return say('10-15 word me details likho ✍️','err');
+  running=true;stopFlag=false;made=[];data=null;
+  $('go').disabled=true;$('stop').style.display='block';$('stop').textContent='✅ Bas ho gaya — ruk ja';
+  $('out').innerHTML='';$('listing').innerHTML='';$('log').textContent='';$('all').style.display='none';$('bar').style.width='4%';
+  say('🧠 Photo dekh raha hoon aur listing soch raha hoon... (15-25 sec)');
+
+  var pre=(imgModels||txtModels)?Promise.resolve():listModels().then(function(r){imgModels=r.img.length?r.img:null;txtModels=r.txt.length?r.txt:null;log('IMAGE: '+r.img.join(', ')+'\nTEXT: '+r.txt.slice(0,6).join(', '))}).catch(function(e){log('ListModels fail: '+e.message)});
+
+  pre.then(analyse).then(function(d){
+    data=d;renderListing(d);putH({brief:$('brief').value.trim(),buy:$('buy').value.trim(),title:d.title});
+    say('✅ Listing text ready! Ab images bana raha hoon — product same rahega, sirf background badlega.','ok');
+    var plan=(d.image_plan||[]).slice(0,6).map(function(x,i){return{label:x.label||('Image '+(i+1)),prompt:x.prompt}});
+    (d.colours||[]).forEach(function(c,i){if(i<6)plan.push({label:c+' variant',prompt:'Same product presented on a clean pure white studio background with soft shadow, shown in '+c+' colourway of this exact same design (only the colour of the product changes, nothing else).'})});
+    var scenes=(d.extra_scenes||['clean white studio','soft grey gradient','marble surface','wooden table with daylight','minimal beige backdrop','Indian home shelf','flat lay on white cloth','festive gift setting','outdoor natural light','gradient studio with props']);
+    var n=0, round=0;
+    function next(){
+      if(stopFlag){finish();return}
+      if(!plan.length){
+        if(!$('auto').checked){finish();return}
+        round++;
+        for(var i=0;i<3;i++){var s=scenes[(round*3+i)%scenes.length];
+          plan.push({label:'Extra: '+s,prompt:'Same product photographed with this background/scene instead: '+s+'. Fresh camera angle and lighting, marketplace quality.'})}
+        say('♻️ Non-stop mode ON — round '+round+' ki naye photo bana raha hoon. Ho gaya to “✅ Bas ho gaya” daba do.');
       }
-      var it=list[i];
-      say('Ban rahi hai... '+(i+1)+'/'+list.length+'  ('+it.t+')\n15-25 second per image lagta hai, page band na karo.');
-      $('bar').style.width=Math.round(i/list.length*100)+'%';
-      genOne(it.p).then(function(u){addItem(it,u)}).catch(function(e){fail++;log('>>> FAIL '+it.t+': '+e.message)})
-        .then(function(){i++;setTimeout(step,700)});
+      var it=plan.shift();n++;
+      $('bar').style.width=Math.min(96,10+n*7)+'%';
+      say('🖼️ Image '+n+' ban rahi hai — '+it.label+'\n(product lock ON: colour/design/size same, sirf background change)');
+      oneImage(it.prompt).then(function(u){addItem(it.label,'img'+n,u)}).catch(function(e){log('>>> FAIL '+it.label+': '+e.message)})
+        .then(function(){setTimeout(next,800)});
     }
-    step();
-  });
+    function finish(){running=false;$('go').disabled=false;$('stop').style.display='none';$('bar').style.width='100%';
+      say('✅ Ho gaya! '+made.length+' images ready + poori listing upar hai. ⬇️ se download kar lo.','ok')}
+    next();
+  }).catch(function(e){running=false;$('go').disabled=false;$('stop').style.display='none';
+    say('❌ Listing nahi ban payi: '+e.message+'\n🔍 Key test karo dabao aur kaali box ka screenshot bhejo.','err');log(String(e.message||e))});
 });
 $('all').addEventListener('click',function(){made.forEach(function(a,i){setTimeout(function(){a.click()},i*700)})});
 
-/* ---------- calculator ---------- */
-function calc(){
-  var s=+$('c_sell').value||0,b=+$('c_buy').value||0,p=+$('c_pack').value||0,g=+$('c_gst').value||0,r=+$('c_ret').value||0,a=+$('c_ads').value||0;
-  var gst=s*g/(100+g), ret=s*r/100, net=s-gst-b-p-ret-a, mar=s?(net/s*100):0;
-  var cls=net>=70?'good':'bad';
-  $('calcout').innerHTML=
-   '<div class="kv"><span>GST nikla (output)</span><b>₹'+gst.toFixed(0)+'</b></div>'+
-   '<div class="kv"><span>Return/damage loss</span><b>₹'+ret.toFixed(0)+'</b></div>'+
-   '<div class="kv '+cls+'"><span>Net hand profit</span><b>₹'+net.toFixed(0)+'</b></div>'+
-   '<div class="kv '+cls+'"><span>Margin</span><b>'+mar.toFixed(1)+'%</b></div>'+
-   '<div class="kv"><span>₹100 profit ke liye price</span><b>₹'+(((b+p+a+100)/(1-(g/(100+g))-(r/100)))||0).toFixed(0)+'</b></div>';
-}
-['c_sell','c_buy','c_pack','c_gst','c_ret','c_ads'].forEach(function(i){$(i).addEventListener('input',calc)});
-calc();
+/* ===== calculator ===== */
+function calc(){var s=+$('c_sell').value||0,b=+$('c_buy').value||0,p=+$('c_pack').value||0,g=+$('c_gst').value||0,r=+$('c_ret').value||0,a=+$('c_ads').value||0;
+  var gst=s*g/(100+g),ret=s*r/100,net=s-gst-b-p-ret-a,mar=s?net/s*100:0,cls=net>=70?'good':'bad';
+  $('calcout').innerHTML='<div class="kv"><span>GST (output)</span><b>₹'+gst.toFixed(0)+'</b></div>'+
+  '<div class="kv"><span>Return/damage loss</span><b>₹'+ret.toFixed(0)+'</b></div>'+
+  '<div class="kv '+cls+'"><span>Net hand profit</span><b>₹'+net.toFixed(0)+'</b></div>'+
+  '<div class="kv '+cls+'"><span>Margin</span><b>'+mar.toFixed(1)+'%</b></div>'+
+  '<div class="kv"><span>₹100 profit ke liye price</span><b>₹'+(((b+p+a+100)/(1-(g/(100+g))-(r/100)))||0).toFixed(0)+'</b></div>'}
+['c_sell','c_buy','c_pack','c_gst','c_ret','c_ads'].forEach(function(i){$(i).addEventListener('input',calc)});calc();
 </script>
 </body>
 </html>
