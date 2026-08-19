@@ -128,11 +128,11 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
 </div></nav>
 
 <header class="hero"><div class="wrap">
-  <div class="pill">📋 Prompt-only engine — photo yahan nahi banti, prompt milta hai</div>
+  <div class="pill">📋 Prompt-only engine · 🙅 No-face rule · 🎨 Marketplace Infographic</div>
   <h1>1 photo + 10–15 word → <span>poori listing + 8 ready prompts</span></h1>
-  <p class="sub">Yeh page image generate karne ki koshish <b>bilkul nahi</b> karta — na quota error, na 429, na intezaar. Bas turant poori Meesho listing aur <b>Marketplace Infographic</b> style ke ready-to-paste prompts deta hai. Prompt copy karo → Google AI Studio me photo ke saath paste karo → image free ban jayegi.</p>
+  <p class="sub">Yeh page image generate karne ki koshish <b>bilkul nahi</b> karta — na quota error, na 429. Bas turant poori Meesho listing aur <b>Marketplace Infographic</b> style ke ready-to-paste prompts deta hai. Har prompt me <b>koi chehra nahi, sirf haath</b> aur product hi hero — ye rule pakka hai.</p>
   <a class="cta" href="#engine">📋 Prompt Banao</a>
-  <div class="stats"><div>📋 <b>8</b> ready prompts</div><div>🎨 <b>Infographic</b> style fix</div><div>🎆 <b>Auto</b> festival trend</div><div>🔒 <b>Lock</b> prompt me built-in</div></div>
+  <div class="stats"><div>📋 <b>8</b> ready prompts</div><div>🙅 <b>No face</b> · sirf haath</div><div>🎯 <b>Product</b> hamesha hero</div><div>🎆 <b>Auto</b> festival trend</div></div>
 </div></header>
 
 <div class="built"><div class="wrap"><p>Inke liye bana hai</p>
@@ -154,7 +154,15 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
   <h2 class="h2">🎨 Hamara fix design style</h2>
   <p class="h2s">Naam: <b>Marketplace Infographic</b> — Wildberries/Ozon “инфографика для маркетплейсов” + Amazon A+ feature-callout + Apple wala bento grid + oversized display typography.</p>
   <div class="stylebox">
-    <b>Har infographic prompt me ye rules khud se likhe jaate hain:</b>
+    <b>🙅 Pakka rule — har prompt me:</b>
+    <ul>
+      <li><b>Koi chehra / sar / poora insaan nahi</b> — sirf haath ya kalai tak forearm frame me aayega</li>
+      <li><b>Product hi hero</b> — bada, center, tack-sharp focus; background halka blur</li>
+      <li>Haath saaf aur natural (5 ungli), zyada jewellery / nail polish nahi</li>
+    </ul>
+  </div>
+  <div class="stylebox">
+    <b>Infographic prompts me ye design rules khud se likhe jaate hain:</b>
     <ul>
       <li>Bento grid — rounded corner panels, alag-alag size, perfectly aligned</li>
       <li>Oversized bold display headline, tight letter spacing, product ke peeche/overlap</li>
@@ -162,7 +170,6 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
       <li>Cut-out product, soft shadow + halka reflection</li>
       <li>Feature callouts — macro crop + bold caption + 1 line grey sub-caption + patli arrow line</li>
       <li>Pill badge top corner, brand label “Shree Hari Export”, niche 3 bade numbers ki strip</li>
-      <li>Bahut white space, magazine-quality, text bilkul sahi spelling me</li>
       <li>🔒 Product lock — colour, design, print, size sab same; sirf background aur graphics change</li>
     </ul>
   </div>
@@ -170,7 +177,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
     <div class="step"><div class="num">S1</div><b>Hero card</b><p>Bada product naam + product + badge + 3 numbers strip.</p></div>
     <div class="step"><div class="num">S2</div><b>Specifications bento</b><p>4 panel, har panel me ek part ka macro + caption.</p></div>
     <div class="step"><div class="num">S3</div><b>Dark feature card</b><p>Dark gradient panel, 1–2 badi khaas baat.</p></div>
-    <div class="step"><div class="num">S4</div><b>Benefits list</b><p>Light card, 4 heading + chhota sub-text, side me product.</p></div>
+    <div class="step"><div class="num">S4</div><b>Hands-in-use</b><p>Sirf haath, product close-up, background blur.</p></div>
   </div>
 </div></section>
 
@@ -194,7 +201,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
     <div class="drop" id="drop"><b>Photo select karo</b> ya yahan drag karo<input id="file" type="file" accept="image/*" multiple style="margin-top:12px" /></div>
     <div class="thumbs" id="thumbs"></div>
     <label>10–15 word me basic details *</label>
-    <textarea id="brief" placeholder="jaise: silicone scalp massager shampoo brush, green, wet dry use, anti dandruff"></textarea>
+    <textarea id="brief" placeholder="jaise: 3 in 1 vegetable peeler slicer set, white grey, stainless steel blade"></textarea>
     <div class="two">
       <div><label>Purchase price (₹) — optional</label><input id="buy" type="number" placeholder="150" /></div>
       <div><label>Colours — optional</label><input id="colours" placeholder="Green, Pink, Blue" /></div>
@@ -255,14 +262,15 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
 
 <section id="faq"><div class="wrap">
   <h2 class="h2">Sawaal jawaab</h2><p class="h2s">&nbsp;</p>
-  <details><summary>Yeh page image banata hai ya prompt deta hai?</summary><p>Sirf <b>prompt</b> — har baar. Image banane ki koshish hi nahi karta, isliye quota / 429 / “limit 0” wale error kabhi nahi aayenge. Prompt copy karke Google AI Studio me paste karo, image wahan free banegi (tere Jio / AI Pro plan me).</p></details>
+  <details><summary>Photo me kisi ka chehra aayega?</summary><p>Nahi. Har prompt me <b>NO-FACE rule</b> likha hota hai — koi chehra, sar ya poora insaan nahi, sirf <b>haath / kalai tak forearm</b> frame me aata hai, aur product hamesha hero rehta hai (bada, center, sharp focus, background blur). Model ki zaroorat khatam, copyright ka tension khatam.</p></details>
+  <details><summary>Yeh page image banata hai ya prompt deta hai?</summary><p>Sirf <b>prompt</b> — har baar. Image banane ki koshish hi nahi karta, isliye quota / 429 / “limit 0” wale error kabhi nahi aayenge. Prompt copy karke Google AI Studio me paste karo, image wahan free banegi.</p></details>
   <details><summary>Iss photo style ko kya bolte hain?</summary><p><b>Marketplace Infographic</b> (Russia me “инфографика для маркетплейсов” — Wildberries/Ozon product card design). Amazon pe <b>A+ Content / EBC infographic with feature callouts</b>. Layout ka naam <b>bento grid</b>, bade letters ko <b>oversized display typography</b>, ek hi colour ke shades ko <b>monochromatic palette</b> bolte hain.</p></details>
   <details><summary>AI Studio me kaise paste karu?</summary><p>1) Prompt pe 📋 Copy dabao. 2) 🎨 Google AI Studio kholo. 3) Niche <b>+</b> se apni product photo upload karo. 4) Prompt paste karke Enter. 5) Image download karke yahan “➕ Images add karo” se board pe daal do.</p></details>
   <details><summary>Product ka colour/design badal jaye to?</summary><p>Nahi badlega — har prompt ke andar PRODUCT LOCK line hoti hai. Agar phir bhi badle, usi prompt ke aage likh do: “keep the product exactly as in the uploaded photo” aur dobara bhejo.</p></details>
   <details><summary>Trend kaise pakadta hai?</summary><p>Date dekh kar ye aur agla mahina ka Indian festival + season nikalta hai (Rakhi, Independence Day, Ganesh Chaturthi, Navratri, Diwali, wedding, monsoon, summer, back-to-school) aur usi hisaab se scene, props aur banner text likhta hai.</p></details>
 </div></section>
 
-<footer><div class="wrap">Shree Hari Export · Prompt-only engine · Style: Marketplace Infographic 💜</div></footer>
+<footer><div class="wrap">Shree Hari Export · Prompt-only engine · Style: Marketplace Infographic · No-face, product-first 💜</div></footer>
 <div class="lb" id="lb"><img id="lbi" src="" alt="" /></div>
 
 <script>
@@ -272,6 +280,8 @@ var refs=[], cards=[], txtModels=null, running=false, data=null, lastPlan=[], ok
 var TXT_FALLBACK=['gemini-2.5-flash','gemini-flash-latest','gemini-3.5-flash','gemini-2.5-flash-lite','gemini-2.0-flash'];
 
 var LOCK=' PRODUCT LOCK (must obey): reproduce the EXACT same product from the uploaded reference photo \u2014 identical shape, colour, shade, design, pattern, print, logo, text, material, texture, part count, size and proportions. Do NOT redesign, restyle, recolour, resize, simplify or add/remove anything on the product. ONLY the background, layout graphics, props, lighting and camera angle may change. Photoreal product, sharp focus, no watermark, no misspelled text.';
+
+var NOFACE=' PEOPLE + FOCUS RULE (must obey, applies to every image): show NO human face, head, hair or full body anywhere in the frame. If a person is needed, include ONLY hands or forearms entering the frame, cropped naturally at the wrist or forearm, never above the elbow. Hands must be natural and correct (exactly five fingers, clean short nails, neutral Indian skin tone, no heavy jewellery, no bangles clutter, no nail polish distraction). The PRODUCT is always the hero: large in the frame, centred or on the rule of thirds, tack-sharp focus, well lit, fully visible and unobstructed by hands; the background and any props stay softly blurred, quiet and secondary. Never let hands, food, props or background compete with the product.';
 
 function styleSpec(){var L=$('lang')?$('lang').value:'English';
  return ' DESIGN STYLE (MANDATORY \u2014 "Marketplace Infographic": Wildberries/Ozon product-card infographic + Amazon A+ feature callouts + Apple-style bento grid + oversized editorial display typography):'+
@@ -302,7 +312,7 @@ function trendInfo(){var d=new Date(),m=d.getMonth();var c=CAL[m],n=CAL[(m+1)%12
 function drawTrend(){var t=trendInfo();
   $('tbox').innerHTML='🎆 <b>Aaj ka market trend (engine khud pakad raha hai):</b> '+t.label+' — '+t.season+
    '<div class="tc">'+t.fest.map(function(f){return '<span>'+f+'</span>'}).join('')+'</div>'+
-   '<div style="margin-top:9px;font-size:12.5px;color:#d9cffb">🎨 Design style fix: <b>Marketplace Infographic</b> · 📋 Ye page sirf prompt deta hai, image AI Studio me banegi</div>'}
+   '<div style="margin-top:9px;font-size:12.5px;color:#d9cffb">🎨 Style fix: <b>Marketplace Infographic</b> · 🙅 <b>No face — sirf haath</b> · 🎯 Product hamesha hero · 📋 Ye page sirf prompt deta hai</div>'}
 drawTrend();
 
 function say(m,c){var s=$('st');s.style.display='block';s.className='st'+(c?' '+c:'');s.textContent=m}
@@ -358,12 +368,16 @@ function analyse(){
   var p='You are a senior Meesho catalogue manager AND a marketplace infographic art director for an Indian reseller (Shree Hari Export). Study the reference product photo and the seller note. Seller note: "'+brief+'".'+(col?(' Colours available: '+col+'.'):'')+(buy?(' Purchase cost per piece: Rs '+buy+' bought without a GST bill, so NO input tax credit.'):'')+
   ' '+trendTxt+' Decide the trend angle, the design details and the on-image copy YOURSELF \u2014 the seller must never have to think or repeat instructions. Never ask questions.'+
   ' HOUSE DESIGN STYLE (fixed, always): "Marketplace Infographic" \u2014 the Wildberries/Ozon style product-card infographic, same family as Amazon A+ feature-callout modules: bento grid of rounded panels, one oversized bold display headline, monochromatic palette built from the product\u2019s own colour, cut-out product with soft shadow, macro feature callouts with thin leader lines, pill badge, and a bottom strip of three big numbers. Every infographic prompt you write must produce that look.'+
+  ' ABSOLUTE RULE FOR EVERY SINGLE PROMPT YOU WRITE: no human face, head, hair or full body may appear. Never describe a model, woman, man, home cook, girl, boy or person\u2019s face. Where a human touch is needed, describe ONLY hands or forearms cropped at the wrist/forearm. The product must always be the hero of the frame: large, centred, tack-sharp, unobstructed, with the background softly blurred and props minimal. Write these constraints explicitly inside every prompt.'+
   ' Reply with ONLY minified valid JSON in exactly this shape: '+SCHEMA+
   ' Rules: title = keyword-rich English, max 100 chars, Meesho style. title_short under 60 chars. category_path = Meesho category path. colours = what you see or the seller listed. size and net_weight = realistic estimate with units. features = exactly 5 short benefit bullets. description_en = 70-90 words then 5 tick bullets on new lines. description_hi = same in simple Hindi/Hinglish. keywords = 12 lowercase Indian search terms including 2 seasonal ones. hsn_code = correct 8-digit Indian HSN with matching gst_rate.'+(buy?' price_min/price_max = GST-inclusive Meesho price leaving Rs 70-100 net profit after GST, Rs 12 packing and 8 percent return loss. mrp about 2.2x price_max.':' price_min/price_max = sensible Meesho price range, mrp 2.2x.')+
   ' whats_in_box and care = one line each. faq = 3 buyer questions with answers. trend_note = one short Hinglish line saying which festival/season trend you used and why it will sell.'+
   ' palette = the exact monochrome palette to use, naming the product colour and 2 supporting tones plus one dark accent. headline = the 1-3 word oversized display headline in '+L+'. badge = a 3-5 word pill badge claim in '+L+'. numbers = exactly 3 items, each with a short big value (like "360\u00b0", "2 in 1", "5 min") and a 3-6 word caption in '+L+'.'+
   ' image_plan = exactly '+N+' items. Fields: label = short Hinglish label; type = "infographic" or "photo"; ratio = "1:1" except one "4:5" and one "9:16"; prompt = a COMPLETE self-contained English image-generation instruction that can be pasted into Google AI Studio together with the product photo, with nothing left for the seller to add.'+
-  ' Item order and roles: (1) type photo \u2014 clean pure white marketplace main image, no text at all. (2) type infographic \u2014 HERO CARD: the oversized headline, the product cut-out, the pill badge, one small macro inset panel, and the bottom strip with the three numbers. (3) type infographic \u2014 SPECIFICATIONS BENTO: four rounded panels each holding a macro crop of one real product part with a bold caption plus grey sub-caption, thin leader lines, tiny section label "Specifications". (4) type infographic \u2014 DARK FEATURE CARD: deep dark navy/charcoal gradient panel, the product large and glowing softly, one or two big feature headings with short sub-text. (5) type infographic \u2014 BENEFITS LIST CARD: light background, four stacked bold benefit headings each with one line of grey sub-text on the left, product photo on the right. (6) type photo \u2014 real-life in-use scene with an Indian model or hand, natural light, no text. (7) type infographic \u2014 FESTIVE OFFER CARD matching the current trend with concrete festive props described (marigold flowers, diyas, rakhi thread, monsoon window light, wedding decor as suitable), a clear price line and a short festival hook headline, ratio 4:5. (8) type infographic \u2014 VERTICAL 9:16 REEL/STORY CREATIVE with one bold headline and a short call to action.'+(N>8?' Items 9 onwards: more useful cards such as size and dimensions diagram, what is in the box grid, problem vs solution split card, three-step how-to-use card, and one clean white photo per available colour.':'')+
+  ' Item order and roles: (1) type photo \u2014 clean pure white marketplace main image, product only, no hands, no props, no text at all. (2) type infographic \u2014 HERO CARD: the oversized headline, the product cut-out, the pill badge, one small macro inset panel, and the bottom strip with the three numbers. (3) type infographic \u2014 SPECIFICATIONS BENTO: four rounded panels each holding a macro crop of one real product part with a bold caption plus grey sub-caption, thin leader lines, tiny section label "Specifications". (4) type infographic \u2014 DARK FEATURE CARD: deep dark navy/charcoal gradient panel, the product large and glowing softly, one or two big feature headings with short sub-text. (5) type infographic \u2014 BENEFITS LIST CARD: light background, four stacked bold benefit headings each with one line of grey sub-text on the left, product photo on the right.'+
+  ' (6) type photo \u2014 HANDS-ONLY IN-USE MACRO SHOT: a close-up, product-first action shot where ONLY a pair of clean natural hands (or a single hand and forearm, cropped at the wrist/forearm) holds and uses the product. Explicitly state: no face, no head, no hair, no body, no person visible, camera framed tight on the product and hands only. The product fills a large part of the frame at a slight three-quarter angle, tack-sharp with visible material texture, shot at f/2.8 shallow depth of field with soft natural window light; the surrounding scene (kitchen counter, table, bathroom shelf or whatever suits the product) is only a soft, clean, heavily blurred bokeh backdrop with at most one or two tidy, muted props that support the use case and never steal attention. Neutral modern Indian home setting, warm natural daylight, premium editorial product-photography feel.'+
+  ' (7) type infographic \u2014 FESTIVE OFFER CARD matching the current trend with concrete festive props described (marigold flowers, diyas, rakhi thread, monsoon window light, wedding decor as suitable) but absolutely no people or faces, a clear price line and a short festival hook headline, ratio 4:5.'+
+  ' (8) type infographic \u2014 VERTICAL 9:16 REEL/STORY CREATIVE with one bold headline, a short call to action, product large and centred, and at most a hand entering the frame \u2014 no face.'+(N>8?' Items 9 onwards: more useful cards such as size and dimensions diagram, what is in the box grid, problem vs solution split card, three-step how-to-use card shown with hands only, and one clean white photo per available colour.':'')+
   ' In every infographic prompt, WRITE OUT the exact text strings that must be rendered on the image (headline, badge, each caption, each sub-caption, each number) so the spelling is correct, and keep the total on-image words under 25. All on-image text must be in '+L+'.'+
   ' Also state in every prompt that the product must stay exactly as in the uploaded photo and only the background, layout and graphics change.';
   var parts=refs.map(function(r){return{inline_data:{mime_type:r.mime,data:r.b64}}});parts.push({text:p});
@@ -385,10 +399,10 @@ function wireCopy(box){box.querySelectorAll('button[data-c]').forEach(function(b
   .then(function(){b.textContent='✅ Copied';setTimeout(function(){b.textContent='📋 Copy'},1400)})}})}
 
 function fullPrompt(it){var s=(it.type==='photo')?'':styleSpec();
-  return it.prompt+(it.ratio?(' Aspect ratio '+it.ratio+'.'):'')+s+LOCK}
+  return it.prompt+(it.ratio?(' Aspect ratio '+it.ratio+'.'):'')+s+NOFACE+LOCK}
 function renderPrompts(plan){var box=$('prompts');if(!plan.length){box.innerHTML='';return}
   var t=trendInfo();
-  var h='<div class="panel"><h3><em>🎨</em> Prompt Pack — '+plan.length+' ready prompts</h3><p class="note">Style: <b>Marketplace Infographic</b> · Trend: <b>'+esc(t.fest.slice(0,3).join(', '))+'</b>. Har prompt poora ready hai — design style spec aur product lock dono andar likhe hain. <b>📋 Copy → <a href="https://aistudio.google.com/prompts/new_chat" target="_blank">AI Studio kholo</a> → product photo upload → paste → Enter.</b></p>'+
+  var h='<div class="panel"><h3><em>🎨</em> Prompt Pack — '+plan.length+' ready prompts</h3><p class="note">Style: <b>Marketplace Infographic</b> · Trend: <b>'+esc(t.fest.slice(0,3).join(', '))+'</b> · 🙅 <b>No face — sirf haath, product hero</b>. Har prompt poora ready hai. <b>📋 Copy → <a href="https://aistudio.google.com/prompts/new_chat" target="_blank">AI Studio kholo</a> → product photo upload → paste → Enter.</b></p>'+
   '<button class="btn2" id="pall" style="margin-top:0">📋 Saare '+plan.length+' prompts ek saath copy karo</button>'+
   '<a class="btnst" href="https://aistudio.google.com/prompts/new_chat" target="_blank">🎨 Google AI Studio kholo</a><div style="height:13px"></div>';
   plan.forEach(function(it,i){h+=fld((i+1)+'. '+(it.label||('Image '+(i+1)))+' · '+(it.type==='photo'?'photo':'infographic')+(it.ratio?(' · '+it.ratio):''),fullPrompt(it),null,'pr')});
@@ -429,11 +443,11 @@ $('go').addEventListener('click',function(){if(running||!guard())return;
   pre.then(analyse).then(function(d){
     data=d;$('bar').style.width='75%';
     var plan=(d.image_plan||[]).map(function(x,i){return{label:x.label||('Image '+(i+1)),type:(x.type==='photo'?'photo':'infographic'),ratio:x.ratio||'1:1',prompt:x.prompt}}).filter(function(x){return x.prompt});
-    (d.colours||[]).slice(0,6).forEach(function(c){plan.push({label:c+' colour photo',type:'photo',ratio:'1:1',prompt:'Photograph this exact same product on a clean pure white studio background, shown in the '+c+' colourway of this identical design \u2014 only the product colour differs, every other detail of shape, design, print, logo, material and size stays identical. No text.'})});
+    (d.colours||[]).slice(0,6).forEach(function(c){plan.push({label:c+' colour photo',type:'photo',ratio:'1:1',prompt:'Photograph this exact same product alone on a clean pure white studio background, shown in the '+c+' colourway of this identical design \u2014 only the product colour differs, every other detail of shape, design, print, logo, material and size stays identical. No hands, no people, no props, no text.'})});
     lastPlan=plan;renderPrompts(plan);renderListing(d);
     putH({brief:$('brief').value.trim(),buy:$('buy').value.trim(),title:d.title});
     running=false;$('go').disabled=false;$('bar').style.width='100%';
-    say('✅ Ho gaya! '+plan.length+' prompts + poori listing ready.\n📋 Prompt copy karo → 🎨 AI Studio kholo → product photo upload → paste → image free ban jayegi.\nPhir image download karke niche “➕ Images add karo” se board pe daal do.','ok');
+    say('✅ Ho gaya! '+plan.length+' prompts + poori listing ready.\n🙅 Sab prompts me: koi chehra nahi, sirf haath, product hi hero.\n📋 Prompt copy karo → 🎨 AI Studio kholo → product photo upload → paste → image free ban jayegi.','ok');
     var pn=$('prompts');if(pn)pn.scrollIntoView({behavior:'smooth',block:'start'});
   }).catch(function(e){running=false;$('go').disabled=false;$('bar').style.width='0';
     say('❌ Nahi bana: '+e.message+'\n🔍 Key test karo dabao aur kaali box ka screenshot bhejo.','err');log(String(e.message||e))});
