@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shree Hari Listing Engine — Meesho Listing + Image Workboard</title>
+<title>Shree Hari Listing Engine — Meesho Listing + Trend Image Prompts</title>
 <style>
 :root{--bg:#0b0b12;--bg2:#12121d;--card:#171724;--line:#262637;--tx:#f3f2f8;--mut:#9a99ae;--p:#8b5cf6;--p2:#ec4899;--ok:#22c55e;--err:#ef4444}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -25,7 +25,7 @@ header.hero:before{content:"";position:absolute;inset:-170px 0 auto;height:430px
 h1{position:relative;font-size:40px;line-height:1.12;font-weight:850;letter-spacing:-.6px}
 h1 span{background:linear-gradient(120deg,#a78bfa,#f472b6);-webkit-background-clip:text;background-clip:text;color:transparent}
 @media(max-width:700px){h1{font-size:28px}header.hero{padding:40px 0 26px}}
-.sub{position:relative;color:var(--mut);font-size:16px;max-width:640px;margin:15px auto 24px}
+.sub{position:relative;color:var(--mut);font-size:16px;max-width:660px;margin:15px auto 24px}
 .cta{position:relative;display:inline-block;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;font-weight:800;font-size:16px;padding:15px 30px;border-radius:13px;box-shadow:0 12px 34px -12px rgba(139,92,246,.8)}
 .stats{position:relative;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:24px;color:var(--mut);font-size:13px}
 .stats b{color:#fff}
@@ -78,6 +78,10 @@ pre#log{display:none;background:#07070c;color:#7ef2a4;border:1px solid var(--lin
 .fld .v{font-size:14.5px;white-space:pre-wrap;color:#e9e8f2}
 .tags{display:flex;flex-wrap:wrap;gap:7px}
 .tags span{background:#241f3d;color:#d8ccff;font-size:12.5px;padding:5px 11px;border-radius:999px}
+.trendbox{border:1px solid rgba(236,72,153,.4);background:linear-gradient(135deg,rgba(139,92,246,.10),rgba(236,72,153,.10));border-radius:14px;padding:14px 16px;margin-bottom:13px;font-size:13.5px;color:#efe7ff}
+.trendbox b{color:#f9a8d4}
+.trendbox .tc{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.trendbox .tc span{background:#241f3d;border:1px solid var(--line);color:#e9d5ff;font-size:12px;padding:5px 11px;border-radius:999px}
 .board{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:15px}
 .bhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .bhead h3{font-size:17px;font-weight:800}
@@ -126,24 +130,24 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
 </div></nav>
 
 <header class="hero"><div class="wrap">
-  <div class="pill">⚡ 1 photo + 10–15 word → poori Meesho listing</div>
-  <h1>Bas photo daalo. <span>Baaki sab engine khud soch lega.</span></h1>
-  <p class="sub">Title, description (English + Hindi), features, keywords, HSN, GST, price + profit, image prompts aur images — sab automatic. Product bilkul same rahega, sirf background badlega.</p>
+  <div class="pill">⚡ 1 photo + 10–15 word → poori listing + trend wale image prompts</div>
+  <h1>Bas photo daalo. <span>Trend bhi engine dekhega, dimag bhi engine lagayega.</span></h1>
+  <p class="sub">Engine khud dekhta hai konsa mahina, konsa festival aur konsa season chal raha hai — aur usi hisaab se image prompts banata hai. Har prompt ke andar product lock (colour, design, size same) pehle se likha hota hai — tujhe kuch add karne ki zarurat nahi.</p>
   <a class="cta" href="#engine">🚀 Listing Banao</a>
-  <div class="stats"><div>📝 <b>18+</b> listing fields</div><div>🎨 <b>Prompt pack</b> AI Studio ke liye</div><div>🔒 <b>Product lock</b></div><div>🔄 <b>Per-image</b> regenerate</div></div>
+  <div class="stats"><div>🎆 <b>Auto</b> festival trend</div><div>🔒 <b>Lock</b> prompt me built-in</div><div>📝 <b>18+</b> listing fields</div><div>🔄 <b>Per-image</b> regenerate</div></div>
 </div></header>
 
 <div class="built"><div class="wrap"><p>Inke liye bana hai</p>
-<div class="chips"><span class="chip">Meesho</span><span class="chip">Flipkart</span><span class="chip">Amazon</span><span class="chip">Myntra</span><span class="chip">JioMart</span><span class="chip">WhatsApp Catalog</span><span class="chip">Instagram</span></div>
+<div class="chips"><span class="chip">Meesho</span><span class="chip">Flipkart</span><span class="chip">Amazon</span><span class="chip">Myntra</span><span class="chip">JioMart</span><span class="chip">WhatsApp Catalog</span><span class="chip">Instagram Reels</span></div>
 </div></div>
 
 <section id="how"><div class="wrap">
   <h2 class="h2">Engine ka kaam — 3 step</h2>
-  <p class="h2s">Tu sirf photo aur 10–15 word deta hai. Baaki engine khud.</p>
+  <p class="h2s">Tu sirf photo aur 10–15 word deta hai. Trend, prompt, lock — sab engine.</p>
   <div class="grid3">
-    <div class="step"><div class="num">1</div><b>Photo + 2 line</b><p>Wholesaler ki photo + chhoti details — jaise “silicone scalp massager brush, green, wet dry use”.</p></div>
-    <div class="step"><div class="num">2</div><b>Poori listing</b><p>Title, description (Eng+Hindi), features, keywords, HSN, GST, price — sab khud soch kar, Copy button ke saath.</p></div>
-    <div class="step"><div class="num">3</div><b>Images ya Prompts</b><p>API pe quota ho to images yahin ban jayengi. Nahi to Prompt Pack copy karke AI Studio me free bana lo.</p></div>
+    <div class="step"><div class="num">1</div><b>Photo + 2 line</b><p>Wholesaler ki photo + chhoti details. Bas itna.</p></div>
+    <div class="step"><div class="num">2</div><b>Trend khud pakadta hai</b><p>Aaj ka mahina dekh kar festival + season nikalta hai (Rakhi, Diwali, monsoon, wedding, summer) aur usi theme ke image prompts banata hai.</p></div>
+    <div class="step"><div class="num">3</div><b>Ready prompts + images</b><p>Har prompt full ready — product lock andar hi. Copy → AI Studio me paste → image. Ya API se yahin bane.</p></div>
   </div>
 </div></section>
 
@@ -151,11 +155,13 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
   <h2 class="h2">⚙️ Listing Engine</h2>
   <p class="h2s">Sirf 2 cheez chahiye — photo aur 10–15 word.</p>
 
-  <div class="warn">⚠️ <b>Zaroori baat:</b> Jio / Google AI Pro subscription sirf <b>Gemini app aur AI Studio website</b> pe chalta hai — <b>API key pe nahi</b>. Free API key pe image models ka quota <b>0</b> hota hai (“limit: 0” error). Isliye: images ke liye <b>🎨 Prompt Pack</b> use karo (AI Studio me free), ya API pe <a href="https://aistudio.google.com/app/apikey" target="_blank">billing on</a> karo (≈₹3/image) — tab is page pe hi images ban jayengi.</div>
+  <div class="trendbox" id="tbox"></div>
+
+  <div class="warn">⚠️ Jio / AI Pro subscription sirf <b>Gemini app aur AI Studio website</b> pe chalta hai — <b>API key pe nahi</b> (free API key pe image quota 0 hota hai). Isliye images ke liye <b>🎨 Prompt Pack</b> (AI Studio me free) ya <a href="https://aistudio.google.com/app/apikey" target="_blank">API billing on</a> (≈₹3/image).</div>
 
   <div class="panel">
     <h3><em>1</em> Gemini API Key</h3>
-    <p class="note">Ek hi baar. Sirf tumhare browser me save hoti hai. Listing text free key pe bilkul chalta hai.</p>
+    <p class="note">Ek hi baar. Sirf tumhare browser me save hoti hai. Listing text + trend prompts free key pe bante hain.</p>
     <input id="key" type="password" placeholder="AIza... ya AQ..." />
     <small class="hint">Key: <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a></small>
     <button class="btn2" id="test">🔍 Key test karo</button>
@@ -173,14 +179,16 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
       <div><label>Purchase price (₹) — optional</label><input id="buy" type="number" placeholder="150" /></div>
       <div><label>Colours — optional</label><input id="colours" placeholder="Green, Pink, Blue" /></div>
     </div>
-    <div class="switch"><input type="checkbox" id="studio" checked /> <label for="studio" style="margin:0">🎨 Prompt Pack do (AI Studio me free image banane ke liye) — recommended</label></div>
-    <div class="switch"><input type="checkbox" id="apiimg" /> <label for="apiimg" style="margin:0">🤖 Images API se banane ki koshish karo (sirf tab jab billing on ho)</label></div>
-    <div class="switch"><input type="checkbox" id="auto" /> <label for="auto" style="margin:0">♻️ Non-stop mode — API chalu ho to naye photo banate raho</label></div>
+    <label>Trend theme (khali chhodo — engine khud aaj ka festival/season pakad lega)</label>
+    <input id="trend" placeholder="auto" />
+    <div class="switch"><input type="checkbox" id="studio" checked /> <label for="studio" style="margin:0">🎨 Trend Prompt Pack do (AI Studio me free image banane ke liye) — recommended</label></div>
+    <div class="switch"><input type="checkbox" id="apiimg" /> <label for="apiimg" style="margin:0">🤖 Images API se banane ki koshish karo (billing on ho tab)</label></div>
+    <div class="switch"><input type="checkbox" id="auto" /> <label for="auto" style="margin:0">♻️ Non-stop mode — API chalu ho to naye trend photo banate raho</label></div>
     <div id="histbox" style="display:none"><label>Pichhle products</label><div class="hist" id="hist"></div></div>
   </div>
 
   <div class="panel">
-    <button class="btn" id="go">🚀 Poori Listing Banao</button>
+    <button class="btn" id="go">🚀 Poori Listing + Trend Prompts Banao</button>
     <button class="btn2" id="one">🧪 Sirf 1 image se API test karo</button>
     <button class="btn2 stopbtn" id="stop" style="display:none">✅ Bas ho gaya — ruk ja</button>
     <button class="btn2" id="copyall" style="display:none">📋 Poori listing copy karo</button>
@@ -205,11 +213,11 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
     <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:13px">
       <button class="btn2" style="width:auto;margin:0;padding:10px 15px" id="all">⬇️ Saari download</button>
       <button class="btn2" style="width:auto;margin:0;padding:10px 15px" id="alllk">❤️ Sirf pasand wali</button>
-      <button class="btn2" style="width:auto;margin:0;padding:10px 15px" id="more">➕ 3 aur images</button>
+      <button class="btn2" style="width:auto;margin:0;padding:10px 15px" id="more">➕ 3 aur trend images</button>
       <button class="btn2" style="width:auto;margin:0;padding:10px 15px" id="clear">🧹 Board saaf karo</button>
     </div>
     <div class="out" id="out"></div>
-    <p class="note" id="empty" style="color:#9a99ae;font-size:13px">Board khali hai. AI Studio se banayi images bhi yahan dekhne ke liye <b>Board me photo add karo</b> button use karo.</p>
+    <p class="note" id="empty" style="color:#9a99ae;font-size:13px">Board khali hai. AI Studio se banayi images bhi yahan add kar sakte ho.</p>
     <input id="addfile" type="file" accept="image/*" multiple style="display:none" />
     <button class="btn2" id="addbtn">➕ Board me apni photo add karo (AI Studio se banayi hui)</button>
   </div>
@@ -232,11 +240,10 @@ footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--mut);fon
 
 <section id="faq"><div class="wrap">
   <h2 class="h2">Sawaal jawaab</h2><p class="h2s">&nbsp;</p>
-  <details><summary>Mera Jio wala free Gemini hai, phir bhi image kyun nahi banti?</summary><p>Kyunki wo subscription <b>Gemini app aur AI Studio website</b> ke liye hai. Jab koi website tumhari <b>API key</b> se image mangti hai, Google alag hisaab lagata hai — free API key pe image models ka quota <b>0</b> hai, isliye “quota exceeded, limit: 0” aata hai. Isme page ki galti nahi.</p></details>
-  <details><summary>To images kaise banau (bilkul free)?</summary><p>Listing banao → niche <b>🎨 AI Studio Prompt Pack</b> milega → har prompt ke aage 📋 Copy → <b>AI Studio kholo</b> → apni product photo upload karo → prompt paste → image ban jayegi → download karke <b>Board me add karo</b>. Product same rahega, sirf background badlega (prompt me lock likha hai).</p></details>
-  <details><summary>Is page pe hi images banwani hain to?</summary><p>AI Studio me apne project pe <b>billing on</b> karo (Nano Banana ≈₹3/image). Uske baad “🤖 Images API se banao” tick karo — sab kuch automatic ho jayega, non-stop mode bhi.</p></details>
-  <details><summary>Photo pasand nahi aayi to?</summary><p>Us photo ke niche 🔄 Dobara — sirf wahi image naye angle/background me dobara banegi.</p></details>
-  <details><summary>Product ka colour/design badlega?</summary><p>Nahi. Har prompt me PRODUCT LOCK hai — shape, colour, design, logo, material, size same. Sirf background, light aur angle badalta hai.</p></details>
+  <details><summary>Trend kaise pakadta hai engine?</summary><p>Tumhare phone/laptop ki date dekh kar ye mahine ka aur agle mahine ka Indian festival + season nikalta hai (Rakhi, Independence Day, Ganesh Chaturthi, Navratri, Diwali, wedding season, monsoon, summer, back-to-school). Uske baad AI ko bolta hai “isi trend ke hisaab se image scenes socho”. Tujhe kuch likhna nahi padta — chahe to “Trend theme” box me apna theme daal sakte ho.</p></details>
+  <details><summary>Mujhe “product same rakho” baar-baar likhna padega?</summary><p>Nahi. Har prompt ke andar PRODUCT LOCK line pehle se likhi hui aati hai — shape, colour, design, print, logo, material, size sab same. Sirf background/scene/light/angle badalta hai. Copy karo, paste karo, bas.</p></details>
+  <details><summary>Mera Jio wala free Gemini hai, phir bhi API se image nahi banti?</summary><p>Wo subscription Gemini app + AI Studio website ke liye hai. API key pe Google free image quota 0 deta hai (“limit: 0”). Isliye Prompt Pack use karo (AI Studio me free), ya API pe billing on karo.</p></details>
+  <details><summary>Photo pasand nahi aayi?</summary><p>Us photo ke niche 🔄 Dobara — sirf wahi image naye angle/background me dobara banegi.</p></details>
 </div></section>
 
 <footer><div class="wrap">Shree Hari Export · Meesho Seller Engine 💜</div></footer>
@@ -247,11 +254,34 @@ var KEY='shg_gemini_key', HK='shg_hist2';
 function $(i){return document.getElementById(i)}
 var refs=[], cards=[], imgModels=null, txtModels=null, good=null, blocked={}, stopFlag=false, running=false, data=null, lastPlan=[];
 var okN=0, lkN=0, flN=0, scenes=[], sceneI=0;
-/* real models available on Gemini API (checked via ListModels) */
 var IMG_FALLBACK=['gemini-2.5-flash-image','gemini-3.1-flash-lite-image','gemini-3.1-flash-image','gemini-3-pro-image'];
 var TXT_FALLBACK=['gemini-2.5-flash','gemini-flash-latest','gemini-3.5-flash','gemini-2.5-flash-lite'];
 var MODES=[null,['TEXT','IMAGE'],['IMAGE']];
-var LOCK=' CRITICAL PRODUCT LOCK: reproduce the EXACT same product shown in the reference image — identical shape, colour, shade, design, pattern, print, logo, text, material, texture, number of parts and proportions. Do NOT redesign, restyle, recolour, resize, simplify or add/remove any part of the product. ONLY the background, scene, props, lighting and camera angle may change. Ultra-realistic photograph, square 1:1, sharp focus, no watermark, no gibberish text.';
+var LOCK=' PRODUCT LOCK (must obey): reproduce the EXACT same product from the reference photo — identical shape, colour, shade, design, pattern, print, logo, text, material, texture, part count, size and proportions. Do NOT redesign, restyle, recolour, resize, simplify or add/remove anything on the product. ONLY background, scene, props, lighting and camera angle may change. Ultra-realistic photo, sharp focus, no watermark, no misspelled text.';
+
+/* ===== auto market trend (Indian seller calendar) ===== */
+var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+var CAL=[
+ {f:['Makar Sankranti','Republic Day sale'],s:'peak winter, kite season, new year resolutions'},
+ {f:['Valentine gifting','wedding season'],s:'late winter, wedding shopping'},
+ {f:['Holi','Ramadan'],s:'summer starting, colour festival'},
+ {f:['Eid','Baisakhi','Akshaya Tritiya'],s:'summer, exam season ending'},
+ {f:['Mother\u2019s Day gifting'],s:'peak summer, school reopening, wedding season'},
+ {f:['Rath Yatra','Father\u2019s Day'],s:'monsoon starting, back-to-school shopping'},
+ {f:['Sawan','Hariyali Teej'],s:'monsoon, indoor season, back-to-school'},
+ {f:['Raksha Bandhan','Independence Day sale','Janmashtami'],s:'monsoon, rakhi gifting rush'},
+ {f:['Ganesh Chaturthi','Onam','Navratri prep'],s:'festive season starting, home decor buying'},
+ {f:['Navratri','Dussehra','Karva Chauth','Diwali prep'],s:'BIGGEST online sale season of the year, festive gifting'},
+ {f:['Diwali','Bhai Dooj','Chhath'],s:'festive + wedding season, winter starting, gifting peak'},
+ {f:['Christmas','New Year'],s:'winter, wedding season, year-end sale'}];
+function trendInfo(){var d=new Date(),m=d.getMonth();var c=CAL[m],n=CAL[(m+1)%12];
+  var fest=c.f.concat(n.f.slice(0,2));
+  return {label:MONTHS[m]+' '+d.getFullYear(),season:c.s,fest:fest,
+    text:MONTHS[m]+' '+d.getFullYear()+' — chal raha hai: '+c.f.join(', ')+'. Season: '+c.s+'. Aane wala: '+n.f.join(', ')+'.'}}
+function drawTrend(){var t=trendInfo();
+  $('tbox').innerHTML='🎆 <b>Aaj ka market trend (engine khud pakad raha hai):</b> '+t.label+' — '+t.season+
+   '<div class="tc">'+t.fest.map(function(f){return '<span>'+f+'</span>'}).join('')+'</div>'}
+drawTrend();
 
 function say(m,c){var s=$('st');s.style.display='block';s.className='st'+(c?' '+c:'');s.textContent=m}
 function log(m){var l=$('log');l.style.display='block';l.textContent+=m+'\n';l.scrollTop=l.scrollHeight}
@@ -293,7 +323,7 @@ function fillModelBox(img){var s=$('model');s.innerHTML='';(img.length?img:IMG_F
 $('test').addEventListener('click',function(){if(!$('key').value.trim())return say('Pehle key daalo 🔑','err');
   say('Check kar raha hoon...');$('log').textContent='';blocked={};good=null;
   listModels().then(function(r){imgModels=r.img.length?r.img:null;txtModels=r.txt.length?r.txt:null;fillModelBox(r.img);
-    say('✅ Key sahi hai!\nListing text ke liye: '+(r.txt[0]||'-')+'\nImage models mile: '+r.img.length+' (par free key pe inka quota 0 ho sakta hai — tab Prompt Pack use karo)','ok');
+    say('✅ Key sahi hai!\nListing + trend prompts ke liye: '+(r.txt[0]||'-')+'\nImage models mile: '+r.img.length+' (free key pe inka quota 0 ho sakta hai — tab Prompt Pack use karo)','ok');
     log('IMAGE: '+r.img.join(', ')+'\nTEXT: '+r.txt.slice(0,8).join(', '))})
   .catch(function(e){say('❌ Key fail: '+e.message,'err');log(e.message)})});
 
@@ -304,21 +334,26 @@ function call(model,parts,cfg){var k=$('key').value.trim();var body={contents:[{
   .then(function(o){if(!o.ok){var m=(o.j.error&&o.j.error.message)||'?';return{err:'HTTP '+o.status+': '+m,status:o.status,msg:m}}return{j:o.j}})
   .catch(function(e){return{err:'network: '+(e.message||e),status:0,msg:''}})}
 
-var SCHEMA='{"product_name":"","title":"","title_short":"","alt_titles":["",""],"category_path":"","product_type":"","material":"","colours":[""],"size":"","net_weight":"","features":["","","","",""],"description_en":"","description_hi":"","keywords":[""],"hsn_code":"","gst_rate":18,"price_min":0,"price_max":0,"mrp":0,"whats_in_box":"","care":"","faq":[{"q":"","a":""}],"image_plan":[{"label":"","prompt":""}],"extra_scenes":[""]}';
+var SCHEMA='{"product_name":"","title":"","title_short":"","alt_titles":["",""],"category_path":"","product_type":"","material":"","colours":[""],"size":"","net_weight":"","features":["","","","",""],"description_en":"","description_hi":"","keywords":[""],"hsn_code":"","gst_rate":18,"price_min":0,"price_max":0,"mrp":0,"whats_in_box":"","care":"","faq":[{"q":"","a":""}],"trend_note":"","image_plan":[{"label":"","ratio":"1:1","prompt":""}],"extra_scenes":[""]}';
 function analyse(){
   var brief=$('brief').value.trim(), buy=$('buy').value.trim(), col=$('colours').value.trim();
-  var p='You are a senior Meesho catalogue manager for an Indian reseller (Shree Hari Export). Look carefully at the reference product photo and the seller note. Seller note: "'+brief+'".'+(col?(' Colours available: '+col+'.'):'')+(buy?(' Purchase cost per piece: Rs '+buy+' bought without GST bill, so NO input tax credit.'):'')+
-  ' Work everything out yourself from the photo, never ask questions. Reply with ONLY minified valid JSON in exactly this shape: '+SCHEMA+
-  ' Rules: title = keyword-rich English, max 100 chars, Meesho style. title_short under 60 chars. category_path = Meesho category path guess. colours = what you actually see or seller listed. size and net_weight = realistic estimate with units. features = exactly 5 short benefit bullets. description_en = 70-90 words then 5 tick bullets on new lines. description_hi = same in simple Hindi/Hinglish. keywords = 12 lowercase Indian search terms. hsn_code = correct 8-digit Indian HSN with matching gst_rate.'+(buy?' price_min/price_max = GST-inclusive Meesho price leaving Rs 70-100 net profit after GST, Rs 12 packing and 8 percent return loss. mrp about 2.2x price_max.':' price_min/price_max = sensible Meesho price range, mrp 2.2x.')+
-  ' whats_in_box and care = one line each. faq = 3 buyer questions with answers. image_plan = exactly 6 items, each prompt a full standalone English image-generation instruction usable by pasting into Google AI Studio along with the product photo; it must change ONLY background, scene, props, lighting or camera angle (one pure-white marketplace main image, one close-up detail, one infographic with 4 feature callouts using exact English label text, one lifestyle in an Indian home, one flat-lay, one promotional banner showing the price). Never describe changing the product itself. extra_scenes = 10 more short scene ideas.';
+  var t=trendInfo(), man=$('trend').value.trim();
+  var trendTxt=man?('The seller wants this trend theme: '+man+'.'):('Today it is '+t.label+' in India. Current and upcoming festivals/events: '+t.fest.join(', ')+'. Season context: '+t.season+'.');
+  var p='You are a senior Meesho catalogue manager and product-photography art director for an Indian reseller (Shree Hari Export). Study the reference product photo and the seller note. Seller note: "'+brief+'".'+(col?(' Colours available: '+col+'.'):'')+(buy?(' Purchase cost per piece: Rs '+buy+' bought without a GST bill, so NO input tax credit.'):'')+
+  ' '+trendTxt+' Use this trend yourself to decide the image scenes, props, colours of the backdrop and the banner offer text — the seller must NOT have to think about trends. Never ask questions.'+
+  ' Reply with ONLY minified valid JSON in exactly this shape: '+SCHEMA+
+  ' Rules: title = keyword-rich English, max 100 chars, Meesho style. title_short under 60 chars. category_path = Meesho category path. colours = what you see or the seller listed. size and net_weight = realistic estimate with units. features = exactly 5 short benefit bullets. description_en = 70-90 words then 5 tick bullets on new lines. description_hi = same in simple Hindi/Hinglish. keywords = 12 lowercase Indian search terms including 2 seasonal/festival ones. hsn_code = correct 8-digit Indian HSN with matching gst_rate.'+(buy?' price_min/price_max = GST-inclusive Meesho price leaving Rs 70-100 net profit after GST, Rs 12 packing and 8 percent return loss. mrp about 2.2x price_max.':' price_min/price_max = sensible Meesho price range, mrp 2.2x.')+
+  ' whats_in_box and care = one line each. faq = 3 buyer questions with answers. trend_note = one short Hinglish line telling the seller which festival/season trend you used and why it will sell.'+
+  ' image_plan = exactly 8 items. Each item: label = short Hinglish label; ratio = "1:1" except one "4:5" and one "9:16"; prompt = a COMPLETE, self-contained English image-generation instruction that can be pasted into Google AI Studio along with the product photo, with nothing left for the seller to add. Every single prompt MUST itself contain a sentence locking the product: keep the exact same product, same colour, same design, same print, same logo, same material and same size, and change ONLY the background, scene, props, lighting and camera angle. Cover this mix: (1) pure white marketplace main image, (2) close-up detail of the key feature, (3) infographic with 4 feature callouts using exact English label text, (4) festive/seasonal lifestyle scene matching the current trend, (5) in-use scene with an Indian model or hand, (6) flat-lay with trend-matching props, (7) festive gifting or offer banner with clear price text and a festival hook line, (8) vertical 9:16 reel/story creative with a short bold headline. Write the trend theme into the scene descriptions concretely (for example marigold flowers, diyas, rakhi thread, monsoon window light, wedding decor) instead of saying “festive” vaguely.'+
+  ' extra_scenes = 10 more short trend-matching scene ideas for future images.';
   var parts=refs.map(function(r){return{inline_data:{mime_type:r.mime,data:r.b64}}});parts.push({text:p});
   var list=(txtModels||[]).concat(TXT_FALLBACK), i=0;
   function step(){if(i>=list.length)return Promise.reject(new Error('koi text model kaam nahi kiya'));var m=list[i++];
-    return call(m,parts,{temperature:0.7,responseMimeType:'application/json'}).then(function(r){
+    return call(m,parts,{temperature:0.8,responseMimeType:'application/json'}).then(function(r){
       if(r.err){log('❌ text '+m+' → '+r.err);return step()}
-      var c=r.j.candidates&&r.j.candidates[0], t='';((c&&c.content&&c.content.parts)||[]).forEach(function(x){if(x.text)t+=x.text});
-      t=t.replace(/```json/gi,'').replace(/```/g,'').trim();var s=t.indexOf('{'),e=t.lastIndexOf('}');if(s>-1&&e>s)t=t.slice(s,e+1);
-      try{var d=JSON.parse(t);log('✅ listing bani via '+m);return d}catch(err){log('❌ '+m+' → JSON parse fail');return step()}})}
+      var c=r.j.candidates&&r.j.candidates[0], t2='';((c&&c.content&&c.content.parts)||[]).forEach(function(x){if(x.text)t2+=x.text});
+      t2=t2.replace(/```json/gi,'').replace(/```/g,'').trim();var s=t2.indexOf('{'),e=t2.lastIndexOf('}');if(s>-1&&e>s)t2=t2.slice(s,e+1);
+      try{var d=JSON.parse(t2);log('✅ listing + trend plan bani via '+m);return d}catch(err){log('❌ '+m+' → JSON parse fail');return step()}})}
   return step();
 }
 
@@ -341,7 +376,7 @@ function oneImage(prompt){
     if(blocked[v.m])return step();
     return call(v.m,parts,MODES[v.j]?{responseModalities:MODES[v.j]}:null).then(function(r){
       if(r.err){last=r.err;
-        if(r.status===429&&/limit:\s*0/.test(r.msg)){blocked[v.m]=true;log('⛔ '+v.m+' → free API key pe quota 0 (paid model) — skip');last='QUOTA0';return step()}
+        if(r.status===429&&/limit:\s*0/.test(r.msg)){blocked[v.m]=true;log('⛔ '+v.m+' → free API key pe quota 0 — skip');last='QUOTA0';return step()}
         if(r.status===429){var s=/retry in ([\d.]+)/.exec(r.msg);var d=s?Math.min(65,Math.ceil(+s[1])):20;
           if(!waited){waited=true;log('⏳ quota busy, '+d+' sec ruk kar dobara...');say('⏳ Quota busy — '+d+' second ruk raha hoon.');return wait(d*1000).then(function(){i--;return step()})}
           blocked[v.m]=true;log('⛔ '+v.m+' quota khatam — skip');return step()}
@@ -380,8 +415,12 @@ function makeCard(label,prompt){
 }
 $('addbtn').addEventListener('click',function(){$('addfile').click()});
 $('addfile').addEventListener('change',function(e){Array.prototype.forEach.call(e.target.files,function(f){toB64(f).then(function(b){addPhoto('data:'+(f.type||'image/png')+';base64,'+b,'AI Studio photo')})})});
-function nextScene(){if(!scenes.length)scenes=['clean pure white studio','soft grey gradient studio','white marble surface','light wooden table with daylight','minimal beige backdrop','Indian home shelf','flat lay on white cloth','festive gift setting with soft bokeh','bright outdoor natural light','pastel gradient with simple props'];
-  var s=scenes[sceneI%scenes.length];sceneI++;return s}
+function trendScenes(){var t=trendInfo();var f=t.fest[0]||'festive';
+  return ['clean pure white studio','soft grey gradient studio','white marble surface with soft daylight',
+   f+' themed Indian setting with matching decor and warm lights','light wooden table with monsoon window light',
+   'Indian home shelf with simple decor','flat lay on textured cloth with '+f+' props',
+   'gifting scene with wrapped gift box and ribbon','bright outdoor natural light','pastel gradient with minimal props']}
+function nextScene(){if(!scenes.length)scenes=trendScenes();var s=scenes[sceneI%scenes.length];sceneI++;return s}
 
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function fld(t,v,raw){if(v==null||v==='')return '';var id='f'+Math.random().toString(36).slice(2,8);
@@ -389,6 +428,7 @@ function fld(t,v,raw){if(v==null||v==='')return '';var id='f'+Math.random().toSt
 function wireCopy(box){box.querySelectorAll('button[data-c]').forEach(function(b){b.onclick=function(){navigator.clipboard.writeText($(b.getAttribute('data-c')).innerText)
   .then(function(){b.textContent='✅ Copied';setTimeout(function(){b.textContent='📋 Copy'},1400)})}})}
 function renderListing(d){var box=$('listing'),h='<div class="panel"><h3><em>✓</em> Meesho Listing Pack</h3><p class="note">Har field ke aage Copy — sidha Meesho form me paste karo.</p>';
+  if(d.trend_note)h+=fld('🎆 Trend engine ne pakda',d.trend_note);
   h+=fld('Product Name',d.product_name)+fld('Title (main)',d.title)+fld('Chhota title',d.title_short);
   if(d.alt_titles&&d.alt_titles.length)h+=fld('Alternate titles',d.alt_titles.join('\n'));
   h+=fld('Category',d.category_path)+fld('Product type',d.product_type)+fld('Material',d.material);
@@ -403,12 +443,14 @@ function renderListing(d){var box=$('listing'),h='<div class="panel"><h3><em>✓
   if(d.faq&&d.faq.length)h+=fld('FAQ',d.faq.map(function(f){return 'Q: '+f.q+'\nA: '+f.a}).join('\n\n'));
   h+='</div>';box.innerHTML=h;wireCopy(box);$('copyall').style.display='block';
   if(d.price_max){$('c_sell').value=d.price_max;if($('buy').value)$('c_buy').value=$('buy').value;if(d.gst_rate)$('c_gst').value=d.gst_rate;calc()}}
+function fullPrompt(it){return it.prompt+(it.ratio?(' Aspect ratio '+it.ratio+'.'):'')+LOCK}
 function renderPrompts(plan){var box=$('prompts');if(!plan.length){box.innerHTML='';return}
-  var h='<div class="panel"><h3><em>🎨</em> AI Studio Prompt Pack — free images</h3><p class="note">Yeh sabse pakka tareeka hai (Jio/free plan wale iska use karein): prompt Copy karo → <a href="https://aistudio.google.com/prompts/new_chat" target="_blank">AI Studio kholo</a> → model me <b>Nano Banana (image)</b> chuno → apni product photo upload karo → prompt paste karo → image ban jayegi → download → niche <b>Board me add karo</b>.</p>';
-  plan.forEach(function(it,i){h+=fld((i+1)+'. '+(it.label||('Image '+(i+1))),it.prompt+LOCK)});
+  var t=trendInfo();
+  var h='<div class="panel"><h3><em>🎨</em> Trend Prompt Pack — ready to paste</h3><p class="note">Trend engine ne khud pakda: <b>'+esc(t.fest.slice(0,3).join(', '))+'</b>. Har prompt <b>poora ready</b> hai — product lock (colour/design/size same) prompt ke andar hi likha hai, tujhe kuch add nahi karna. Copy karo → <a href="https://aistudio.google.com/prompts/new_chat" target="_blank">AI Studio kholo</a> → photo upload → paste → image.</p>';
+  plan.forEach(function(it,i){h+=fld((i+1)+'. '+(it.label||('Image '+(i+1)))+(it.ratio?(' · '+it.ratio):''),fullPrompt(it))});
   h+='<button class="btn2" id="pall">📋 Saare prompts ek saath copy karo</button><a class="btn2" href="https://aistudio.google.com/prompts/new_chat" target="_blank">🎨 Google AI Studio kholo</a></div>';
   box.innerHTML=h;wireCopy(box);
-  $('pall').onclick=function(){navigator.clipboard.writeText(plan.map(function(it,i){return (i+1)+'. '+(it.label||'')+'\n'+it.prompt+LOCK}).join('\n\n'))
+  $('pall').onclick=function(){navigator.clipboard.writeText(plan.map(function(it,i){return (i+1)+'. '+(it.label||'')+'\n'+fullPrompt(it)}).join('\n\n'))
     .then(function(){$('pall').textContent='✅ Saare prompts copy ho gaye';setTimeout(function(){$('pall').textContent='📋 Saare prompts ek saath copy karo'},1600)})}}
 $('copyall').addEventListener('click',function(){navigator.clipboard.writeText($('listing').innerText).then(function(){say('📋 Poori listing copy ho gayi.','ok')})});
 
@@ -417,7 +459,7 @@ function guard(){if(!$('key').value.trim()){say('Pehle Gemini API key daalo 🔑
   if(!$('brief').value.trim()){say('10-15 word me details likho ✍️','err');return false}return true}
 function ensureModels(){if(imgModels||txtModels)return Promise.resolve();
   return listModels().then(function(r){imgModels=r.img.length?r.img:null;txtModels=r.txt.length?r.txt:null;fillModelBox(r.img);log('IMAGE: '+r.img.join(', ')+'\nTEXT: '+r.txt.slice(0,6).join(', '))}).catch(function(e){log('ListModels fail: '+e.message)})}
-var Q0MSG='⛔ Tumhari API key pe image banane ka quota 0 hai (Google image models free API pe allowed nahi).\nJio / AI Pro subscription sirf Gemini app + AI Studio website pe chalta hai, API pe nahi.\n\n✅ Karo yeh: niche 🎨 AI Studio Prompt Pack se prompt copy karo aur AI Studio me paste karo — wahan free banegi.\nYa AI Studio me billing on karo (≈₹3/image), phir yeh page khud sab bana dega.';
+var Q0MSG='⛔ Tumhari API key pe image banane ka quota 0 hai (Google image models free API pe allowed nahi).\nJio / AI Pro subscription sirf Gemini app + AI Studio website pe chalta hai.\n\n✅ Karo yeh: niche 🎨 Trend Prompt Pack se prompt copy karo aur AI Studio me paste karo — wahan free banegi.\nYa AI Studio me billing on karo (≈₹3/image), phir yeh page khud sab bana dega.';
 
 $('one').addEventListener('click',function(){if(running||!guard())return;running=true;$('one').disabled=true;$('go').disabled=true;
   say('🧪 1 test image bana raha hoon...');$('log').textContent='';
@@ -428,30 +470,29 @@ $('one').addEventListener('click',function(){if(running||!guard())return;running
 $('stop').addEventListener('click',function(){stopFlag=true;say('Theek hai — ruk jaunga ✅')});
 $('go').addEventListener('click',function(){if(running||!guard())return;
   running=true;stopFlag=false;data=null;$('go').disabled=true;$('one').disabled=true;$('stop').style.display='block';
-  $('listing').innerHTML='';$('prompts').innerHTML='';$('log').textContent='';$('bar').style.width='5%';
-  say('🧠 Photo dekh raha hoon aur poori listing soch raha hoon... (15-25 sec)');
+  $('listing').innerHTML='';$('prompts').innerHTML='';$('log').textContent='';$('bar').style.width='5%';scenes=[];sceneI=0;
+  say('🧠 Photo dekh raha hoon, aaj ka trend laga raha hoon aur poori listing soch raha hoon... (15-30 sec)');
   ensureModels().then(analyse).then(function(d){
     data=d;renderListing(d);putH({brief:$('brief').value.trim(),buy:$('buy').value.trim(),title:d.title});
-    scenes=(d.extra_scenes&&d.extra_scenes.length)?d.extra_scenes:scenes;
-    var plan=(d.image_plan||[]).slice(0,6).map(function(x,i){return{label:x.label||('Image '+(i+1)),prompt:x.prompt}});
-    (d.colours||[]).slice(0,6).forEach(function(c){plan.push({label:c+' variant',prompt:'Photograph this exact same product on a clean pure white studio background, shown in the '+c+' colourway of this identical design — only the product colour differs, everything else identical.'})});
+    scenes=(d.extra_scenes&&d.extra_scenes.length)?d.extra_scenes:trendScenes();
+    var plan=(d.image_plan||[]).slice(0,8).map(function(x,i){return{label:x.label||('Image '+(i+1)),ratio:x.ratio||'1:1',prompt:x.prompt}});
+    (d.colours||[]).slice(0,6).forEach(function(c){plan.push({label:c+' variant',ratio:'1:1',prompt:'Photograph this exact same product on a clean pure white studio background, shown in the '+c+' colourway of this identical design — only the product colour differs, every other detail of shape, design, print, logo, material and size stays identical.'})});
     lastPlan=plan.slice(0);
     if($('studio').checked)renderPrompts(lastPlan);
     function done(msg,cls){running=false;$('go').disabled=false;$('one').disabled=false;$('stop').style.display='none';$('bar').style.width='100%';say(msg,cls);dash()}
-    if(!$('apiimg').checked){return done('✅ Listing ready! ➕ Niche 🎨 Prompt Pack se prompt copy karke AI Studio me paste karo — images free ban jayengi, phir “Board me add karo”.\n(API se yahin banwani ho to “🤖 Images API se banao” tick karo — uske liye billing on chahiye.)','ok')}
-    say('✅ Listing text ready! Ab images bana raha hoon — product same, sirf background change.','ok');
+    if(!$('apiimg').checked)return done('✅ Listing + '+lastPlan.length+' trend prompts ready!\nNiche 🎨 Trend Prompt Pack se prompt copy karo → AI Studio me photo ke saath paste → image free ban jayegi → phir “Board me add karo”.','ok');
+    say('✅ Listing + trend plan ready! Ab images bana raha hoon — product same, sirf background/scene change.','ok');
     var n=0,streak=0,round=0;
     function next(){
       if(stopFlag)return done('✅ Ruk gaya. '+okN+' images board pe hain.','ok');
-      if(!imgList().length)return done(Q0MSG,'err');
-      if(streak>=2)return done(Q0MSG,'err');
+      if(!imgList().length||streak>=2)return done(Q0MSG,'err');
       if(!plan.length){
         if(!$('auto').checked)return done('✅ Ho gaya! '+okN+' images board pe. Pasand na aaye to 🔄 Dobara, pasand aaye to ❤️ + ⬇️.','ok');
-        round++;for(var i=0;i<3;i++){var s=nextScene();plan.push({label:'Extra: '+s,prompt:'Photograph this exact same product with this background/scene instead: '+s+'. Fresh camera angle and lighting, marketplace quality.'})}
-        say('♻️ Non-stop round '+round+' — naye photo bana raha hoon. Ho gaya to “✅ Bas ho gaya” dabao.')}
-      var it=plan.shift();n++;$('bar').style.width=Math.min(96,10+n*6)+'%';
+        round++;for(var i=0;i<3;i++){var s=nextScene();plan.push({label:'Trend extra: '+s,ratio:'1:1',prompt:'Photograph this exact same product with this background/scene instead: '+s+'. Fresh camera angle and lighting, marketplace quality.'})}
+        say('♻️ Non-stop round '+round+' — naye trend photo bana raha hoon. Ho gaya to “✅ Bas ho gaya” dabao.')}
+      var it=plan.shift();n++;$('bar').style.width=Math.min(96,10+n*5)+'%';
       say('🖼️ Image '+n+' — '+it.label+'\n(product lock ON: colour/design/size same, sirf background change)');
-      makeCard(it.label,it.prompt).run('').then(function(ok){streak=ok?0:streak+1;setTimeout(next,600)})}
+      makeCard(it.label,fullPrompt(it)).run('').then(function(ok){streak=ok?0:streak+1;setTimeout(next,600)})}
     next();
   }).catch(function(e){running=false;$('go').disabled=false;$('one').disabled=false;$('stop').style.display='none';
     say('❌ Listing nahi ban payi: '+e.message+'\n🔍 Key test karo dabao aur kaali box ka screenshot bhejo.','err');log(String(e.message||e))});
@@ -460,8 +501,8 @@ $('go').addEventListener('click',function(){if(running||!guard())return;
 $('more').addEventListener('click',function(){if(running)return say('Ruko, current kaam khatam hone do.');if(!guard())return;
   if(!imgList().length)return say(Q0MSG,'err');
   running=true;var made=0;
-  function loop(){if(made>=3){running=false;return say('➕ 3 nayi images board pe.','ok')}var s=nextScene();made++;
-    makeCard('Extra: '+s,'Photograph this exact same product with this background/scene instead: '+s+'. Fresh camera angle and lighting, marketplace quality.').run('').then(function(ok){if(!ok&&!imgList().length){running=false;return say(Q0MSG,'err')}setTimeout(loop,600)})}
+  function loop(){if(made>=3){running=false;return say('➕ 3 nayi trend images board pe.','ok')}var s=nextScene();made++;
+    makeCard('Trend extra: '+s,'Photograph this exact same product with this background/scene instead: '+s+'. Fresh camera angle and lighting, marketplace quality.').run('').then(function(ok){if(!ok&&!imgList().length){running=false;return say(Q0MSG,'err')}setTimeout(loop,600)})}
   ensureModels().then(loop)});
 $('all').addEventListener('click',function(){cards.filter(function(c){return c.url}).forEach(function(c,i){setTimeout(function(){c.el.querySelector('.dl').click()},i*700)})});
 $('alllk').addEventListener('click',function(){var l=cards.filter(function(c){return c.url&&c.liked});if(!l.length)return say('Pehle kuch images pe ❤️ Pasand dabao.');l.forEach(function(c,i){setTimeout(function(){c.el.querySelector('.dl').click()},i*700)})});
