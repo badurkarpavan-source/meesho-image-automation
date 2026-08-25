@@ -17,10 +17,9 @@ if (!KEY) {
 
 // Alag-alag models try karega jab tak ek kaam na kar jaye.
 const ATTEMPTS = [
-  { model: "gemini-2.5-flash", tool: { google_search: {} } },
-  { model: "gemini-2.0-flash", tool: { google_search: {} } },
-  { model: "gemini-1.5-flash", tool: { google_search_retrieval: {} } },
-  { model: "gemini-2.0-flash", tool: null },
+  { model: "gemini-3.6-flash", tool: { google_search: {} } },
+  { model: "gemini-3.6-flash", tool: null },
+  { model: "gemini-3.6-pro", tool: { google_search: {} } },
 ];
 
 const PROMPT = [
