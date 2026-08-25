@@ -352,4 +352,164 @@ drawH();
 
 function listTextModels(){var k=$('key').value.trim();
   return fetch('https://generativelanguage.googleapis.com/v1beta/models?key='+encodeURIComponent(k)+'&pageSize=1000')
-  .then(
+  .then(function(r){return r.json().then(function(j){return{ok:r.ok,status:r.status,j:j}})})
+  .then(function(o){if(!o.ok)throw new Error('HTTP '+o.status+': '+((o.j.error&&o.j.error.message)||'unknown'));
+    var all=(o.j.models||[]).filter(function(m){return (m.supportedGenerationMethods||[]).indexOf('generateContent')>-1}).map(function(m){return m.name.replace('models/','')});
+    return all.filter(function(n){return !/image|embedding|aqa|tts|veo|imagen|audio|robotics|lyria|computer-use|deep-research|antigravity|live/i.test(n)})
+      .sort(function(a,b){var s=function(n){return (/2\.5-flash$/.test(n)?6:0)+(/flash/.test(n)?3:0)+(/lite/.test(n)?1:0)+(/pro/.test(n)?-3:0)+(/preview/.test(n)?-2:0)};return s(b)-s(a)})})}
+$('test').addEventListener('click',function(){if(!$('key').value.trim())return say('Enter your API key first.','err');
+  say('Checking the key...');$('log').textContent='';
+  listTextModels().then(function(t){txtModels=t.length?t:null;
+    say('Key is valid. Ready to write listings and prompts.\nModel: '+(t[0]||'-'),'ok');log('TEXT MODELS: '+t.slice(0,8).join(', '))})
+  .catch(function(e){say('Key failed: '+e.message,'err');log(e.message)})});
+
+function call(model,parts,cfg){var k=$('key').value.trim();var body={contents:[{role:'user',parts:parts}]};if(cfg)body.generationConfig=cfg;
+  return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key='+encodeURIComponent(k),
+   {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+  .then(function(r){return r.json().then(function(j){return{ok:r.ok,status:r.status,j:j}})})
+  .then(function(o){if(!o.ok){var m=(o.j.error&&o.j.error.message)||'unknown';return{err:'HTTP '+o.status+': '+m,status:o.status,msg:m}}return{j:o.j}})
+  .catch(function(e){return{err:'network: '+(e.message||e),status:0,msg:''}})}
+
+var SCHEMA='{"product_name":"","sku_slug":"","title":"","title_short":"","alt_titles":["",""],"category_path":"","product_type":"","material":"","colours":[""],"size":"","net_weight":"","features":["","","","",""],"description_en":"","description_hi":"","keywords":[""],"hsn_code":"","gst_rate":18,"price_min":0,"price_max":0,"mrp":0,"whats_in_box":"","care":"","faq":[{"q":"","a":""}],"trend_note":"","use_case":{"action":"","place":"","scene":""},"palette":"","headline":"","badge":"","numbers":[{"big":"","caption":""}],"image_plan":[{"label":"","type":"infographic","ratio":"1:1","prompt":""}]}';
+
+function analyse(){
+  var brief=$('brief').value.trim(), buy=$('buy').value.trim(), col=$('colours').value.trim(), L=$('lang').value, N=+$('cnt').value||8;
+  var t=trendInfo(), man=$('trend').value.trim();
+  var trendTxt=man?('The seller wants this trend theme: '+man+'.'):('Today it is '+t.label+' in India. Current and upcoming festivals/events: '+t.fest.join(', ')+'. Season context: '+t.season+'.');
+  var p='You are a senior Meesho catalogue manager AND a marketplace infographic art director for an Indian reseller (Shree Hari Export). Study the reference product photo and the seller note. Seller note: "'+brief+'".'+(col?(' Colours available: '+col+'.'):'')+(buy?(' Purchase cost per piece: Rs '+buy+' bought without a GST bill, so NO input tax credit.'):'')+
+  ' '+trendTxt+' Decide the trend angle, the design details and the on-image copy YOURSELF \u2014 the seller must never have to think or repeat instructions. Never ask questions.'+
+  ' HOUSE DESIGN STYLE (fixed, always): "Marketplace Infographic" \u2014 the Wildberries/Ozon style product-card infographic, same family as Amazon A+ feature-callout modules: bento grid of rounded panels, one oversized bold display headline, monochromatic palette built from the product\u2019s own colour, cut-out product with soft shadow, macro feature callouts with thin leader lines, pill badge, and a bottom strip of three big numbers. Every infographic prompt you write must produce that look.'+
+  ' ABSOLUTE RULE FOR EVERY SINGLE PROMPT YOU WRITE: no human face, head, hair or full body may appear. Never describe a model, woman, man, home cook, girl, boy or person\u2019s face. Where a human touch is needed, describe ONLY hands or forearms cropped at the wrist/forearm. The product must always be the hero of the frame: large, centred, tack-sharp, unobstructed, with the background softly blurred and props minimal. Write these constraints explicitly inside every prompt.'+
+  ' Reply with ONLY minified valid JSON in exactly this shape: '+SCHEMA+
+  ' Rules: title = keyword-rich English, max 100 chars, Meesho style. title_short under 60 chars. category_path = Meesho category path. colours = what you see or the seller listed. size and net_weight = realistic estimate with units. features = exactly 5 short benefit bullets. description_en = 70-90 words then 5 tick bullets on new lines. description_hi = same in simple Hindi/Hinglish. keywords = 12 lowercase Indian search terms including 2 seasonal ones. hsn_code = correct 8-digit Indian HSN with matching gst_rate.'+
+  ' sku_slug = ONE short uppercase word, letters and numbers only, max 12 chars, that names the product for a SKU code (examples: STEELROPE, PEELER, SIPPER, WALLPAPER). No spaces, no punctuation.'+
+  ' use_case = work out ON YOUR OWN what this product is actually used for and WHERE it is used in a real Indian home. use_case.action = the real job the product does (example: drying wet clothes). use_case.place = the true place it is used (example: balcony, bathroom, kitchen, wall). use_case.scene = one vivid sentence describing that real scene with the product fully installed and doing its job.'+
+  (buy?' price_min/price_max = GST-inclusive Meesho price leaving Rs 70-100 net profit after GST, Rs 12 packing and 8 percent return loss. mrp about 2.2x price_max.':' price_min/price_max = sensible Meesho price range, mrp 2.2x.')+
+  ' whats_in_box and care = one line each. faq = 3 buyer questions with answers. trend_note = one short line saying which festival/season trend you used and why it will sell.'+
+  ' palette = the exact monochrome palette to use, naming the product colour and 2 supporting tones plus one dark accent. headline = the 1-3 word oversized display headline in '+L+'. badge = a 3-5 word pill badge claim in '+L+'. numbers = exactly 3 items, each with a short big value (like "360\u00b0", "2 in 1", "5 min") and a 3-6 word caption in '+L+'.'+
+  ' image_plan = exactly '+N+' items. Fields: label = short English label; type = "infographic" or "photo"; ratio = "1:1" except one "4:5" and one "9:16"; prompt = a COMPLETE self-contained English image-generation instruction that can be pasted into Google AI Studio together with the product photo, with nothing left for the seller to add.'+
+  ' Item order and roles: (1) type photo \u2014 clean pure white marketplace main image, product only, no hands, no props, no text at all. (2) type infographic \u2014 HERO CARD: the oversized headline, the product cut-out, the pill badge, one small macro inset panel, and the bottom strip with the three numbers. (3) type infographic \u2014 SPECIFICATIONS BENTO: four rounded panels each holding a macro crop of one real product part with a bold caption plus grey sub-caption, thin leader lines, tiny section label "Specifications". (4) type infographic \u2014 DARK FEATURE CARD: deep dark navy/charcoal gradient panel, the product large and glowing softly, one or two big feature headings with short sub-text. (5) type infographic \u2014 BENEFITS LIST CARD: light background, four stacked bold benefit headings each with one line of grey sub-text on the left, product photo on the right.'+
+  ' (6) type photo \u2014 REAL IN-USE LIFESTYLE SCENE: use the use_case you decided above. Show the product ACTUALLY INSTALLED and doing its real job in a true Indian home setting \u2014 for example, if it is a cloth-drying steel rope, show the rope stretched tight across a real balcony with a few clothes hung on it and drying; if it is a peeler, show it mid-peel on a vegetable. The product must be the clear hero: large, tack-sharp, faithful to the uploaded reference (same shape, colour, design, part count), fully visible and genuinely in use. Absolutely NO human face, head, hair or full body \u2014 include ONLY hands or forearms cropped at the wrist if a human touch is truly needed, otherwise no person at all. Warm natural Indian daylight, a realistic setting matching use_case.place, background softly blurred, at most one or two tidy muted props, premium editorial product-photography feel.'+
+  ' (7) type infographic \u2014 FESTIVE OFFER CARD matching the current trend with concrete festive props described (marigold flowers, diyas, rakhi thread, monsoon window light, wedding decor as suitable) but absolutely no people or faces, a clear price line and a short festival hook headline, ratio 4:5.'+
+  ' (8) type infographic \u2014 VERTICAL 9:16 REEL/STORY CREATIVE with one bold headline, a short call to action, product large and centred, and at most a hand entering the frame \u2014 no face.'+(N>8?' Items 9 onwards: more useful cards such as size and dimensions diagram, what is in the box grid, problem vs solution split card, three-step how-to-use card shown with hands only, and one clean white photo per available colour.':'')+
+  ' In every infographic prompt, WRITE OUT the exact text strings that must be rendered on the image (headline, badge, each caption, each sub-caption, each number) so the spelling is correct, and keep the total on-image words under 25. All on-image text must be in '+L+'.'+
+  ' Also state in every prompt that the product must stay exactly as in the uploaded photo and only the background, layout and graphics change.';
+  var parts=refs.map(function(r){return{inline_data:{mime_type:r.mime,data:r.b64}}});parts.push({text:p});
+  var list=(txtModels||[]).concat(TXT_FALLBACK), i=0;
+  function step(){if(i>=list.length)return Promise.reject(new Error('no text model responded'));var m=list[i++];
+    return call(m,parts,{temperature:0.85,responseMimeType:'application/json'}).then(function(r){
+      if(r.err){log('failed '+m+' \u2192 '+r.err);return step()}
+      var c=r.j.candidates&&r.j.candidates[0], t2='';((c&&c.content&&c.content.parts)||[]).forEach(function(x){if(x.text)t2+=x.text});
+      t2=t2.replace(/```json/gi,'').replace(/```/g,'').trim();var s=t2.indexOf('{'),e=t2.lastIndexOf('}');if(s>-1&&e>s)t2=t2.slice(s,e+1);
+      try{var d=JSON.parse(t2);log('success via '+m);return d}catch(err){log('failed '+m+' \u2192 JSON parse error');return step()}})}
+  return step();
+}
+
+function safeName(){return ((data&&data.product_name?data.product_name:($('brief').value||'product')).toLowerCase().replace(/[^a-z0-9]+/g,'-')).slice(0,40)}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function fld(t,v,raw,pr){if(v==null||v==='')return '';var id='f'+Math.random().toString(36).slice(2,8);
+  return '<div class="border border-outline-variant rounded-sm p-5"><div class="flex justify-between items-center gap-4 mb-3">'+
+  '<b class="font-label-sm text-xs uppercase tracking-widest text-on-surface-variant">'+esc(t)+'</b>'+
+  '<button class="border border-outline-variant rounded-sm px-4 py-1.5 font-label-sm text-xs uppercase tracking-widest text-primary hover:bg-surface-container-high transition-colors whitespace-nowrap" data-c="'+id+'">Copy</button></div>'+
+  '<div class="whitespace-pre-wrap '+(pr?'text-on-surface-variant text-sm pv':'text-on-surface text-base')+'" id="'+id+'">'+(raw||esc(v))+'</div></div>'}
+function wireCopy(box){box.querySelectorAll('button[data-c]').forEach(function(b){b.onclick=function(){navigator.clipboard.writeText($(b.getAttribute('data-c')).innerText)
+  .then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1400)})}})}
+
+function fullPrompt(it){var s=(it.type==='photo')?'':styleSpec();
+  return it.prompt+(it.ratio?(' Aspect ratio '+it.ratio+'.'):'')+s+NOFACE+LOCK}
+function renderPrompts(plan){var box=$('prompts');if(!plan.length){box.innerHTML='';return}
+  var t=trendInfo();
+  var h='<div class="border-t border-outline-variant pt-16 md:pt-24">'+
+  '<h2 class="font-headline-lg text-primary mb-4 text-2xl uppercase tracking-widest">Prompt pack \u2014 '+plan.length+' ready prompts</h2>'+
+  '<p class="text-on-surface-variant mb-8 text-lg max-w-3xl">Marketplace Infographic style · trend: '+esc(t.fest.slice(0,3).join(', '))+' · no faces, hands only, product hero. Every prompt is complete: copy it, open AI Studio, upload the product photo, paste and press enter.</p>'+
+  '<div class="flex flex-col md:flex-row gap-5 mb-10">'+
+  '<button class="flex-1 bg-primary text-background py-4 rounded-sm font-label-sm text-sm uppercase tracking-wider font-bold hover:bg-opacity-90 transition-all" id="pall">Copy all '+plan.length+' prompts</button>'+
+  '<a class="flex-1 border border-outline-variant py-4 rounded-sm font-label-sm text-sm uppercase tracking-wider text-primary text-center hover:bg-surface-container-high transition-all" href="https://aistudio.google.com/prompts/new_chat" target="_blank">Open Google AI Studio</a></div>'+
+  '<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">';
+  plan.forEach(function(it,i){h+=fld((i+1)+'. '+(it.label||('Image '+(i+1)))+' · '+(it.type==='photo'?'photo':'infographic')+(it.ratio?(' · '+it.ratio):''),fullPrompt(it),null,true)});
+  h+='</div></div>';box.innerHTML=h;wireCopy(box);
+  $('pall').onclick=function(){navigator.clipboard.writeText(plan.map(function(it,i){return (i+1)+'. '+(it.label||'')+'\n'+fullPrompt(it)}).join('\n\n'))
+    .then(function(){$('pall').textContent='All prompts copied';setTimeout(function(){$('pall').textContent='Copy all '+plan.length+' prompts'},1600)})}}
+
+function renderListing(d){var box=$('listing');
+  var h='<div class="border-t border-outline-variant pt-16 md:pt-24">'+
+  '<h2 class="font-headline-lg text-primary mb-4 text-2xl uppercase tracking-widest">Meesho listing pack</h2>'+
+  '<p class="text-on-surface-variant mb-10 text-lg max-w-3xl">Every field has its own copy button so you can paste it straight into the Meesho catalogue form.</p>'+
+  '<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">';
+  h+=fld('SKU (Style code / Product ID)',buildSKU());
+  h+=fld('Wholesaler source',curWholesaler().name+' \u2014 '+curWholesaler().addr);
+  if(d.use_case&&(d.use_case.action||d.use_case.place||d.use_case.scene))h+=fld('Real use scene',[d.use_case.action,d.use_case.place,d.use_case.scene].filter(Boolean).join(' \u2014 '));
+  if(d.trend_note)h+=fld('Trend used',d.trend_note);
+  if(d.palette)h+=fld('Monochrome palette',d.palette);
+  if(d.headline)h+=fld('Display headline',d.headline);
+  if(d.badge)h+=fld('Pill badge text',d.badge);
+  if(d.numbers&&d.numbers.length)h+=fld('Three big numbers',d.numbers.map(function(n){return n.big+' \u2014 '+n.caption}).join('\n'));
+  h+=fld('Product name',d.product_name)+fld('Title',d.title)+fld('Short title',d.title_short);
+  if(d.alt_titles&&d.alt_titles.length)h+=fld('Alternate titles',d.alt_titles.join('\n'));
+  h+=fld('Category',d.category_path)+fld('Product type',d.product_type)+fld('Material',d.material);
+  if(d.colours&&d.colours.length)h+=fld('Colours',d.colours.join(', '));
+  h+=fld('Size',d.size)+fld('Net weight',d.net_weight);
+  if(d.features&&d.features.length)h+=fld('Five features',d.features.map(function(x){return '\u2714 '+x}).join('\n'));
+  h+=fld('Description (English)',d.description_en)+fld('Description (Hindi)',d.description_hi);
+  if(d.keywords&&d.keywords.length)h+=fld('Search keywords',d.keywords.join(', '),'<div class="flex flex-wrap gap-2">'+d.keywords.map(function(x){return '<span class="border border-outline-variant rounded-full px-3 py-1 text-xs font-label-sm text-on-surface">'+esc(x)+'</span>'}).join('')+'</div>');
+  h+=fld('HSN code',d.hsn_code)+fld('GST rate',(d.gst_rate!=null?d.gst_rate+'%':''));
+  h+=fld('Selling price (GST inclusive)',(d.price_min&&d.price_max)?('₹'+d.price_min+' – ₹'+d.price_max):'')+fld('MRP',d.mrp?('₹'+d.mrp):'');
+  h+=fld('What is in the box',d.whats_in_box)+fld('Care instructions',d.care);
+  if(d.faq&&d.faq.length)h+=fld('Buyer FAQ',d.faq.map(function(f){return 'Q: '+f.q+'\nA: '+f.a}).join('\n\n'));
+  h+='</div></div>';box.innerHTML=h;wireCopy(box);$('copyall').style.display='block';
+  if(d.price_max){$('c_sell').value=d.price_max;if($('buy').value)$('c_buy').value=$('buy').value;if(d.gst_rate)$('c_gst').value=d.gst_rate;calc()}}
+$('copyall').addEventListener('click',function(){navigator.clipboard.writeText($('listing').innerText).then(function(){say('The entire listing has been copied.','ok')})});
+
+function guard(){if(!$('key').value.trim()){say('Enter your Gemini API key first.','err');return false}
+  if(!refs.length){say('Select the product photo.','err');return false}
+  if(!$('brief').value.trim()){say('Write about ten to fifteen words of basic details.','err');return false}return true}
+
+$('go').addEventListener('click',function(){if(running||!guard())return;
+  running=true;data=null;$('go').disabled=true;$('go').classList.add('opacity-50');$('listing').innerHTML='';$('prompts').innerHTML='';$('log').textContent='';$('bar').style.width='15%';
+  say('Reading the photo, applying the current market trend and writing the Marketplace Infographic prompts. This takes 15 to 30 seconds.');
+  var pre=txtModels?Promise.resolve():listTextModels().then(function(t){txtModels=t.length?t:null}).catch(function(e){log('ListModels: '+e.message)});
+  pre.then(analyse).then(function(d){
+    data=d;$('bar').style.width='75%';
+    var plan=(d.image_plan||[]).map(function(x,i){return{label:x.label||('Image '+(i+1)),type:(x.type==='photo'?'photo':'infographic'),ratio:x.ratio||'1:1',prompt:x.prompt}}).filter(function(x){return x.prompt});
+    (d.colours||[]).slice(0,6).forEach(function(c){plan.push({label:c+' colour photo',type:'photo',ratio:'1:1',prompt:'Photograph this exact same product alone on a clean pure white studio background, shown in the '+c+' colourway of this identical design \u2014 only the product colour differs, every other detail of shape, design, print, logo, material and size stays identical. No hands, no people, no props, no text.'})});
+    lastPlan=plan;renderPrompts(plan);renderListing(d);
+    putH({brief:$('brief').value.trim(),buy:$('buy').value.trim(),title:d.title});
+    running=false;$('go').disabled=false;$('go').classList.remove('opacity-50');$('bar').style.width='100%';
+    say('Done. '+plan.length+' prompts and the full listing are ready.\nEvery prompt enforces no faces, hands only and the product as hero.\nCopy a prompt, open AI Studio, upload the product photo, paste and press enter.','ok');
+    var pn=$('prompts');if(pn)pn.scrollIntoView({behavior:'smooth',block:'start'});
+  }).catch(function(e){running=false;$('go').disabled=false;$('go').classList.remove('opacity-50');$('bar').style.width='0';
+    say('Could not generate: '+e.message+'\nPress Test key and share a screenshot of the log below.','err');log(String(e.message||e))});
+});
+
+function addPhoto(url,name){
+  var el=document.createElement('div');el.className='border border-outline-variant rounded-sm overflow-hidden';
+  el.innerHTML='<img loading="lazy" src="'+url+'" alt="" class="w-full aspect-square object-cover cursor-zoom-in bg-surface-container" />'+
+  '<div class="px-3 py-2 text-xs font-label-sm text-on-surface-variant break-all">'+esc(name)+'</div>'+
+  '<div class="grid grid-cols-3 border-t border-outline-variant font-label-sm text-xs uppercase tracking-widest">'+
+  '<button class="lk py-3 text-primary border-r border-outline-variant hover:bg-surface-container-high transition-colors">Like</button>'+
+  '<a class="dl py-3 text-primary text-center border-r border-outline-variant hover:bg-surface-container-high transition-colors" download="'+safeName()+'-'+(cards.length+1)+'.png" href="'+url+'">Save</a>'+
+  '<button class="rm py-3 text-primary hover:bg-surface-container-high transition-colors">Remove</button></div>';
+  $('out').appendChild(el);var card={el:el,url:url,liked:false};cards.push(card);okN++;
+  el.querySelector('img').onclick=function(){$('lbi').src=url;$('lb').classList.remove('hidden');$('lb').classList.add('grid')};
+  el.querySelector('.lk').onclick=function(){card.liked=!card.liked;
+    el.classList.toggle('border-success',card.liked);this.classList.toggle('bg-surface-container-high',card.liked);
+    this.textContent=card.liked?'Liked':'Like';lkN=cards.filter(function(c){return c.liked}).length;dash()};
+  el.querySelector('.rm').onclick=function(){cards=cards.filter(function(c){return c!==card});el.remove();okN=cards.length;lkN=cards.filter(function(c){return c.liked}).length;dash()};
+  dash()}
+$('addbtn').addEventListener('click',function(){$('addfile').click()});
+$('addfile').addEventListener('change',function(e){Array.prototype.forEach.call(e.target.files,function(f){toB64(f).then(function(b){addPhoto('data:'+(f.type||'image/png')+';base64,'+b,f.name)})})});
+$('all').addEventListener('click',function(){if(!cards.length)return say('The board is empty.');cards.forEach(function(c,i){setTimeout(function(){c.el.querySelector('.dl').click()},i*700)})});
+$('alllk').addEventListener('click',function(){var l=cards.filter(function(c){return c.liked});if(!l.length)return say('Like a few images first.');l.forEach(function(c,i){setTimeout(function(){c.el.querySelector('.dl').click()},i*700)})});
+$('clear').addEventListener('click',function(){cards=[];$('out').innerHTML='';okN=0;lkN=0;dash()});
+
+function kv(label,value,good){return '<div class="border border-outline-variant rounded-sm p-4"><span class="block font-label-sm text-xs uppercase tracking-widest text-on-surface-variant mb-1">'+label+'</span>'+
+ '<b class="font-headline-lg text-xl '+(good===true?'text-success':(good===false?'text-error':'text-primary'))+'">'+value+'</b></div>'}
+function calc(){var s=+$('c_sell').value||0,b=+$('c_buy').value||0,p=+$('c_pack').value||0,g=+$('c_gst').value||0,r=+$('c_ret').value||0,a=+$('c_ads').value||0;
+  var gst=s*g/(100+g),ret=s*r/100,net=s-gst-b-p-ret-a,mar=s?net/s*100:0,ok=net>=70;
+  $('calcout').innerHTML=kv('Output GST','₹'+gst.toFixed(0))+kv('Return loss','₹'+ret.toFixed(0))+
+   kv('Net profit in hand','₹'+net.toFixed(0),ok)+kv('Margin',mar.toFixed(1)+'%',ok)+
+   kv('Price for ₹100 profit','₹'+(((b+p+a+100)/(1-(g/(100+g))-(r/100)))||0).toFixed(0))}
+['c_sell','c_buy','c_pack','c_gst','c_ret','c_ads'].forEach(function(i){$(i).addEventListener('input',calc)});calc();dash();
+</script>
+</body>
+</html>
