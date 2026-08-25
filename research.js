@@ -1,12 +1,18 @@
 // Meesho Trending Research robot ka dimaag
 // Roz 10 trending products dhoondhta hai (sirf 5 categories) aur trending.json me likhta hai.
 // Gemini me Google Search grounding ON hai taaki wo sach me web pe dekhe, guess na kare.
+// Agar koi error aaye to wo error bhi trending.json me likh deta hai taaki diagnose ho sake.
 const fs = require("fs");
+
+function writeOut(obj) {
+  fs.writeFileSync("trending.json", JSON.stringify(obj, null, 2));
+}
 
 const KEY = process.env.GEMINI_API_KEY;
 if (!KEY) {
-  console.error("ERROR: GEMINI_API_KEY missing. GitHub repo Settings > Secrets and variables > Actions me GEMINI_API_KEY naam ka secret daalo.");
-  process.exit(1);
+  writeOut({ updated: new Date().toISOString(), status: "FAILED", errors: ["GEMINI_API_KEY missing in GitHub secrets"], products: [] });
+  console.error("GEMINI_API_KEY missing");
+  process.exit(0);
 }
 
 // Alag-alag models try karega jab tak ek kaam na kar jaye.
@@ -14,6 +20,7 @@ const ATTEMPTS = [
   { model: "gemini-2.5-flash", tool: { google_search: {} } },
   { model: "gemini-2.0-flash", tool: { google_search: {} } },
   { model: "gemini-1.5-flash", tool: { google_search_retrieval: {} } },
+  { model: "gemini-2.0-flash", tool: null },
 ];
 
 const PROMPT = [
@@ -53,9 +60,9 @@ async function callGemini(model, tool) {
   const url = "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + KEY;
   const body = {
     contents: [{ role: "user", parts: [{ text: PROMPT }] }],
-    tools: [tool],
     generationConfig: { temperature: 0.4 },
   };
+  if (tool) body.tools = [tool];
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -63,7 +70,7 @@ async function callGemini(model, tool) {
   });
   if (!res.ok) {
     const t = await res.text();
-    throw new Error(model + " -> HTTP " + res.status + ": " + t.slice(0, 300));
+    throw new Error(model + (tool ? " (search)" : " (no-search)") + " -> HTTP " + res.status + ": " + t.slice(0, 400));
   }
   const data = await res.json();
   const parts = (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
@@ -80,26 +87,26 @@ function parseProducts(text) {
 }
 
 async function main() {
-  let lastErr = null;
+  const errors = [];
   for (const a of ATTEMPTS) {
     try {
-      console.log("Trying model:", a.model);
+      console.log("Trying model:", a.model, a.tool ? "with search" : "no search");
       const text = await callGemini(a.model, a.tool);
       const products = parseProducts(text);
-      if (products.length) {
-        const out = { updated: new Date().toISOString(), model: a.model, count: products.length, products: products };
-        fs.writeFileSync("trending.json", JSON.stringify(out, null, 2));
+      if (products && products.length) {
+        writeOut({ updated: new Date().toISOString(), model: a.model, count: products.length, products: products });
         console.log("SUCCESS: wrote", products.length, "products via", a.model);
         return;
       }
-      console.log("No products parsed from", a.model);
+      errors.push(a.model + ": call ok but no products parsed. Raw start: " + (text || "").slice(0, 200));
     } catch (e) {
+      errors.push(e.message);
       console.error("Failed:", e.message);
-      lastErr = e;
     }
   }
-  console.error("All attempts failed.", lastErr ? lastErr.message : "");
-  process.exit(1);
+  // Sab attempts fail — error ko file me likh do taaki diagnose ho sake.
+  writeOut({ updated: new Date().toISOString(), status: "FAILED", errors: errors, products: [] });
+  console.error("All attempts failed.");
 }
 
 main();
