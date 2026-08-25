@@ -1,11 +1,14 @@
 // Meesho Trending Research robot ka dimaag
 // Roz 10 trending products dhoondhta hai (sirf 5 categories) aur trending.json me likhta hai.
 // Gemini me Google Search grounding ON hai taaki wo sach me web pe dekhe, guess na kare.
-// Agar koi error aaye to wo error bhi trending.json me likh deta hai taaki diagnose ho sake.
+// 429/503 aane par thoda ruk ke dobara koshish karta hai. Error ho to trending.json me likh deta hai.
 const fs = require("fs");
 
 function writeOut(obj) {
   fs.writeFileSync("trending.json", JSON.stringify(obj, null, 2));
+}
+function sleep(ms) {
+  return new Promise(function (r) { setTimeout(r, ms); });
 }
 
 const KEY = process.env.GEMINI_API_KEY;
@@ -15,11 +18,9 @@ if (!KEY) {
   process.exit(0);
 }
 
-// Alag-alag models try karega jab tak ek kaam na kar jaye.
 const ATTEMPTS = [
   { model: "gemini-3.6-flash", tool: { google_search: {} } },
   { model: "gemini-3.6-flash", tool: null },
-  { model: "gemini-3.6-pro", tool: { google_search: {} } },
 ];
 
 const PROMPT = [
@@ -69,11 +70,33 @@ async function callGemini(model, tool) {
   });
   if (!res.ok) {
     const t = await res.text();
-    throw new Error(model + (tool ? " (search)" : " (no-search)") + " -> HTTP " + res.status + ": " + t.slice(0, 400));
+    const err = new Error(model + (tool ? " (search)" : " (no-search)") + " -> HTTP " + res.status + ": " + t.slice(0, 300));
+    err.httpStatus = res.status;
+    throw err;
   }
   const data = await res.json();
   const parts = (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
   return parts.map(function (p) { return p.text; }).filter(Boolean).join("\n");
+}
+
+// 429 (quota) / 503 (busy) aaye to thoda ruk ke dobara koshish.
+async function callWithRetry(model, tool) {
+  const waits = [15000, 30000, 45000];
+  let lastErr = null;
+  for (let i = 0; i <= waits.length; i++) {
+    try {
+      return await callGemini(model, tool);
+    } catch (e) {
+      lastErr = e;
+      if ((e.httpStatus === 429 || e.httpStatus === 503) && i < waits.length) {
+        console.log("Retry in", waits[i] / 1000, "s ->", (e.message || "").slice(0, 70));
+        await sleep(waits[i]);
+        continue;
+      }
+      throw e;
+    }
+  }
+  throw lastErr;
 }
 
 function parseProducts(text) {
@@ -90,10 +113,10 @@ async function main() {
   for (const a of ATTEMPTS) {
     try {
       console.log("Trying model:", a.model, a.tool ? "with search" : "no search");
-      const text = await callGemini(a.model, a.tool);
+      const text = await callWithRetry(a.model, a.tool);
       const products = parseProducts(text);
       if (products && products.length) {
-        writeOut({ updated: new Date().toISOString(), model: a.model, count: products.length, products: products });
+        writeOut({ updated: new Date().toISOString(), model: a.model, grounded: !!a.tool, count: products.length, products: products });
         console.log("SUCCESS: wrote", products.length, "products via", a.model);
         return;
       }
@@ -103,7 +126,6 @@ async function main() {
       console.error("Failed:", e.message);
     }
   }
-  // Sab attempts fail — error ko file me likh do taaki diagnose ho sake.
   writeOut({ updated: new Date().toISOString(), status: "FAILED", errors: errors, products: [] });
   console.error("All attempts failed.");
 }
