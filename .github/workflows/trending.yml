@@ -1,0 +1,33 @@
+name: Meesho Trending Research
+
+on:
+  schedule:
+    - cron: '30 2 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run trending research
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node research.js
+      - name: Commit results
+        run: |
+          git config user.name "trending-bot"
+          git config user.email "trending-bot@users.noreply.github.com"
+          git add trending.json
+          if git diff --staged --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Daily trending products update"
+            git push
+          fi
