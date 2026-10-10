@@ -1,9 +1,218 @@
 {
-  "updated": "2026-10-09T09:30:12.871Z",
-  "status": "FAILED",
-  "errors": [
-    "gemini-3.6-flash (search) -> HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat",
-    "gemini-3.6-flash: call ok but no products parsed. Raw start: "
-  ],
-  "products": []
+  "updated": "2026-10-10T08:50:54.379Z",
+  "model": "gemini-3.6-flash",
+  "grounded": false,
+  "count": 10,
+  "products": [
+    {
+      "name": "Handy Manual Vegetable Chopper 900ml",
+      "category": "Kitchen tools & gadgets",
+      "trending_on": "Meesho, Amazon, Flipkart",
+      "proof": "4.3 star rating, over 1,500,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/handy-vegetable-chopper-900ml/p/1y2x3z",
+      "est_wholesale": "Rs 85",
+      "suggested_price": "Rs 169",
+      "est_profit": "Rs 54",
+      "title": "Unbreakable Manual Handy Vegetable & Fruit Quick Chopper with 5 Stainless Steel Blades (900ml)",
+      "description": "Effortlessly chop vegetables, fruits, nuts, and herbs in seconds with this strong pull-cord manual chopper. Features 5 ultra-sharp stainless steel blades and a non-skid base.",
+      "keywords": [
+        "sabji katne wala",
+        "chopper",
+        "pyaz cutter",
+        "handy chopper",
+        "choper"
+      ],
+      "specs": "Material: BPA-Free Plastic & Stainless Steel | Size: 900ml | Weight: 280g | What's in box: 1 Chopper Bowl, 1 Blade Assembly, 1 Lid with Pull Cord",
+      "hsn": "39249090 (18% GST)"
+    },
+    {
+      "name": "3 in 1 Stainless Steel Peeler Grater (Chilni)",
+      "category": "Kitchen tools & gadgets",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.2 star rating, 450,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/3-in-1-multi-function-peeler-and-julienne-cutter/p/2a3b4c",
+      "est_wholesale": "Rs 25",
+      "suggested_price": "Rs 89",
+      "est_profit": "Rs 44",
+      "title": "3 in 1 Multi-Function Stainless Steel Vegetable Peeler and Julienne Cutter for Kitchen",
+      "description": "Multi-purpose kitchen peeler and slicer designed for easy peeling of potatoes, carrots, and cucumbers, plus julienne shredding.",
+      "keywords": [
+        "chilni",
+        "peeler",
+        "kaddukas",
+        "sabji peeler",
+        "aaloo chilni"
+      ],
+      "specs": "Material: Stainless Steel | Size: 15cm x 5cm | Weight: 45g | What's in box: 1 Stainless Steel Peeler",
+      "hsn": "82119200 (12% GST)"
+    },
+    {
+      "name": "Saree Cover Bags with Transparent Window (Set of 6)",
+      "category": "Storage / organizers",
+      "trending_on": "Meesho, Flipkart",
+      "proof": "4.4 star rating, 800,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/non-woven-saree-cover-set-of-6/p/3d4e5f",
+      "est_wholesale": "Rs 90",
+      "suggested_price": "Rs 189",
+      "est_profit": "Rs 59",
+      "title": "Heavy Non-Woven Saree Covers Storage Bags Box Organizer with Front Transparent Window (Pack of 6)",
+      "description": "Keep your expensive sarees, dresses, and clothes dust-free and organized with these durable non-woven fabric saree cover bags featuring strong zippers.",
+      "keywords": [
+        "saree cover",
+        "kapde rakhne ka bag",
+        "wardrobe organizer",
+        "clothes storage",
+        "saree bag"
+      ],
+      "specs": "Material: Non-Woven Fabric & PVC | Size: 43cm x 35cm | Weight: 320g | What's in box: 6 Saree Covers",
+      "hsn": "63079090 (12% GST)"
+    },
+    {
+      "name": "Unbreakable Plastic Fridge Storage Containers (Set of 6)",
+      "category": "Storage / organizers",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.1 star rating, 320,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/fridge-storage-dabba-set/p/4g5h6i",
+      "est_wholesale": "Rs 110",
+      "suggested_price": "Rs 219",
+      "est_profit": "Rs 69",
+      "title": "Airtight Plastic Kitchen Fridge Storage Container Set for Vegetables & Snacks (Pack of 6)",
+      "description": "Space-saving stackable fridge storage dabbas with locking lids to keep vegetables, fruits, and food items fresh for longer.",
+      "keywords": [
+        "fridge dabba",
+        "container set",
+        "kitchen box",
+        "sabji dabba",
+        "airtight container"
+      ],
+      "specs": "Material: Food-grade Plastic | Size: 500ml each | Weight: 400g | What's in box: 6 Containers with Lids",
+      "hsn": "39241010 (18% GST)"
+    },
+    {
+      "name": "Self-Adhesive Transparent Wall Hooks (Pack of 10)",
+      "category": "Home utility",
+      "trending_on": "Meesho, Amazon, Flipkart",
+      "proof": "4.3 star rating, 1,200,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/heavy-duty-wall-hooks-waterproof-sticky-hooks/p/5j6k7l",
+      "est_wholesale": "Rs 28",
+      "suggested_price": "Rs 99",
+      "est_profit": "Rs 51",
+      "title": "Heavy Duty Transparent Self Adhesive Magic Wall Hooks for Hanging Kitchen & Bathroom Accessories (Pack of 10)",
+      "description": "Nail-free waterproof adhesive hooks that stick firmly to tiles, glass, and wood without damaging walls. Ideal for kitchen utensils, towels, and keys.",
+      "keywords": [
+        "wall hook",
+        "chipakne wala hook",
+        "sticky hook",
+        "nail free hook",
+        "khunti"
+      ],
+      "specs": "Material: PVC + Stainless Steel | Size: 6cm x 6cm | Weight: 70g | What's in box: 10 Adhesive Hooks",
+      "hsn": "39269099 (18% GST)"
+    },
+    {
+      "name": "Nylon Clothesline Drying Rope with Steel Hooks (5 Meters)",
+      "category": "Home utility",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.2 star rating, 250,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/windproof-anti-slip-clothesline-drying-rope/p/6m7n8o",
+      "est_wholesale": "Rs 30",
+      "suggested_price": "Rs 95",
+      "est_profit": "Rs 45",
+      "title": "Windproof Anti-Slip Nylon Clothes Drying Rope Cable Clothesline with Hooks (5 Meters)",
+      "description": "Fence-like design with divider slots prevents wet clothes from sliding and clumping together in strong winds. Easy to fix with attached stainless steel end hooks.",
+      "keywords": [
+        "kapde sukhane ki rassi",
+        "clothes rope",
+        "drying line",
+        "kapda rassi",
+        "windproof rope"
+      ],
+      "specs": "Material: Nylon & Steel Hooks | Length: 5 Meters | Weight: 60g | What's in box: 1 Clothesline Rope",
+      "hsn": "56075090 (12% GST)"
+    },
+    {
+      "name": "3D Acrylic Mirror Wall Sticker Butterflies (Set of 12)",
+      "category": "Home decor",
+      "trending_on": "Meesho, Flipkart",
+      "proof": "4.1 star rating, 500,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/3d-acrylic-mirror-butterfly-wall-decor/p/7p8q9r",
+      "est_wholesale": "Rs 35",
+      "suggested_price": "Rs 115",
+      "est_profit": "Rs 50",
+      "title": "3D Mirror Butterfly Wall Decor Stickers DIY Art Wall Decals for Bedroom & Living Room (Pack of 12)",
+      "description": "Transform living room walls instantly with easy peel-and-stick shiny acrylic butterfly mirror decals. Lightweight, durable, and highly decorative.",
+      "keywords": [
+        "wall sticker",
+        "butterfly sticker",
+        "mirror sticker",
+        "ghar sajao items",
+        "wall decor"
+      ],
+      "specs": "Material: Acrylic Plastic | Sizes: Assorted (6cm - 12cm) | Weight: 50g | What's in box: 12 Butterfly Stickers with Double-Sided Tape",
+      "hsn": "39199090 (18% GST)"
+    },
+    {
+      "name": "Warm White LED Fairy Rice Lights (10 Meters)",
+      "category": "Home decor",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.3 star rating, 950,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/10m-warm-white-led-string-fairy-lights/p/8s9t0u",
+      "est_wholesale": "Rs 45",
+      "suggested_price": "Rs 129",
+      "est_profit": "Rs 54",
+      "title": "10 Meter Warm White LED String Rice Lights Plug-in Decorative Fairy Lights for Festival & Home Decor",
+      "description": "Flexible and bright copper wire LED fairy lights perfect for festival decoration, bedroom styling, photo clip display, and balcony decor.",
+      "keywords": [
+        "fairy lights",
+        "diwali light",
+        "rice light",
+        "led light strip",
+        "jhalaar"
+      ],
+      "specs": "Material: Plastic & Copper Wire | Length: 10 Meters | Weight: 90g | What's in box: 1 Plug-in String Light Strand",
+      "hsn": "94053000 (18% GST)"
+    },
+    {
+      "name": "Korean Style Gold Plated Hoop Earrings Set (Set of 6 Pairs)",
+      "category": "Fashion accessories / clothing",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.4 star rating, 620,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/korean-gold-plated-earrings-combo-set/p/9v0w1x",
+      "est_wholesale": "Rs 50",
+      "suggested_price": "Rs 149",
+      "est_profit": "Rs 69",
+      "title": "Stylish Korean Gold Plated Minimalist Hoop & Stud Earrings Combo Set for Women & Girls (6 Pairs)",
+      "description": "Trendy lightweight anti-tarnish gold-toned hoop and stud earrings set, ideal for daily wear, college, and office outfits.",
+      "keywords": [
+        "earrings combo",
+        "korean earrings",
+        "bali set",
+        "ear ring",
+        "gold earrings girls"
+      ],
+      "specs": "Material: Alloy with Gold Plating | Weight: 35g total | What's in box: 6 Pairs of Earrings",
+      "hsn": "71171990 (3% GST)"
+    },
+    {
+      "name": "Multicolor Satin Silk Hair Scrunchies (Pack of 12)",
+      "category": "Fashion accessories / clothing",
+      "trending_on": "Meesho, Amazon, Flipkart",
+      "proof": "4.5 star rating, 710,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/satin-silk-scrunchies-hair-bands-pack-of-12/p/0y1z2a",
+      "est_wholesale": "Rs 40",
+      "suggested_price": "Rs 120",
+      "est_profit": "Rs 50",
+      "title": "Soft Premium Satin Silk Hair Scrunchies Elastic Rubber Hair Bands for Women & Girls (Pack of 12)",
+      "description": "Soft and smooth satin scrunchies that protect hair from breakage, creasing, and damage. Comes in vibrant trendy colors.",
+      "keywords": [
+        "scrunchies",
+        "hair band",
+        "balon ki rubber",
+        "satin scrunchie",
+        "rubber band set"
+      ],
+      "specs": "Material: Premium Satin Fabric | Size: Standard Regular | Weight: 60g | What's in box: 12 Multicolor Scrunchies",
+      "hsn": "62171010 (5% GST)"
+    }
+  ]
 }
