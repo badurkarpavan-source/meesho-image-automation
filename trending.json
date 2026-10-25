@@ -1,9 +1,268 @@
 {
-  "updated": "2026-10-24T07:33:10.443Z",
-  "status": "FAILED",
-  "errors": [
-    "gemini-3.6-flash (search) -> HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat",
-    "gemini-3.6-flash: call ok but no products parsed. Raw start: "
-  ],
-  "products": []
+  "updated": "2026-10-25T07:46:57.209Z",
+  "model": "gemini-3.6-flash",
+  "grounded": false,
+  "count": 10,
+  "products": [
+    {
+      "name": "Handy Manual Vegetable Chopper 450ml",
+      "category": "Kitchen tools & gadgets",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.2 stars with 120,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/handy-mini-plastic-chopper-450ml/p/1z4f9",
+      "est_wholesale": "Rs 65",
+      "suggested_price": "Rs 135",
+      "est_profit": "Rs 45",
+      "title": "450ml Manual Hand Pull Vegetable Chopper with 3 Stainless Steel Blades for Onion Garlic Cutter",
+      "description": "Compact and easy-to-use hand-pull vegetable chopper for fast chopping of onions, garlic, and nuts. Requires no electricity and features sharp stainless steel blades with a sturdy pull cord.",
+      "keywords": [
+        "chopper",
+        "pyaaz cutter",
+        "hand chopper",
+        "subzi cutter",
+        "kitchen chopper"
+      ],
+      "specs": {
+        "material": "BPA-Free Plastic, Stainless Steel Blades",
+        "size": "450 ml capacity",
+        "weight": "210g",
+        "whats_in_box": "1 Chopper Container, 1 Blade Set, 1 Lid with Pull Cord"
+      },
+      "hsn": "39249090 (GST 18%)"
+    },
+    {
+      "name": "2-in-1 Stainless Steel Peeler and Knife",
+      "category": "Kitchen tools & gadgets",
+      "trending_on": "Meesho, Flipkart",
+      "proof": "4.1 stars with 35,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/2-in-1-stainless-steel-peeler-knife-vegetable-peeler/p/2v9k1",
+      "est_wholesale": "Rs 25",
+      "suggested_price": "Rs 89",
+      "est_profit": "Rs 40",
+      "title": "2 in 1 Stainless Steel Vegetable Peeler Knife Dual Blade Slicer Chilni",
+      "description": "Smart dual-action peeler with integrated knife blade for quick peeling and cutting. Made with rust-resistant high grade stainless steel for daily kitchen prep.",
+      "keywords": [
+        "chilni",
+        "chaku",
+        "peeler knife",
+        "aloo chilni",
+        "subzi peeler"
+      ],
+      "specs": {
+        "material": "Stainless Steel, ABS Plastic Handle",
+        "size": "18 cm length",
+        "weight": "60g",
+        "whats_in_box": "1 2-in-1 Peeler Knife"
+      },
+      "hsn": "82119200 (GST 12%)"
+    },
+    {
+      "name": "6 Grid Foldable Undergarment Organizer Box",
+      "category": "Storage / organizers",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.3 stars with 18,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/foldable-underwear-drawer-organizer-box/p/1x8p0",
+      "est_wholesale": "Rs 50",
+      "suggested_price": "Rs 129",
+      "est_profit": "Rs 50",
+      "title": "Foldable Closet Undergarment Organizer Drawer Divider Box for Socks Bra Ties",
+      "description": "Keep wardrobe drawers neatly arranged with this breathable non-woven fabric organizer box. Foldable design saves space when not in use.",
+      "keywords": [
+        "kapde organizer",
+        "drawer box",
+        "almirah organizer",
+        "sock box",
+        "storage organizer"
+      ],
+      "specs": {
+        "material": "Non-Woven Fabric & Mesh",
+        "size": "32 x 32 x 10 cm",
+        "weight": "120g",
+        "whats_in_box": "1 Modular Storage Box"
+      },
+      "hsn": "63079090 (GST 12%)"
+    },
+    {
+      "name": "Self-Adhesive Wall Mounted Spice Containers Box",
+      "category": "Storage / organizers",
+      "trending_on": "Meesho, Flipkart",
+      "proof": "4.0 stars with 14,500+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/wall-mounted-spice-rack-box-container/p/3b1n9",
+      "est_wholesale": "Rs 85",
+      "suggested_price": "Rs 179",
+      "est_profit": "Rs 55",
+      "title": "Wall Mounted Kitchen Spice Box Container Set Punch Free Seasoning Rack",
+      "description": "Space-saving drill-free wall-mounted spice box with clear compartment drawers and mini spoons. Keeps kitchen counters clutter-free and hygienic.",
+      "keywords": [
+        "masala box",
+        "spice rack",
+        "masala dabba",
+        "wall container",
+        "kitchen rack"
+      ],
+      "specs": {
+        "material": "Food Grade ABS Plastic",
+        "size": "26 x 11 x 11 cm",
+        "weight": "350g",
+        "whats_in_box": "1 Spice Container Frame, 3 Compartments, 3 Spoons, 1 Adhesive Sticker"
+      },
+      "hsn": "39241090 (GST 18%)"
+    },
+    {
+      "name": "5m Windproof Nylon Clothesline Rope with Hooks",
+      "category": "Home utility",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.4 stars with 42,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/5m-windproof-anti-slip-clothes-hanging-drying-rope/p/1m3a7",
+      "est_wholesale": "Rs 28",
+      "suggested_price": "Rs 85",
+      "est_profit": "Rs 35",
+      "title": "5 Meter Windproof Non-Slip Clothes Drying Rope Wire Hanger Line with Hooks",
+      "description": "Fence-style drying rope with fence partitions to prevent clothes from sliding together in high winds. Comes with sturdy steel hooks on both ends.",
+      "keywords": [
+        "kapde ki rassi",
+        "drying rope",
+        "kapda hanger rope",
+        "rassi",
+        "clothesline"
+      ],
+      "specs": {
+        "material": "Nylon with Stainless Steel Hooks",
+        "size": "5 Meters",
+        "weight": "70g",
+        "whats_in_box": "1 Clothes Drying Rope (5m)"
+      },
+      "hsn": "56075040 (GST 12%)"
+    },
+    {
+      "name": "Transparent Heavy Duty Self-Adhesive Wall Hooks (Pack of 10)",
+      "category": "Home utility",
+      "trending_on": "Meesho, Amazon, Flipkart",
+      "proof": "4.3 stars with 85,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/10-pcs-transparent-strong-self-adhesive-door-wall-hangers/p/g5f12",
+      "est_wholesale": "Rs 35",
+      "suggested_price": "Rs 99",
+      "est_profit": "Rs 42",
+      "title": "Pack of 10 Transparent Waterproof Self Adhesive Wall Hooks for Kitchen Bathroom",
+      "description": "Heavy-duty wall hooks requiring no drilling. Holds up to 5kg on plain surfaces like tiles, glass, and wood without damaging walls.",
+      "keywords": [
+        "magic hook",
+        "wall hook",
+        "sticking hook",
+        "khunti",
+        "bathroom hook"
+      ],
+      "specs": {
+        "material": "PVC Plastic + Stainless Steel",
+        "size": "6 x 6 cm base per hook",
+        "weight": "90g (Pack of 10)",
+        "whats_in_box": "10 Self-Adhesive Transparent Hooks"
+      },
+      "hsn": "39269099 (GST 18%)"
+    },
+    {
+      "name": "3D Hexagon Acrylic Mirror Wall Stickers (Pack of 12)",
+      "category": "Home decor",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.1 stars with 28,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/12-pcs-acrylic-hexagon-mirror-wall-sticker-set/p/1j2c4",
+      "est_wholesale": "Rs 60",
+      "suggested_price": "Rs 139",
+      "est_profit": "Rs 50",
+      "title": "12 Pieces 3D Hexagon Acrylic Mirror Wall Sticker Tiles for Living Room Bedroom Decor",
+      "description": "Modern reflective mirror effect wall stickers. Light up living rooms and bedrooms effortlessly; self-adhesive backing makes installation simple.",
+      "keywords": [
+        "mirror sticker",
+        "wall sticker",
+        "wall decor",
+        "sheesha sticker",
+        "room decor"
+      ],
+      "specs": {
+        "material": "Acrylic",
+        "size": "10 x 8.5 cm per piece",
+        "weight": "150g",
+        "whats_in_box": "12 Hexagon Acrylic Mirror Stickers"
+      },
+      "hsn": "39199090 (GST 18%)"
+    },
+    {
+      "name": "10m Warm White LED Copper Wire Cork Fairy String Lights",
+      "category": "Home decor",
+      "trending_on": "Meesho, Flipkart",
+      "proof": "4.2 stars with 50,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/10m-led-copper-wire-string-light-fairy-light/p/210s9",
+      "est_wholesale": "Rs 45",
+      "suggested_price": "Rs 119",
+      "est_profit": "Rs 45",
+      "title": "10 Meter LED Warm White Copper Wire Fairy String Lights for Festival Room Decor",
+      "description": "Flexible and durable copper wire light string with bright warm white micro LEDs. Perfect for bottle crafts, festive decoration, and bedroom lighting.",
+      "keywords": [
+        "fairy light",
+        "diwali light",
+        "led light",
+        "jhalar",
+        "copper light"
+      ],
+      "specs": {
+        "material": "Copper Wire + Micro LEDs",
+        "size": "10 Meters length",
+        "weight": "80g",
+        "whats_in_box": "1 10m Copper String Light with Adapter/USB"
+      },
+      "hsn": "94054090 (GST 18%)"
+    },
+    {
+      "name": "Korean Style Aesthetic Pearl Gold Hoop Earrings Set (Pack of 6 Pairs)",
+      "category": "Fashion accessories / clothing",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.3 stars with 19,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/6-pair-set-korean-gold-earrings-for-women/p/4u2w8",
+      "est_wholesale": "Rs 55",
+      "suggested_price": "Rs 149",
+      "est_profit": "Rs 60",
+      "title": "6 Pairs Set Gold Plated Korean Stud and Hoop Earrings for Girls and Women",
+      "description": "Trendy set of lightweight minimalist gold-tone hoop and pearl stud earrings. Anti-tarnish polish suitable for college, western, and casual wear.",
+      "keywords": [
+        "earrings",
+        "korean earrings",
+        "jhumki",
+        "tops set",
+        "earring combo"
+      ],
+      "specs": {
+        "material": "Alloy with Gold Plating & Artificial Pearls",
+        "size": "Assorted (1cm to 3cm)",
+        "weight": "45g",
+        "whats_in_box": "6 Pairs of Earrings"
+      },
+      "hsn": "71171990 (GST 3%)"
+    },
+    {
+      "name": "Satin Silk Hair Scrunchies Set (Pack of 6)",
+      "category": "Fashion accessories / clothing",
+      "trending_on": "Meesho, Flipkart",
+      "proof": "4.4 stars with 62,000+ ratings on Meesho",
+      "listing_link": "https://www.meesho.com/pack-of-6-satin-hair-scrunchies-for-women-girls/p/1p9q3",
+      "est_wholesale": "Rs 30",
+      "suggested_price": "Rs 99",
+      "est_profit": "Rs 45",
+      "title": "Pack of 6 Multicolor Soft Satin Silk Hair Scrunchies Rubber Bands for Girls",
+      "description": "Soft premium satin scrunchies that minimize hair damage and breakage. Elastic band holds ponytail firmly without pulling.",
+      "keywords": [
+        "scrunchies",
+        "hair band",
+        "rubber band",
+        "silk scrunchy",
+        "hair accessories"
+      ],
+      "specs": {
+        "material": "Satin Silk Fabric, Elastic Rubber",
+        "size": "10 cm diameter",
+        "weight": "50g",
+        "whats_in_box": "6 Satin Scrunchies (Assorted Colors)"
+      },
+      "hsn": "61178090 (GST 12%)"
+    }
+  ]
 }
