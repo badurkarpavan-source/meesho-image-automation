@@ -1,9 +1,272 @@
 {
-  "updated": "2026-11-22T10:08:58.287Z",
-  "status": "FAILED",
-  "errors": [
-    "gemini-3.6-flash (search) -> HTTP 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"status\": ",
-    "gemini-3.6-flash: call ok but no products parsed. Raw start: "
-  ],
-  "products": []
+  "updated": "2026-11-23T11:05:29.479Z",
+  "model": "gemini-3.6-flash",
+  "grounded": false,
+  "count": 10,
+  "products": [
+    {
+      "name": "Handy Manual Vegetable Chopper 450ml",
+      "category": "Kitchen tools & gadgets (peeler, grater, chopper, chilni)",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.2 stars (45,000+ ratings on Meesho), Best Seller in Kitchen Choppers",
+      "listing_link": "https://www.meesho.com/handy-mini-plastic-chopper-with-3-blades-for-chopping-vegetables-and-fruits/p/1x2y3z",
+      "est_wholesale": "Rs 65",
+      "suggested_price": "Rs 149",
+      "est_profit": "Rs 54",
+      "title": "Quick Handy Manual Vegetable & Fruit Chopper 450ml with 3 Stainless Steel Blades",
+      "description": "Effortlessly chop onions, garlic, vegetables, and nuts in seconds with this durable 3-blade manual pull-cord chopper. Compact design with non-skid base and easy-to-clean detachable components.",
+      "keywords": [
+        "chopper",
+        "pyaaz katne wala",
+        "hand chopper",
+        "kanda chopper",
+        "pull chopper",
+        "vegetable cutter"
+      ],
+      "specs": {
+        "material": "BPA-Free ABS Plastic & Stainless Steel Blades",
+        "size": "450ml capacity (12.5 x 12.5 x 9 cm)",
+        "weight": "210g",
+        "whats_in_box": "1 x Container, 1 x 3-Blade Attachment, 1 x Lid with Pull Cord"
+      },
+      "hsn": "39249090 (18% GST)"
+    },
+    {
+      "name": "3 in 1 Stainless Steel Multi Peeler",
+      "category": "Kitchen tools & gadgets (peeler, grater, chopper, chilni)",
+      "trending_on": "Meesho, Flipkart",
+      "proof": "4.1 stars (18,500+ ratings on Meesho), High Demand Daily Essential",
+      "listing_link": "https://www.meesho.com/3-in-1-rotary-vegetable-peeler-julienne-cutter/p/2a3b4c",
+      "est_wholesale": "Rs 35",
+      "suggested_price": "Rs 99",
+      "est_profit": "Rs 42",
+      "title": "3 in 1 Stainless Steel Rotary Peeler and Julienne Cutter for Fruits and Vegetables",
+      "description": "Ultra-sharp 3-in-1 rotary blade peeler featuring straight, serrated, and julienne blades for smooth peeling of potatoes, carrots, cucumbers, and fruits.",
+      "keywords": [
+        "chilni",
+        "peeler",
+        "aloo chilni",
+        "julienne cutter",
+        "subzi peeler",
+        "fruit peeler"
+      ],
+      "specs": {
+        "material": "Stainless Steel & ABS Handle",
+        "size": "15 x 7 x 2 cm",
+        "weight": "85g",
+        "whats_in_box": "1 x 3-in-1 Rotary Peeler"
+      },
+      "hsn": "82119200 (12% GST)"
+    },
+    {
+      "name": "Saree & Clothes Storage Organizer Bag Pack of 3",
+      "category": "Storage / organizers (containers, bags, racks)",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.3 stars (32,000+ ratings on Meesho), Top Trending Wardrobe Organizer",
+      "listing_link": "https://www.meesho.com/non-woven-foldable-saree-cover-clothes-storage-bag-pack-of-3/p/3d4e5f",
+      "est_wholesale": "Rs 110",
+      "suggested_price": "Rs 229",
+      "est_profit": "Rs 75",
+      "title": "Non-Woven Foldable Saree and Clothes Storage Organizer Bags with Transparent Front Window (Pack of 3)",
+      "description": "Keep your expensive sarees, dresses, and blankets dust-free and organized with sturdy zip closures and clear viewing windows. Perfect for space-saving wardrobe management.",
+      "keywords": [
+        "saree cover",
+        "kapde rakhne ka bag",
+        "storage bag",
+        "wardrobe organizer",
+        "clothes cover"
+      ],
+      "specs": {
+        "material": "Heavy 90 GSM Non-Woven Fabric",
+        "size": "48 x 35 x 22 cm",
+        "weight": "320g (for 3 pcs)",
+        "whats_in_box": "3 x Storage Organizer Bags"
+      },
+      "hsn": "63079090 (12% GST)"
+    },
+    {
+      "name": "6 Grid Plastic Refrigerator Drain Storage Containers",
+      "category": "Storage / organizers (containers, bags, racks)",
+      "trending_on": "Meesho, Flipkart",
+      "proof": "4.4 stars (14,200+ ratings on Meesho), Viral Kitchen Organizer",
+      "listing_link": "https://www.meesho.com/fridge-storage-boxes-drain-basket-container-with-lid/p/4e5f6g",
+      "est_wholesale": "Rs 85",
+      "suggested_price": "Rs 189",
+      "est_profit": "Rs 68",
+      "title": "Multipurpose 6 Grid Fridge Storage Drain Box Container with Removable Drain Plate and Lid",
+      "description": "Keep fresh coriander, vegetables, ginger, and fruits fresh for longer. Features a drainage basket layer to prevent moisture accumulation and spoilage in the fridge.",
+      "keywords": [
+        "fridge box",
+        "subzi container",
+        "dhaniya box",
+        "fridge organizer",
+        "drain storage"
+      ],
+      "specs": {
+        "material": "Food Grade PP Plastic",
+        "size": "24 x 15 x 7 cm",
+        "weight": "190g",
+        "whats_in_box": "1 x Main Storage Box, 6 x Inner Drain Grids, 1 x Airtight Lid"
+      },
+      "hsn": "39241090 (18% GST)"
+    },
+    {
+      "name": "Heavy Duty Self Adhesive Wall Hooks Pack of 10",
+      "category": "Home utility (clothes-drying rope, cleaning, hooks)",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.3 stars (65,000+ ratings on Meesho), Top Sold Utility Item",
+      "listing_link": "https://www.meesho.com/heavy-duty-transparent-self-adhesive-wall-hooks-pack-of-10/p/5f6g7h",
+      "est_wholesale": "Rs 30",
+      "suggested_price": "Rs 99",
+      "est_profit": "Rs 45",
+      "title": "Transparent Heavy Duty Self-Adhesive Wall Hooks Waterproof Nail Free Hangers (Pack of 10)",
+      "description": "No drilling required! Clear waterproof adhesive hooks capable of holding up to 5kg weight each. Suitable for kitchen utensils, bathroom towels, keys, and wall decor.",
+      "keywords": [
+        "wall hook",
+        "sticky hook",
+        "chupakne wala hook",
+        "chabi khunti",
+        "nail free hook"
+      ],
+      "specs": {
+        "material": "Stainless Steel Hook + PVC Transparent Base",
+        "size": "6 x 6 cm base plate",
+        "weight": "110g (for 10 pcs)",
+        "whats_in_box": "10 x Adhesive Wall Hooks"
+      },
+      "hsn": "39269099 (18% GST)"
+    },
+    {
+      "name": "5 Meter Nylon Anti-Slip Clothesline Rope with Hooks",
+      "category": "Home utility (clothes-drying rope, cleaning, hooks)",
+      "trending_on": "Meesho, Flipkart",
+      "proof": "4.2 stars (22,100+ ratings on Meesho), High Demand Household item",
+      "listing_link": "https://www.meesho.com/5m-anti-slip-clothesline-drying-rope-with-steel-hooks/p/6g7h8i",
+      "est_wholesale": "Rs 25",
+      "suggested_price": "Rs 89",
+      "est_profit": "Rs 44",
+      "title": "5 Meter Anti-Slip Windproof Nylon Clothes Drying Rope Cable Line with Metal Hooks",
+      "description": "Durable fence-style nylon clothesline with special grid dividers to prevent hangers from sliding together in strong winds. Includes strong end hooks for easy hanging anywhere.",
+      "keywords": [
+        "kapde sukhanekirassi",
+        "clothesline",
+        "kapde ki rassi",
+        "drying rope",
+        "hanging rope"
+      ],
+      "specs": {
+        "material": "High-Strength Nylon + Stainless Steel End Hooks",
+        "size": "5 Meters Length",
+        "weight": "70g",
+        "whats_in_box": "1 x 5M Clothesline Rope with 2 End Hooks"
+      },
+      "hsn": "56075040 (12% GST)"
+    },
+    {
+      "name": "12 Pcs 3D Mirror Butterfly Wall Stickers",
+      "category": "Home decor (wall stickers, fairy lights, festive)",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.1 stars (28,900+ ratings on Meesho), Top Budget Decor Item",
+      "listing_link": "https://www.meesho.com/12-pcs-3d-mirror-butterfly-wall-stickers-home-decor/p/7h8i9j",
+      "est_wholesale": "Rs 35",
+      "suggested_price": "Rs 119",
+      "est_profit": "Rs 52",
+      "title": "12 Pcs 3D Acrylic Mirror Butterfly Wall Stickers DIY Art Decals for Living Room & Bedroom",
+      "description": "Transform your walls instantly with these metallic reflective 3D butterfly wall stickers. Comes with double-sided adhesive dots for quick, hassle-free setup.",
+      "keywords": [
+        "wall sticker",
+        "butterfly sticker",
+        "diwar decoration",
+        "room decor",
+        "3d mirror sticker"
+      ],
+      "specs": {
+        "material": "Polycarbonate Acrylic Plastic with Mirror Finish",
+        "size": "4 Pcs Large (11cm), 4 Pcs Medium (8cm), 4 Pcs Small (6.5cm)",
+        "weight": "45g",
+        "whats_in_box": "12 x Butterfly Stickers, 1 x Double-Sided Tape Sheet"
+      },
+      "hsn": "39199090 (18% GST)"
+    },
+    {
+      "name": "10 Meter LED Rice Warm White String Fairy Lights",
+      "category": "Home decor (wall stickers, fairy lights, festive)",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.4 stars (50,000+ ratings on Meesho), Constant Best Seller",
+      "listing_link": "https://www.meesho.com/10-meter-led-warm-white-fairy-lights-plug-in-rice-lights/p/8i9j0k",
+      "est_wholesale": "Rs 45",
+      "suggested_price": "Rs 129",
+      "est_profit": "Rs 51",
+      "title": "10 Meter Plug-in Warm White LED Rice Fairy Lights for Home Decoration and Festivals",
+      "description": "Create a cozy aesthetic mood in your bedroom or during festive celebrations with flexible, bright warm white string lights. Plug-in operated with minimal power consumption.",
+      "keywords": [
+        "light",
+        "ladi light",
+        "fairy light",
+        "diwali light",
+        "rice light",
+        "sajawat light"
+      ],
+      "specs": {
+        "material": "PVC Coated Flexible Copper Wire",
+        "size": "10 Meters / 38-40 LEDs",
+        "weight": "90g",
+        "whats_in_box": "1 x 10 Meter Plug-in LED String Light"
+      },
+      "hsn": "94053000 (18% GST)"
+    },
+    {
+      "name": "Korean Soft Velvet Hair Scrunchies Pack of 6",
+      "category": "Fashion accessories / clothing (small items)",
+      "trending_on": "Meesho, Flipkart",
+      "proof": "4.3 stars (19,400+ ratings on Meesho), Viral Fashion Accessory",
+      "listing_link": "https://www.meesho.com/korean-style-soft-velvet-hair-scrunchies-elastic-bands-pack-of-6/p/9j0k1l",
+      "est_wholesale": "Rs 30",
+      "suggested_price": "Rs 99",
+      "est_profit": "Rs 44",
+      "title": "Korean Style Premium Soft Velvet Hair Scrunchies Elastic Hair Bands for Girls & Women (Pack of 6 Assorted)",
+      "description": "Gentle on hair to prevent breakage and creasing. High-elasticity pastel scrunchies wrapped in soft velvet fabric, suitable for ponytails, buns, and wrist accessories.",
+      "keywords": [
+        "scrunchies",
+        "hair band",
+        "rubber band",
+        "girls hair accessories",
+        "velvet scrunchie"
+      ],
+      "specs": {
+        "material": "Premium Velvet Fabric & Stretchable Elastic Inner",
+        "size": "Outer diameter ~10cm",
+        "weight": "60g (for 6 pcs)",
+        "whats_in_box": "6 x Assorted Colored Velvet Scrunchies"
+      },
+      "hsn": "61178090 (12% GST)"
+    },
+    {
+      "name": "Women Seamless Saree Shapewear Petticoat",
+      "category": "Fashion accessories / clothing (small items)",
+      "trending_on": "Meesho, Amazon",
+      "proof": "4.3 stars (82,000+ ratings on Meesho), Highest Volume Women's Apparel Accessory",
+      "listing_link": "https://www.meesho.com/women-high-waist-saree-shapewear-petticoat-derma-wear/p/0k1l2m",
+      "est_wholesale": "Rs 135",
+      "suggested_price": "Rs 249",
+      "est_profit": "Rs 69",
+      "title": "Women High Waist Stretchable Saree Shapewear Petticoat with Bottom Flare and Drawstring",
+      "description": "Achieve a hourglass mermaid silhouette in sarees without uncomfortable bulk. High compression waistband smooths tummy and thighs while side slit allows easy movement.",
+      "keywords": [
+        "shapewear",
+        "saree petticoat",
+        "saya",
+        "tummy tucker",
+        "saree shaper",
+        "petticoat"
+      ],
+      "specs": {
+        "material": "Microfiber & Lycra Blended Super Stretch Fabric",
+        "size": "Free Size (Fits waist 28-36 inches)",
+        "weight": "180g",
+        "whats_in_box": "1 x Saree Shapewear Petticoat"
+      },
+      "hsn": "62129090 (5% GST)"
+    }
+  ]
 }
